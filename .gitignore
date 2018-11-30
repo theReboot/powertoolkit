@@ -94,3 +94,5 @@ target/
 
 */deploy.py
 */deploy.sh
+
+node_modules/

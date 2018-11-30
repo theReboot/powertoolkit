@@ -25,6 +25,7 @@ So you have cloned the repo with
 `
 git clone git@github.com:theReboot/powertoolkit.git
 `
+
 Now, setup your dependencies for the back and front-end
 
 ```
@@ -45,5 +46,7 @@ Files
 =====
 
 The html files are in `powertoolkit/powerkit/templates/`
+
 The sass files are in `powertoolkit/powerkit/devstatic/scss/`
+
 The css files are in `powertoolkit/powerkit/devstatic/css/`

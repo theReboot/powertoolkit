@@ -1,0 +1,470 @@
+// https://fonts.google.com/selection?selection.family=Roboto:400,400i,700,700i
+// this needs to be loaded in order for the fonts to load
+
+/*******************************
+VARIABLES
+*******************************/
+
+$black: #111111;
+$white: #fff;
+$yellow: #cdcf60;
+$grey: #5b5b5b;
+$lightGrey: #d6d6d6;
+
+$sitePad: 2rem;
+$colGutter: 1.5rem;
+
+$sanSerif: "Roboto", sans-serif;
+
+/*******************************
+MEDIA QUERIES
+*******************************/
+
+$mobile-width: 500px;
+$tablet-width: 768px;
+$desktop-width: 1024px;
+
+@mixin mobile {
+  @media (max-width: #{$mobile-width}) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: #{$mobile-width}) and (max-width: #{$tablet-width}) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: #{$tablet-width}) {
+    @content;
+  }
+}
+
+/*******************************
+GRID
+*******************************/
+
+.flexGrid {
+  display: flex;
+  flex-wrap: wrap;
+
+  @include mobile {
+    flex-direction: column;
+  }
+}
+
+.col {
+  flex: 1;
+  margin-right: $colGutter;
+
+  &:last-of-type {
+    margin-right: 0;
+  }
+}
+
+.col-2-3 {
+  width: 66%;
+
+  @include mobile {
+    width: 100%;
+  }
+}
+
+/*******************************
+MAIN STYLES
+*******************************/
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  background: $black;
+  font-family: $sanSerif;
+  color: $white;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+
+  // This is an example of how the media query mixins can be used to tailor CSS selectors to varying device widths.
+
+  @include mobile {
+    // background: red;
+  }
+
+  @include tablet {
+    // background: blue;
+  }
+
+  @include desktop {
+    // background: teal;
+  }
+}
+
+.wrapper {
+  max-width: 1500px;
+  position: relative;
+  margin: 0 auto;
+}
+
+header,
+footer,
+main {
+  padding-left: $sitePad;
+  padding-right: $sitePad;
+}
+
+main {
+  color: $white;
+}
+
+section {
+  padding: 2rem 0;
+}
+
+/*******************************
+TYPOGRAPHY
+*******************************/
+
+p {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.5;
+  margin: 0 0 1rem 0;
+}
+
+h1 {
+  font-size: 74px;
+  line-height: 1.2;
+  margin: 0 0 1rem 0;
+}
+
+.h1__preHeading {
+  font-size: 30px;
+  display: block;
+  text-transform: uppercase;
+  opacity: 0.5;
+  letter-spacing: 4px;
+  font-weight: 500;
+}
+
+h2 {
+  font-size: 45px;
+  line-height: 1.2;
+  margin-top: 2rem;
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    height: 5px;
+    width: 100px;
+    background: $white;
+    top: -20px;
+  }
+}
+
+h3 {
+  font-size: 32px;
+  margin: 0 0 1rem;
+}
+
+.h3__preHeading {
+  font-size: 20px;
+  display: block;
+  text-transform: uppercase;
+  opacity: 0.5;
+  letter-spacing: 2px;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.introSentence {
+  font-size: 38px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.introSentence--border {
+  border-top: 5px solid $white;
+  padding-top: 1rem;
+}
+
+/*******************************
+NAVIGATION: header and footer
+*******************************/
+
+header {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  margin-bottom: 2rem;
+}
+
+.topNav {
+  display: flex;
+  flex-wrap: wrap;
+  width: 50%;
+  float: right;
+  font-size: 20px;
+  position: static;
+
+  @include tablet {
+    font-size: 16px;
+  }
+
+  @include mobile {
+    width: 100%;
+    flex-direction: column;
+    float: none;
+  }
+}
+
+.topNav__menuIcon {
+  display: none;
+  color: $white;
+  text-decoration: none;
+  font-size: 40px;
+  position: absolute;
+  right: 0;
+  top: 0;
+
+  @include mobile {
+    display: block;
+  }
+}
+
+.topNav__item {
+  width: 33%;
+  width: calc(33% - #{$colGutter}/ 1.5);
+  display: inline-block;
+  padding: 1rem 0 0 0;
+  margin: 0 $colGutter 1.5rem 0;
+  position: relative;
+
+  @include mobile {
+    width: 100%;
+    // display: none;
+  }
+
+  &:nth-child(3n) {
+    margin-right: 0;
+  }
+
+  &::before {
+    content: "";
+    width: 0;
+    position: absolute;
+    height: 3px;
+    background: $white;
+    top: 0;
+    transition: 0.2s all ease;
+  }
+
+  &:hover {
+    &::before {
+      width: 100%;
+    }
+  }
+
+  &:link,
+  &:active,
+  &:visited {
+    color: #fff;
+    text-decoration: none;
+  }
+}
+
+.topNav__item--active {
+  &::before {
+    width: 100%;
+  }
+}
+
+.topNav__item--dropdown {
+  position: relative;
+  padding-right: 10px;
+
+  &:hover {
+    .topNav__item__dropdownContent {
+      transform: scaleY(1);
+    }
+  }
+
+  &::after {
+    content: "▾";
+    position: absolute;
+    right: 0;
+    width: 10px;
+    text-align: right;
+  }
+}
+
+.topNav__item__dropdownContent {
+  transform: scaleY(0);
+  transform-origin: top;
+  display: block;
+  overflow: hidden;
+  position: absolute;
+  z-index: 2;
+  background: $lightGrey;
+  width: 100%;
+  transition: 0.3s all ease;
+}
+
+.topNav__item__dropdownContent__item {
+  display: block;
+  padding: 0.5rem;
+  border-bottom: 1px solid $black;
+  transition: 0.2s all ease;
+
+  &:hover {
+    background: $yellow;
+  }
+
+  &:link,
+  &:active,
+  &:visited {
+    color: $black;
+    text-decoration: none;
+  }
+}
+
+footer {
+  background: $yellow;
+  margin-top: 3rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  color: $black;
+}
+
+footer .wrapper {
+  display: flex;
+  flex-direction: row;
+
+  @include mobile {
+    flex-direction: column;
+  }
+}
+
+.footerDescription {
+  flex: 1;
+  margin-right: $colGutter;
+}
+
+.footerNav {
+  flex: 2;
+  display: flex;
+}
+
+.footerNav__column {
+  flex: 1;
+  margin-right: $colGutter;
+
+  &:last-of-type {
+    margin-right: 0;
+  }
+}
+
+.footerNav__item {
+  display: block;
+  border-top: 1px solid $black;
+  padding: 1rem 0;
+
+  &:link,
+  &:active,
+  &:visited {
+    color: $black;
+    text-decoration: none;
+  }
+}
+
+.sectionNav {
+  position: sticky;
+  top: $sitePad;
+  width: 100%;
+  justify-content: space-between;
+
+  @include mobile {
+    display: none;
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    width: 90%;
+    height: 10px;
+    background: $grey;
+    top: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: -1;
+  }
+}
+
+.sectionNav__item {
+  text-align: center;
+
+  & > a {
+    display: block;
+    font-weight: 700;
+    font-size: 20px;
+
+    @include tablet {
+      font-size: 14px;
+    }
+
+    &:link,
+    &:active,
+    &:visited {
+      color: $white;
+      text-decoration: none;
+    }
+  }
+}
+
+/*******************************
+OTHER
+*******************************/
+
+.questionModule {
+  width: 48%;
+  width: calc(50% - #{$colGutter}/ 2);
+  margin-right: $colGutter;
+  border-top: 5px solid $white;
+  padding-top: 1rem;
+  margin-bottom: 2rem;
+
+  @include mobile {
+    width: 100%;
+  }
+
+  &:nth-of-type(2n) {
+    margin-right: 0;
+  }
+}
+
+.imagePlaceholder {
+  display: block;
+  background: #999;
+  width: 50vw;
+  height: 30vw;
+
+  @include mobile {
+    width: 80vw;
+    margin: 0;
+  }
+}
+
+.imagePlaceholder--yellow {
+  background: $yellow;
+}
+
+.imagePlaceholder--overlap {
+  position: absolute;
+  right: 0;
+  z-index: -1;
+}

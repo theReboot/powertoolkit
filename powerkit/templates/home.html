@@ -1,275 +1,400 @@
-{% load staticfiles %}
+{% load staticfiles %} 
 <!DOCTYPE html>
 <html lang="en">
-
   <head>
-
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
 
     <title>Sample Template</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
-
-    <!-- Custom fonts for this template -->
-    <link href="{% static 'vendor/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
-
-    <!-- Plugin CSS -->
-    <link href="{% static 'vendor/magnific-popup/magnific-popup.css' %}" rel="stylesheet">
-
     <!-- Custom styles for this template -->
-    <link href="{% static 'css/creative.css' %}" rel="stylesheet">
-
+    <link href="{% static 'css/creative.css' %}" rel="stylesheet" />
   </head>
 
   <body id="page-top">
-
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
-      <div class="container">
-        <a class="navbar-brand js-scroll-trigger" href="#page-top">Start Bootstrap</a>
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#about">About</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#services">Services</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#portfolio">Portfolio</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-
-    <header class="masthead text-center text-white d-flex">
-      <div class="container my-auto">
-        <div class="row">
-          <div class="col-lg-10 mx-auto">
-            <h1 class="text-uppercase">
-              <strong>A nice title</strong>
-            </h1>
-            <hr>
+    <header class="siteHeader">
+      <div class="wrapper">
+        <svg
+          width="167"
+          height="89"
+          viewBox="0 0 167 89"
+          fill="none"
+          class="logo"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M6.93282 21.5709V29H1.65425V7.10371H10.3917C12.066 7.10371 13.5448 7.4145 14.8281 8.0361C16.1214 8.64768 17.119 9.52493 17.8208 10.6679C18.5326 11.8008 18.8886 13.0891 18.8886 14.5328C18.8886 16.6683 18.1216 18.3777 16.5876 19.661C15.0637 20.9343 12.9683 21.5709 10.3015 21.5709H6.93282ZM6.93282 17.4954H10.3917C11.4143 17.4954 12.1913 17.2398 12.7227 16.7285C13.2641 16.2171 13.5348 15.4953 13.5348 14.5629C13.5348 13.5403 13.2591 12.7232 12.7077 12.1116C12.1563 11.5 11.4043 11.1892 10.4519 11.1792H6.93282V17.4954ZM40.2585 18.503C40.2585 20.6385 39.8625 22.5284 39.0704 24.1726C38.2784 25.8168 37.1505 27.0851 35.6867 27.9774C34.233 28.8596 32.5737 29.3008 30.709 29.3008C28.8442 29.3008 27.1899 28.8747 25.7462 28.0225C24.3025 27.1603 23.1746 25.9321 22.3625 24.338C21.5604 22.7439 21.1393 20.9142 21.0992 18.8489V17.6157C21.0992 15.4702 21.4902 13.5804 22.2723 11.9462C23.0643 10.3019 24.1922 9.03367 25.656 8.14137C27.1297 7.24908 28.8041 6.80293 30.6789 6.80293C32.5336 6.80293 34.1879 7.24407 35.6416 8.12634C37.0954 9.0086 38.2233 10.2668 39.0253 11.901C39.8374 13.5252 40.2485 15.39 40.2585 17.4954V18.503ZM34.8897 17.5857C34.8897 15.4101 34.5238 13.7608 33.7919 12.6379C33.07 11.505 32.0324 10.9386 30.6789 10.9386C28.0321 10.9386 26.6335 12.9237 26.4831 16.8939L26.468 18.503C26.468 20.6485 26.824 22.2978 27.5358 23.4507C28.2476 24.6037 29.3053 25.1802 30.709 25.1802C32.0424 25.1802 33.07 24.6137 33.7919 23.4808C34.5137 22.3479 34.8797 20.7187 34.8897 18.5932V17.5857ZM59.9441 20.834L62.4556 7.10371H67.689L63.0421 29H57.568L54.6355 16.5179L51.7631 29H46.304L41.6421 7.10371H46.8906L49.402 20.834L52.4097 7.10371H56.8913L59.9441 20.834ZM83.3292 19.7211H75.0279V24.9396H84.8331V29H69.7493V7.10371H84.8632V11.1792H75.0279V15.7961H83.3292V19.7211ZM95.1195 21.2701H92.2622V29H86.9836V7.10371H95.6008C98.1975 7.10371 100.228 7.68019 101.691 8.83315C103.155 9.98612 103.887 11.6153 103.887 13.7207C103.887 15.2446 103.576 16.5079 102.955 17.5105C102.343 18.513 101.381 19.3251 100.067 19.9467L104.639 28.7744V29H98.9845L95.1195 21.2701ZM92.2622 17.1946H95.6008C96.6034 17.1946 97.3553 16.934 97.8566 16.4126C98.3679 15.8813 98.6236 15.1444 98.6236 14.202C98.6236 13.2595 98.3679 12.5226 97.8566 11.9913C97.3453 11.4499 96.5933 11.1792 95.6008 11.1792H92.2622V17.1946Z"
+            fill="#CDCF60"
+          />
+          <path
+            d="M12.9483 51.9259C12.9483 51.154 12.6726 50.5524 12.1212 50.1213C11.5798 49.6902 10.6223 49.2441 9.24878 48.7829C7.87525 48.3217 6.75236 47.8755 5.88012 47.4444C3.04282 46.0508 1.62418 44.1359 1.62418 41.6997C1.62418 40.4865 1.97508 39.4188 2.67688 38.4964C3.38871 37.564 4.39129 36.8422 5.68461 36.3309C6.97794 35.8095 8.43168 35.5488 10.0458 35.5488C11.6199 35.5488 13.0285 35.8296 14.2717 36.391C15.5249 36.9525 16.4974 37.7545 17.1892 38.7972C17.881 39.8298 18.2269 41.0129 18.2269 42.3463H12.9633C12.9633 41.454 12.6876 40.7622 12.1362 40.271C11.5948 39.7797 10.8579 39.5341 9.92552 39.5341C8.9831 39.5341 8.23617 39.7446 7.68476 40.1657C7.14337 40.5768 6.87267 41.1031 6.87267 41.7448C6.87267 42.3062 7.17344 42.8175 7.77499 43.2787C8.37654 43.7299 9.43425 44.2011 10.9481 44.6924C12.462 45.1736 13.7052 45.6949 14.6777 46.2564C17.0438 47.6199 18.2269 49.4997 18.2269 51.8959C18.2269 53.8108 17.505 55.3147 16.0613 56.4075C14.6176 57.5003 12.6375 58.0467 10.121 58.0467C8.34646 58.0467 6.73732 57.7309 5.29361 57.0992C3.85992 56.4576 2.77714 55.5854 2.04526 54.4825C1.3234 53.3697 0.962474 52.0914 0.962474 50.6477H6.25608C6.25608 51.8207 6.55686 52.6879 7.1584 53.2494C7.76998 53.8008 8.75752 54.0765 10.121 54.0765C10.9933 54.0765 11.68 53.891 12.1813 53.52C12.6926 53.1391 12.9483 52.6077 12.9483 51.9259ZM27.8666 35.8496L32.7542 51.0838L37.6267 35.8496H44.5746V57.7459H39.281V52.6328L39.7923 42.1659L34.4987 57.7459H31.0097L25.7011 42.1508L26.2124 52.6328V57.7459H20.9338V35.8496H27.8666ZM60.6509 53.6554H53.4173L52.1541 57.7459H46.5146L54.5452 35.8496H59.508L67.5988 57.7459H61.9292L60.6509 53.6554ZM54.6806 49.5799H59.3877L57.0266 41.9854L54.6806 49.5799ZM77.3439 50.016H74.4865V57.7459H69.2079V35.8496H77.8251C80.4218 35.8496 82.452 36.4261 83.9157 37.5791C85.3795 38.732 86.1114 40.3612 86.1114 42.4666C86.1114 43.9905 85.8006 45.2538 85.179 46.2564C84.5674 47.2589 83.6049 48.071 82.2916 48.6926L86.8633 57.5203V57.7459H81.2088L77.3439 50.016ZM74.4865 45.9406H77.8251C78.8277 45.9406 79.5796 45.6799 80.0809 45.1585C80.5922 44.6272 80.8479 43.8903 80.8479 42.9479C80.8479 42.0054 80.5922 41.2685 80.0809 40.7372C79.5696 40.1958 78.8176 39.9251 77.8251 39.9251H74.4865V45.9406ZM105.737 39.9251H99.165V57.7459H93.8864V39.9251H87.4348V35.8496H105.737V39.9251Z"
+            fill="#CDCF60"
+          />
+          <path
+            opacity="0.8"
+            d="M14.2346 82.7664H12.8538L3.45762 68.7787V82.7664H2.06559V66.4212H3.45762L12.865 80.4201V66.4212H14.2346V82.7664ZM21.6815 82.7664H20.3007V66.4212H21.6815V82.7664ZM39.535 80.8243C39.056 81.5053 38.3039 82.0367 37.2785 82.4184C36.2607 82.8 35.1194 82.9909 33.8546 82.9909C32.5748 82.9909 31.4373 82.684 30.4419 82.0703C29.4465 81.4567 28.6757 80.5885 28.1293 79.4659C27.583 78.3433 27.3061 77.056 27.2986 75.6041V73.5385C27.2986 71.2709 27.8711 69.4822 29.0162 68.1725C30.1612 66.8553 31.6992 66.1967 33.6301 66.1967C35.314 66.1967 36.6686 66.627 37.6939 67.4877C38.7192 68.3409 39.3292 69.5196 39.5238 71.0239H38.143C37.9409 69.8265 37.4507 68.9209 36.6723 68.3072C35.9015 67.686 34.8911 67.3755 33.6413 67.3755C32.1146 67.3755 30.9059 67.918 30.0153 69.0032C29.1247 70.0884 28.6794 71.6189 28.6794 73.5947V75.5256C28.6794 76.7679 28.889 77.8681 29.3081 78.826C29.7346 79.7765 30.3409 80.5137 31.1267 81.0375C31.92 81.5614 32.8293 81.8234 33.8546 81.8234C35.0446 81.8234 36.0661 81.6363 36.9193 81.2621C37.4731 81.0151 37.8848 80.727 38.1542 80.3977V76.1767H33.7648V75.0092H39.535V80.8243ZM54.088 74.9306H46.443V81.5988H55.233V82.7664H45.0622V66.4212H55.1769V67.6H46.443V73.7631H54.088V74.9306ZM65.8681 75.9634H61.1195V82.7664H59.7275V66.4212H65.0374C66.7812 66.4212 68.1433 66.8441 69.1237 67.6898C70.1041 68.5355 70.5943 69.718 70.5943 71.2372C70.5943 72.285 70.2875 73.2093 69.6738 74.01C69.0601 74.8108 68.2368 75.3647 67.204 75.6715L71.2903 82.6204V82.7664H69.8197L65.8681 75.9634ZM61.1195 74.7846H65.3517C66.5118 74.7846 67.4435 74.4553 68.147 73.7967C68.8505 73.1382 69.2023 72.285 69.2023 71.2372C69.2023 70.0847 68.8356 69.1903 68.1021 68.5542C67.3687 67.918 66.3396 67.6 65.015 67.6H61.1195V74.7846ZM77.6483 82.7664H76.2675V66.4212H77.6483V82.7664ZM92.7289 78.1861H85.3085L83.6246 82.7664H82.1764L88.362 66.4212H89.6754L95.861 82.7664H94.424L92.7289 78.1861ZM85.7351 77.0074H92.2911L89.0131 68.1051L85.7351 77.0074Z"
+            fill="white"
+          />
+        </svg>
+        <nav class="topNav">
+          <a class="topNav__item" href="#">The System</a>
+          <a class="topNav__item" href="#">The Stats</a>
+          <div class="topNav__item topNav__item--dropdown topNav__item--active">
+            The Issues
+            <div class="topNav__item__dropdownContent">
+              <a class="topNav__item__dropdownContent__item" href="#"
+                >Metering</a
+              >
+              <a class="topNav__item__dropdownContent__item" href="#"
+                >Issue 2</a
+              >
+              <a class="topNav__item__dropdownContent__item" href="#"
+                >Issue 3</a
+              >
+              <a class="topNav__item__dropdownContent__item" href="#"
+                >Really long issue title here</a
+              >
+            </div>
           </div>
-          <div class="col-lg-8 mx-auto">
-            <p class="text-faded mb-5">Start Bootstrap can help you build better websites using the Bootstrap CSS framework! Just download your template and start going, no strings attached!</p>
-            <a class="btn btn-primary btn-xl js-scroll-trigger" href="#about">Find Out More</a>
-          </div>
-        </div>
+          <a class="topNav__item" href="#">About</a>
+          <a class="topNav__item" href="#">Blog</a>
+          <a class="topNav__item" href="#">Contact</a>
+          <a
+            href="javascript:void(0);"
+            class="topNav__menuIcon"
+            onclick="showMenu()"
+            >&#9776;</a
+          >
+        </nav>
       </div>
     </header>
-
-    <section class="bg-primary" id="about">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-8 mx-auto text-center">
-            <h2 class="section-heading text-white">We've got what you need!</h2>
-            <hr class="light my-4">
-            <p class="text-faded mb-4">Start Bootstrap has everything you need to get your new website up and running in no time! All of the templates and themes on Start Bootstrap are open source, free to download, and easy to use. No strings attached!</p>
-            <a class="btn btn-light btn-xl js-scroll-trigger" href="#services">Get Started!</a>
+    <main>
+      <div class="wrapper">
+        <section>
+          <h1 class="introSentence">
+            Power Smart Nigeria is an online resource for citizens and
+            journalists to better understand how Nigeria’s power sector
+            operates, and hold it account, and work for a better, more equitable
+            Nigeria.
+          </h1>
+        </section>
+        <nav class="sectionNav flexGrid">
+          <div class="sectionNav__item">
+            <svg
+              width="60"
+              height="60"
+              viewBox="0 0 60 60"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <circle cx="30" cy="30" r="30" fill="#CDCF60" />
+              <path
+                d="M24.157 38.498L23.221 36.899L28.564 33.779V27.656H30.397V33.857L35.74 36.938L34.804 38.537L29.422 35.456L24.157 38.498ZM30.475 25.043H36.91V22.937C36.91 22.508 36.715 22.079 36.364 21.806C34.453 20.246 32.425 19.232 32.035 18.998C31.996 18.959 31.957 18.92 31.957 18.881V15.917C32.308 15.683 32.581 15.254 32.581 14.786V11.744C32.581 10.223 31.333 8.97504 29.812 8.97504H29.5H29.188C27.667 8.97504 26.419 10.223 26.419 11.744V14.786C26.419 15.254 26.653 15.683 27.043 15.917V18.881C27.043 18.92 27.004 18.998 26.965 18.998C26.536 19.193 24.508 20.246 22.636 21.806C22.285 22.079 22.09 22.508 22.09 22.937V25.043H28.525H30.475ZM43.696 39.98C43.657 39.941 43.618 39.902 43.618 39.863V36.899C43.969 36.665 44.242 36.236 44.242 35.768V32.726C44.242 31.205 42.994 29.957 41.473 29.957H41.161H40.849C39.328 29.957 38.08 31.205 38.08 32.726V35.768C38.08 36.236 38.314 36.665 38.704 36.899V39.863C38.704 39.902 38.665 39.98 38.626 39.98C38.197 40.175 36.169 41.228 34.297 42.788C33.946 43.061 33.751 43.49 33.751 43.919V46.025H40.186H42.136H48.61V43.919C48.61 43.49 48.415 43.061 48.064 42.788C46.153 41.228 44.125 40.214 43.696 39.98ZM18.814 46.025H25.249V43.919C25.249 43.49 25.054 43.061 24.703 42.788C22.792 41.228 20.764 40.214 20.374 39.98C20.335 39.941 20.296 39.902 20.296 39.863V36.899C20.647 36.665 20.92 36.236 20.92 35.768V32.726C20.92 31.205 19.672 29.957 18.151 29.957H17.839H17.527C16.006 29.957 14.758 31.205 14.758 32.726V35.768C14.758 36.236 14.992 36.665 15.382 36.899V39.863C15.382 39.902 15.343 39.98 15.304 39.98C14.875 40.175 12.847 41.228 10.975 42.788C10.624 43.061 10.39 43.49 10.39 43.919V46.025H16.825H18.814Z"
+                fill="black"
+              />
+            </svg>
+            <a href="#">Key Players</a>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="services">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-12 text-center">
-            <h2 class="section-heading">At Your Service</h2>
-            <hr class="my-4">
+          <div class="sectionNav__item">
+            <svg
+              width="60"
+              height="60"
+              viewBox="0 0 60 60"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <circle cx="30" cy="30" r="30" fill="#CDCF60" />
+              <g clip-path="url(#clip0)">
+                <path
+                  d="M19.0425 46.803V49.6313C19.0425 49.9967 19.2283 50.3373 19.5357 50.5349C19.8435 50.7324 20.2305 50.7599 20.5626 50.6082L24.7746 48.6836L29.0505 50.6514C29.1945 50.7176 29.3475 50.75 29.5 50.75C29.7021 50.75 29.9037 50.6928 30.0796 50.5803C30.3879 50.3828 30.5742 50.0417 30.5742 49.6758V46.803H41.2081C44.0809 46.803 46.4182 44.4658 46.4182 41.5925V37.1411V32.0444V31.9643V26.8676V15.4606C46.4187 12.5873 44.0814 10.25 41.2086 10.25H17.7919C14.9187 10.25 12.5814 12.5873 12.5814 15.4606V41.5925C12.5814 44.4658 14.9187 46.803 17.7919 46.803H19.0425ZM28.4259 47.9987L25.2255 46.5258C24.942 46.3953 24.6144 46.3945 24.33 46.5245L21.1903 47.9591V41.7468H28.4259V47.9987ZM44.2704 41.5925C44.2704 43.2809 42.8965 44.6548 41.2086 44.6548H30.5742V41.7468H41.8129C42.7165 41.7468 43.558 41.4813 44.2699 41.0296V41.5925H44.2704ZM19.7058 12.3983H41.2081C42.8961 12.3983 44.2699 13.7722 44.2699 15.4606V26.8671V31.9638V32.0439C44.2699 33.3989 43.1674 34.5014 41.8129 34.5014H19.7058V12.3983ZM14.7297 15.4606C14.7297 13.8514 15.9784 12.5306 17.5575 12.41V34.5019H17.1867C16.2831 34.5019 15.4416 34.7673 14.7297 35.2191V15.4606ZM14.7297 41.5925V39.1076C14.7297 37.7526 15.8322 36.6501 17.1867 36.6501H41.8129C42.7165 36.6501 43.558 36.3846 44.2699 35.9328V37.1407C44.2699 38.4956 43.1674 39.5981 41.8129 39.5981H18.6919C18.0984 39.5981 17.6178 40.0787 17.6178 40.6723C17.6178 41.2658 18.0984 41.7464 18.6919 41.7464H19.0425V44.6543H17.7924C16.1035 44.6548 14.7297 43.2813 14.7297 41.5925Z"
+                  fill="black"
+                />
+                <path
+                  d="M31.5066 17.0328C27.9313 17.0328 25.0229 19.9412 25.0229 23.5164C25.0229 27.0917 27.9313 30 31.5066 30C35.0818 30 37.9902 27.0917 37.9902 23.5164C37.9902 19.9412 35.0814 17.0328 31.5066 17.0328ZM31.5066 27.8517C29.1162 27.8517 27.1713 25.9068 27.1713 23.5164C27.1713 21.126 29.1162 19.1811 31.5066 19.1811C33.897 19.1811 35.8419 21.126 35.8419 23.5164C35.8419 25.9068 33.897 27.8517 31.5066 27.8517Z"
+                  fill="black"
+                />
+              </g>
+              <defs>
+                <clipPath id="clip0">
+                  <rect
+                    width="45"
+                    height="45"
+                    fill="white"
+                    transform="translate(7 8)"
+                  />
+                </clipPath>
+              </defs>
+            </svg>
+            <a href="#">Policy Background</a>
           </div>
-        </div>
-      </div>
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-3 col-md-6 text-center">
-            <div class="service-box mt-5 mx-auto">
-              <i class="fa fa-4x fa-diamond text-primary mb-3 sr-icons"></i>
-              <h3 class="mb-3">Sturdy Templates</h3>
-              <p class="text-muted mb-0">Our templates are updated regularly so they don't break.</p>
-            </div>
+          <div class="sectionNav__item">
+            <svg
+              width="60"
+              height="60"
+              viewBox="0 0 60 60"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <circle cx="30" cy="30" r="30" fill="#CDCF60" />
+              <path
+                d="M28.7519 36.3954L30.4315 38.075C30.6137 38.2652 30.8335 38.4154 31.0768 38.5162C31.3202 38.6169 31.5818 38.666 31.8451 38.6602H33.8325V40.3398C33.8325 40.9445 34.0727 41.5244 34.5003 41.952C34.9279 42.3796 35.5078 42.6198 36.1125 42.6198H37.7921V44.6034C37.7938 45.1265 37.9997 45.6283 38.3659 46.0018L39.6845 47.3204C40.0342 47.667 40.5069 47.861 40.9993 47.86H46.2357C46.6688 47.859 47.0838 47.6865 47.39 47.3803C47.6962 47.0741 47.8687 46.659 47.8697 46.226V40.9896C47.8704 40.7439 47.8225 40.5006 47.7285 40.2736C47.6346 40.0466 47.4966 39.8405 47.3225 39.6672L36.4013 28.746C37.3379 26.0765 37.34 23.1681 36.4072 20.4973C35.4744 17.8265 33.662 15.5517 31.2671 14.0458C28.8722 12.5399 26.0368 11.8921 23.2256 12.2087C20.4143 12.5252 17.794 13.7872 15.7939 15.788C13.7932 17.7881 12.5311 20.4084 12.2146 23.2197C11.898 26.0309 12.5458 28.8663 14.0517 31.2612C15.5576 33.6561 17.8324 35.4685 20.5032 36.4013C23.174 37.3341 26.0824 37.332 28.7519 36.3954ZM17.4089 17.3954C19.0824 15.7197 21.2867 14.6783 23.6439 14.4499C26.001 14.2214 28.3643 14.82 30.3285 16.143C32.2926 17.4661 33.7354 19.4313 34.4094 21.7015C35.0834 23.9718 34.9466 26.4059 34.0225 28.5864C33.934 28.7953 33.9099 29.0259 33.9532 29.2486C33.9966 29.4713 34.1054 29.6761 34.2657 29.8366L45.5859 41.1606V45.58H41.1665L40.0531 44.4666V41.78C40.0531 41.391 39.8986 41.0179 39.6235 40.7428C39.3484 40.4677 38.9753 40.3132 38.5863 40.3132H36.1125V37.847C36.1125 37.458 35.958 37.0849 35.6829 36.8098C35.4078 36.5347 35.0347 36.3802 34.6457 36.3802H31.9629L29.8425 34.2598C29.682 34.0994 29.4773 33.9906 29.2546 33.9473C29.0318 33.904 28.8013 33.9281 28.5923 34.0166C26.412 34.9388 23.979 35.0741 21.7099 34.3994C19.4408 33.7247 17.4769 32.282 16.1547 30.3184C14.8324 28.3548 14.2341 25.9926 14.4623 23.6363C14.6904 21.2801 15.7307 19.0765 17.4051 17.403L17.4089 17.3954ZM22.1817 26.3596C23.0084 26.3596 23.8166 26.1144 24.504 25.6551C25.1914 25.1958 25.7272 24.543 26.0435 23.7792C26.3599 23.0154 26.4427 22.175 26.2814 21.3641C26.1201 20.5533 25.722 19.8085 25.1374 19.2239C24.5528 18.6393 23.808 18.2412 22.9972 18.0799C22.1864 17.9186 21.3459 18.0014 20.5821 18.3178C19.8183 18.6342 19.1655 19.1699 18.7062 19.8573C18.2469 20.5447 18.0017 21.3529 18.0017 22.1796C18.0017 23.2882 18.4421 24.3514 19.226 25.1353C20.0099 25.9192 21.0731 26.3596 22.1817 26.3596ZM22.1817 20.31C22.5575 20.31 22.9249 20.4214 23.2373 20.6302C23.5498 20.839 23.7933 21.1357 23.9371 21.4829C24.0809 21.8301 24.1185 22.2121 24.0452 22.5807C23.9719 22.9492 23.7909 23.2878 23.5252 23.5535C23.2595 23.8192 22.921 24.0002 22.5524 24.0735C22.1838 24.1468 21.8018 24.1092 21.4546 23.9654C21.1074 23.8216 20.8107 23.578 20.6019 23.2656C20.3932 22.9531 20.2817 22.5858 20.2817 22.21C20.2812 21.9602 20.33 21.7127 20.4253 21.4817C20.5205 21.2508 20.6604 21.0409 20.8369 20.864C21.0134 20.6872 21.223 20.5469 21.4537 20.4512C21.6845 20.3555 21.9319 20.3062 22.1817 20.3062V20.31Z"
+                fill="black"
+              />
+            </svg>
+            <a href="#">Key Questions</a>
           </div>
-          <div class="col-lg-3 col-md-6 text-center">
-            <div class="service-box mt-5 mx-auto">
-              <i class="fa fa-4x fa-paper-plane text-primary mb-3 sr-icons"></i>
-              <h3 class="mb-3">Ready to Ship</h3>
-              <p class="text-muted mb-0">You can use this theme as is, or you can make changes!</p>
-            </div>
+          <div class="sectionNav__item">
+            <svg
+              width="60"
+              height="60"
+              viewBox="0 0 60 60"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <circle cx="30" cy="30" r="30" fill="#CDCF60" />
+              <path
+                d="M29.9572 23.3018C30.7069 23.3018 31.3142 23.1036 31.7619 22.713C32.2277 22.3073 32.4642 21.7583 32.4642 21.0809C32.4642 20.4043 32.2281 19.8549 31.7623 19.4492C31.3138 19.0577 30.706 18.8599 29.9572 18.8599C29.2495 18.8599 28.6543 19.0561 28.1881 19.4429C27.6984 19.849 27.4506 20.3996 27.4506 21.0809C27.4506 21.7625 27.6988 22.314 28.1881 22.7189C28.6535 23.1057 29.2491 23.3018 29.9572 23.3018Z"
+                fill="black"
+              />
+              <path
+                d="M31.9207 38.8708V25.2918H25.9638V27.5611H28.0789V38.8708H25.9638V41.1401H34.0362V38.8708H31.9207Z"
+                fill="black"
+              />
+              <path
+                d="M30 13.2C39.2636 13.2 46.8 20.7365 46.8 30C46.8 39.2635 39.2636 46.8 30 46.8C20.7365 46.8 13.2 39.2635 13.2 30C13.2 20.7365 20.7365 13.2 30 13.2ZM30 11.1C19.5618 11.1 11.1 19.5617 11.1 30C11.1 40.4382 19.5618 48.9 30 48.9C40.4383 48.9 48.9 40.4382 48.9 30C48.9 19.5617 40.4383 11.1 30 11.1Z"
+                fill="black"
+              />
+            </svg>
+            <a href="#">Resources</a>
           </div>
-          <div class="col-lg-3 col-md-6 text-center">
-            <div class="service-box mt-5 mx-auto">
-              <i class="fa fa-4x fa-newspaper-o text-primary mb-3 sr-icons"></i>
-              <h3 class="mb-3">Up to Date</h3>
-              <p class="text-muted mb-0">We update dependencies to keep things fresh.</p>
-            </div>
+        </nav>
+        <section>
+          <div
+            class="imagePlaceholder imagePlaceholder--overlap imagePlaceholder--yellow"
+          >
+            [photo here]
           </div>
-          <div class="col-lg-3 col-md-6 text-center">
-            <div class="service-box mt-5 mx-auto">
-              <i class="fa fa-4x fa-heart text-primary mb-3 sr-icons"></i>
-              <h3 class="mb-3">Made with Love</h3>
-              <p class="text-muted mb-0">You have to make your websites with love these days!</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="p-0" id="portfolio">
-      <div class="container-fluid p-0">
-        <div class="row no-gutters popup-gallery">
-          <div class="col-lg-4 col-sm-6">
-            <a class="portfolio-box" href="img/portfolio/fullsize/1.jpg">
-              <img class="img-fluid" src="{% static 'img/portfolio/thumbnails/1.jpg' %}" alt="">
-              <div class="portfolio-box-caption">
-                <div class="portfolio-box-caption-content">
-                  <div class="project-category text-faded">
-                    Category
-                  </div>
-                  <div class="project-name">
-                    Project Name
-                  </div>
-                </div>
-              </div>
-            </a>
-          </div>
-          <div class="col-lg-4 col-sm-6">
-            <a class="portfolio-box" href="img/portfolio/fullsize/2.jpg">
-              <img class="img-fluid" src="{% static 'img/portfolio/thumbnails/2.jpg' %}" alt="">
-              <div class="portfolio-box-caption">
-                <div class="portfolio-box-caption-content">
-                  <div class="project-category text-faded">
-                    Category
-                  </div>
-                  <div class="project-name">
-                    Project Name
-                  </div>
-                </div>
-              </div>
-            </a>
-          </div>
-          <div class="col-lg-4 col-sm-6">
-            <a class="portfolio-box" href="img/portfolio/fullsize/3.jpg">
-              <img class="img-fluid" src="{% static 'img/portfolio/thumbnails/3.jpg' %}" alt="">
-              <div class="portfolio-box-caption">
-                <div class="portfolio-box-caption-content">
-                  <div class="project-category text-faded">
-                    Category
-                  </div>
-                  <div class="project-name">
-                    Project Name
-                  </div>
-                </div>
-              </div>
-            </a>
-          </div>
-          <div class="col-lg-4 col-sm-6">
-            <a class="portfolio-box" href="img/portfolio/fullsize/4.jpg">
-              <img class="img-fluid" src="{% static 'img/portfolio/thumbnails/4.jpg' %}" alt="">
-              <div class="portfolio-box-caption">
-                <div class="portfolio-box-caption-content">
-                  <div class="project-category text-faded">
-                    Category
-                  </div>
-                  <div class="project-name">
-                    Project Name
-                  </div>
-                </div>
-              </div>
-            </a>
-          </div>
-          <div class="col-lg-4 col-sm-6">
-            <a class="portfolio-box" href="img/portfolio/fullsize/5.jpg">
-              <img class="img-fluid" src="{% static 'img/portfolio/thumbnails/5.jpg' %}" alt="">
-              <div class="portfolio-box-caption">
-                <div class="portfolio-box-caption-content">
-                  <div class="project-category text-faded">
-                    Category
-                  </div>
-                  <div class="project-name">
-                    Project Name
-                  </div>
-                </div>
-              </div>
-            </a>
-          </div>
-          <div class="col-lg-4 col-sm-6">
-            <a class="portfolio-box" href="img/portfolio/fullsize/6.jpg">
-              <img class="img-fluid" src="{% static 'img/portfolio/thumbnails/6.jpg' %}" alt="">
-              <div class="portfolio-box-caption">
-                <div class="portfolio-box-caption-content">
-                  <div class="project-category text-faded">
-                    Category
-                  </div>
-                  <div class="project-name">
-                    Project Name
-                  </div>
-                </div>
-              </div>
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="bg-dark text-white">
-      <div class="container text-center">
-        <h2 class="mb-4">Free Download at Start Bootstrap!</h2>
-        <a class="btn btn-light btn-xl sr-button" href="http://startbootstrap.com/template-overviews/creative/">Download Now!</a>
-      </div>
-    </section>
-
-    <section id="contact">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-8 mx-auto text-center">
-            <h2 class="section-heading">Let's Get In Touch!</h2>
-            <hr class="my-4">
-            <p class="mb-5">Ready to start your next project with us? That's great! Give us a call or send us an email and we will get back to you as soon as possible!</p>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-lg-4 ml-auto text-center">
-            <i class="fa fa-phone fa-3x mb-3 sr-contact"></i>
-            <p>123-456-6789</p>
-          </div>
-          <div class="col-lg-4 mr-auto text-center">
-            <i class="fa fa-envelope-o fa-3x mb-3 sr-contact"></i>
-            <p>
-              <a href="mailto:your-email@your-domain.com">feedback@startbootstrap.com</a>
+          <div class="col-2-3 overlap">
+            <div class="h1__preHeading">Issue:</div>
+            <h1>Metering</h1>
+            <p class="introSentence introSentence--border">
+              There were initially two ways through which customers are billed
+              for electricity–postpaid meter billing and estimated billing–in
+              Nigeria. Following complaints by citizens, the prepaid meter
+              billing system was introduced to the system to aid revenue
+              collection, while also putting an end to the post-paid meter
+              reading billing system and to end estimated billing, which is
+              believed to have many irregularities. The journey since 2006 has
+              been one with challenges for both the customer and the operator.
             </p>
           </div>
+        </section>
+        <section>
+          <div class="flexGrid">
+            <div class="col">
+              <div class="imagePlaceholder">[photo here]</div>
+            </div>
+            <div class="col">
+              <h2>Key Players</h2>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris
+                dapibus posuere lorem maximus tempor. Proin non quam non turpis
+                aliquet dictum ut quis sapien. Vestibulum suscipit sodales
+                laoreet. Aliquam molestie a urna et tincidunt. Vivamus et auctor
+                ligula, id vulputate nisl. Proin eu lectus enim. Aenean id elit
+                in felis ornare volutpat at et metus. Nam nec turpis eget diam
+                iaculis condimentum. Fusce a tortor purus. Nullam pharetra dui a
+                lacus elementum, eget luctus lacus laoreet. Etiam at bibendum
+                nisi. Nulla interdum mattis quam, vitae consequat tellus laoreet
+                in. Interdum et malesuada fames ac ante ipsum primis in
+                faucibus.
+              </p>
+            </div>
+          </div>
+        </section>
+        <section>
+          <div class="flexGrid">
+            <div class="col">
+              <h2>Policy Background</h2>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris
+                dapibus posuere lorem maximus tempor. Proin non quam non turpis
+                aliquet dictum ut quis sapien. Vestibulum suscipit sodales
+                laoreet. Aliquam molestie a urna et tincidunt. Vivamus et auctor
+                ligula, id vulputate nisl. Proin eu lectus enim. Aenean id elit
+                in felis ornare volutpat at et metus. Nam nec turpis eget diam
+                iaculis condimentum. Fusce a tortor purus. Nullam pharetra dui a
+                lacus elementum, eget luctus lacus laoreet. Etiam at bibendum
+                nisi. Nulla interdum mattis quam, vitae consequat tellus laoreet
+                in. Interdum et malesuada fames ac ante ipsum primis in
+                faucibus.
+              </p>
+            </div>
+            <div class="col">
+              <div class="imagePlaceholder">[photo here]</div>
+            </div>
+          </div>
+        </section>
+        <section>
+          <div class="flexGrid">
+            <div class="questionModule">
+              <span class="h3__preHeading">Key Question:</span>
+              <h3>What exactly is delaying the metering process and why?</h3>
+              <p>
+                The metering process across the country, needless to say, is not
+                moving quickly enough to catch up with customer needs. There are
+                salient questions that beg answering with regards to the
+                metering process and why it appears to be moving at snail's pace
+                with less than 50% of the customers being metered between 2017
+                and 2018.
+              </p>
+            </div>
+            <div class="questionModule">
+              <span class="h3__preHeading">Key Question:</span>
+              <h3>Who has easy access to meters, who doesn’t, and why?</h3>
+              <p>
+                Smack in the middle of the wrangle between customers and DisCo’s
+                concerning estimated billing, meter bypass and what not, there
+                is a nagging question none has managed to properly address–is
+                there a disparity between urban dwellers and sub-urban dwellers’
+                access to meters as suggested by citizens?
+              </p>
+            </div>
+            <div class="questionModule">
+              <span class="h3__preHeading">Key Question:</span>
+              <h3>
+                What is the economic impact of delayed metering members of
+                society?
+              </h3>
+              <p>
+                No economic sector can independently thrive without constant and
+                regular access to electricity. Citizens have expressed the need
+                for meters in order to cut down on the bloated estimates they
+                deal with when faced with having to pay an “estimated bill.” For
+                Small and Medium Enterprises however, what is the direct
+                economic impact of not being able to access meters and how far
+                do the ripple effects go?
+              </p>
+            </div>
+            <div class="questionModule">
+              <span class="h3__preHeading">Key Question:</span>
+              <h3>
+                What intermediary targets should government agencies put in
+                place to ensure that they are on track to meeting the 2030 goal?
+              </h3>
+              <p>
+                Looking at the data emanating from the NERC between 2017 and
+                2018, there were 252,493 additional customers metered across the
+                country, within the same period, the national outstanding non
+                metered customers rose from 3,992,280 to 5,223,856 meaning an
+                increase of 1,231,576 non-metered customers. The numbers clearly
+                show that there needs to be targeted measures put in place to
+                meet up with growing demands, but who is thinking about this,
+                what are the regulatory agencies doing to ensure the industry
+                does not collapse under the weight of customers needs?
+              </p>
+            </div>
+            <div class="questionModule">
+              <span class="h3__preHeading">Key Question:</span>
+              <h3>
+                How has privatization enabled progress towards addressing the
+                metering gap or not?
+              </h3>
+              <p>
+                No need to go into unnecessary debates about the what-if’s of
+                privatization it is rather beholden upon the Nigerian government
+                to take stock of the privatization journey so far. What were the
+                initial objectives, how much has been invested, what are the
+                current benefits or otherwise and how does the Nigerian state
+                take these learnings and convert them to actionable steps for
+                future decisions with regards to the power sector and the 2030
+                goals?
+              </p>
+            </div>
+            <div class="questionModule">
+              <span class="h3__preHeading">Key Question:</span>
+              <h3>
+                Who are the key enablers of the metering process/system and who
+                needs to be held to account?
+              </h3>
+              <p>
+                The question speaks for itself, if a fully metered customer base
+                is beneficial to all, then there will be obvious efforts at
+                ensuring that happens, however, if in business terms a 100%
+                metered system would be counter intuitive, then there will be
+                obvious blockers. With about $500 million earmarked by the PSRP
+                for metering initiatives, the question of enablers is ever
+                pertinent to ensure to guarantee the survival of sector
+              </p>
+            </div>
+          </div>
+        </section>
+        <section>
+          <h2>Resources</h2>
+          <div class="flexGrid">
+            <div class="col">
+              <p>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Atque
+                magnam voluptatum aspernatur enim. Quos asperiores molestiae
+                necessitatibus deleniti, suscipit debitis animi quis
+                exercitationem. Vero sed est exercitationem. Fugit, ipsum
+                molestias!
+              </p>
+            </div>
+            <div class="col">
+              <p>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Atque
+                magnam voluptatum aspernatur enim. Quos asperiores molestiae
+                necessitatibus deleniti, suscipit debitis animi quis
+                exercitationem. Vero sed est exercitationem. Fugit, ipsum
+                molestias!
+              </p>
+            </div>
+            <div class="col">
+              <p>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Atque
+                magnam voluptatum aspernatur enim. Quos asperiores molestiae
+                necessitatibus deleniti, suscipit debitis animi quis
+                exercitationem. Vero sed est exercitationem. Fugit, ipsum
+                molestias!
+              </p>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+    <footer>
+      <div class="wrapper">
+        <div class="footerDescription">
+          <p>
+            The [name of this thing] is supported by [supporters], and intended
+            to serve as a resource for journalists in Nigeria to investigate the
+            power sector. For more information, or to contact [someone] reach
+            out at [somewhere].
+          </p>
+        </div>
+        <div class="footerNav">
+          <div class="footerNav__column">
+            <a class="footerNav__item" href="#">The System</a>
+            <a class="footerNav__item" href="#">The Stats</a>
+            <a class="footerNav__item" href="#">About</a>
+            <a class="footerNav__item" href="#">Blog</a>
+            <a class="footerNav__item" href="#">Contact</a>
+          </div>
+          <div class="footerNav__column">
+            <a class="footerNav__item" href="#">The Issues</a>
+            <a class="footerNav__item" href="#">Metering</a>
+            <a class="footerNav__item" href="#">Issue #2</a>
+            <a class="footerNav__item" href="#">Issue #3</a>
+            <a class="footerNav__item" href="#">Issue #4</a>
+          </div>
         </div>
       </div>
-    </section>
-
-    <!-- Bootstrap core JavaScript -->
-    {% block js %}
-    <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
-    <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
-
-    <!-- Plugin JavaScript -->
-    <script src="{% static 'vendor/jquery-easing/jquery.easing.min.js' %}"></script>
-    <script src="{% static 'vendor/scrollreveal/scrollreveal.min.js' %}"></script>
-    <script src="{% static 'vendor/magnific-popup/jquery.magnific-popup.min.js' %}"></script>
-
-    <!-- Custom scripts for this template -->
-    <script src="{% static 'js/creative.min.js' %}"></script>
-    {% endblock js %}
-
+    </footer>
   </body>
-
 </html>

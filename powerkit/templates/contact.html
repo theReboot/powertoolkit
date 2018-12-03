@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block title %}Contact Us{%endblock title %}
+
+{% block content %}
+<section id="contact-section">
+  <div class="col-2-3 overlap">
+    <h1>Contact Us</h1>
+    <p class="introSentence introSentence--border">
+      Introductory text for the contact us page goes here. It could be about two
+      to three sentences, but this example will just be two.
+    </p>
+    <ul class="contact-us">
+      <li>Email:</li>
+      <li>Phone:</li>
+      <li>Address:</li>
+    </ul>
+  </div>
+</section>
+<section>
+  <h2>Or send us a message!</h2>
+  <div class="col"><div class="imagePlaceholder">[Contact form here]</div></div>
+</section>
+{% endblock content %}

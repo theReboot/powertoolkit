@@ -54,6 +54,12 @@ urlpatterns = [
         TemplateView.as_view(template_name='blog.html'),
         name='blog'
     ),
+    # @bayo this is temporary. Please remove when appropriate
+    path(
+        'blog/long-history-power-management-nigeria/',
+        TemplateView.as_view(template_name='single-post.html'),
+        name='testPost'
+    ),
 ]
 
 

@@ -40,22 +40,23 @@ gulp.task("minify-css", ["sass"], function() {
     );
 });
 
-// Run django server
-gulp.task("runserver", function() {
-  var proc = exec("python manage.py runserver");
-});
+// // Run django server
+// gulp.task("runserver", function() {
+//   var proc = exec("python manage.py runserver");
+// });
 
-gulp.task("browserSync", ["runserver"], function() {
-  browserSync.init({
-    notify: false,
-    port: 8000,
-    proxy: "localhost:8000"
-  });
-});
+// gulp.task("browserSync", ["runserver"], function() {
+//   browserSync.init({
+//     notify: false,
+//     port: 8000,
+//     proxy: "localhost:8000"
+//   });
+// });
 
-gulp.task("default", ["browserSync", "sass", "minify-css"], function() {
+gulp.task("default", ["sass", "minify-css"], function() {
   gulp.watch("devstatic/scss/**/*.scss", ["sass"]);
   // gulp.watch("css/*.css", ["minify-css"]);
-  gulp.watch("devstatic/js/**/*.js", browserSync.reload);
-  gulp.watch("templates/**/*.html", browserSync.reload);
+  gulp.watch("devstatic/js/**/*.js");
+  // gulp.watch("devstatic/js/**/*.js", browserSync.reload);
+  // gulp.watch("templates/**/*.html", browserSync.reload);
 });

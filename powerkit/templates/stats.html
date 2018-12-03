@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block title %}Stats{% endblock title %}
+
+{% block content %}
+    <section>
+        <div class="col-2-3 overlap">
+        <h1>The Stats</h1>
+        <p class="introSentence introSentence--border">
+            Introductory text for the stats page goes here. It could be about two to three sentences, but this example will just be two.
+        </p>
+        </div>
+    </section>
+    <section>
+          <h2>Resources</h2>
+          <div class="flexGrid">
+            <div class="col">
+              <p>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Atque
+                magnam voluptatum aspernatur enim. Quos asperiores molestiae
+                necessitatibus deleniti, suscipit debitis animi quis
+                exercitationem. Vero sed est exercitationem. Fugit, ipsum
+                molestias!
+              </p>
+            </div>
+            <div class="col">
+              <p>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Atque
+                magnam voluptatum aspernatur enim. Quos asperiores molestiae
+                necessitatibus deleniti, suscipit debitis animi quis
+                exercitationem. Vero sed est exercitationem. Fugit, ipsum
+                molestias!
+              </p>
+            </div>
+            <div class="col">
+              <p>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Atque
+                magnam voluptatum aspernatur enim. Quos asperiores molestiae
+                necessitatibus deleniti, suscipit debitis animi quis
+                exercitationem. Vero sed est exercitationem. Fugit, ipsum
+                molestias!
+              </p>
+            </div>
+          </div>
+        </section>
+    <section>
+        <h2>Meter Status as of September 2018</h2>
+        <div class="chart">
+        <img src={% static 'img/stat.png' %} class="chart" />
+        </div>
+    </section>
+{% endblock content %}

@@ -20,9 +20,8 @@
   <body id="page-top">
   {% include "includes/header.html" %}
     <main>
-    {% block content %}
-    
       <div class="wrapper">
+      {% block content %}
         <section>
           <h1 class="introSentence">
             Power Smart Nigeria is an online resource for citizens and
@@ -314,8 +313,8 @@
             </div>
           </div>
         </section>
+      {% endblock content %}
       </div>
-    {% endblock content %}
     </main>
     {% include "includes/footer.html" %}
   </body>

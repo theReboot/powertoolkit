@@ -152,6 +152,10 @@ h1 {
   font-weight: 500;
 }
 
+.h1__smaller {
+  font-size: 60px;
+}
+
 h2 {
   font-size: 45px;
   line-height: 1.2;
@@ -442,6 +446,28 @@ OTHER
   @include mobile {
     width: 100%;
   }
+
+
+}
+
+.module {
+  margin-right: $colGutter;
+  border-top: 5px solid $white;
+  padding-top: 1rem;
+  margin-bottom: 2rem;
+
+  img {
+    width: 100%;
+  }
+
+  @include mobile {
+    width: 100%;
+  }
+}
+
+.module--1-2 {
+  width: 48%;
+  width: calc(50% - #{$colGutter}/ 2);
 
   &:nth-of-type(2n) {
     margin-right: 0;

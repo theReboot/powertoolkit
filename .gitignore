@@ -96,3 +96,5 @@ target/
 */deploy.sh
 
 node_modules/
+
+devstatic/css/*.css

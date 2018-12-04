@@ -26,7 +26,10 @@ So you have cloned the repo with
 git clone git@github.com:theReboot/powertoolkit.git
 `
 
-Now, setup your dependencies for the back and front-end
+Install dependencies:
+---------------------
+
+setup your dependencies for the back and front-end
 
 ```
 cd powertoolkit/powerkit/
@@ -34,13 +37,32 @@ pipenv install
 npm install
 ```
 
-To run the development server, you need 2 steps:
+Setup your database:
+--------------------
+
+Setup your database by running 
+
+`pipenv run ./manage.py migrate`
+
+from the `powertoolkit/powerkit/` directory
+
+Create a user for yourself:
+---------------------------
+
+Run `pipenv run ./manage.py createsuperuser`
+and enter the username and password to be used to create your super user
+
+
+Run the development server:
+---------------------------
 
 1. Make sure you are in the powertoolkit/powerkit/ directory
-2. Run `pipenv shell`
+2. Run `pipenv run ./manage.py runserver`
+
+To run gulp from the same directory
 3. Run `gulp`
 
-This will run the django runserver command and open the home page on a browser, then watch files for changes and reload the browser.
+This will run the django development server on localhost:8000, also gulp will watch files for changes and compile the sass to css.
 
 Files
 =====
@@ -50,3 +72,9 @@ The html files are in `powertoolkit/powerkit/templates/`
 The sass files are in `powertoolkit/powerkit/devstatic/scss/`
 
 The css files are in `powertoolkit/powerkit/devstatic/css/`
+
+
+Log on to the Content Management Site:
+--------------------------------------
+
+Go to `http://localhost:8000` and login with your username and password 

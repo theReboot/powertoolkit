@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block title %}Stats{% endblock title %}
+
+{% block content %}
+    <section>
+        <div class="col-2-3">
+        <h1>{{page.title}}</h1>
+        <p class="introSentence introSentence--border">
+            {{ page.intro }}
+        </p>
+        </div>
+    </section>
+    <section>
+          <h2>Resources</h2>
+          <div class="flexGrid">
+            <div class="col">
+              <p>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Atque
+                magnam voluptatum aspernatur enim. Quos asperiores molestiae
+                necessitatibus deleniti, suscipit debitis animi quis
+                exercitationem. Vero sed est exercitationem. Fugit, ipsum
+                molestias!
+              </p>
+            </div>
+            <div class="col">
+              <p>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Atque
+                magnam voluptatum aspernatur enim. Quos asperiores molestiae
+                necessitatibus deleniti, suscipit debitis animi quis
+                exercitationem. Vero sed est exercitationem. Fugit, ipsum
+                molestias!
+              </p>
+            </div>
+            <div class="col">
+              <p>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Atque
+                magnam voluptatum aspernatur enim. Quos asperiores molestiae
+                necessitatibus deleniti, suscipit debitis animi quis
+                exercitationem. Vero sed est exercitationem. Fugit, ipsum
+                molestias!
+              </p>
+            </div>
+          </div>
+        </section>
+    <section>
+        <h2>Meter Status as of September 2018</h2>
+           <div class="col"><div class="imagePlaceholder">[chart here]</div></div>
+
+    </section>
+{% endblock content %}

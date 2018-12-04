@@ -1,6 +1,6 @@
 <header class="siteHeader">
   <div class="wrapper">
-    <a href="{% url 'home' %}">
+    <a href="/">
       <svg
         width="167"
         height="89"
@@ -25,8 +25,8 @@
       </svg>
     </a>
     <nav class="topNav">
-      <a class="topNav__item" href="{% url 'system' %}">The System</a>
-      <a class="topNav__item" href="{% url 'stats' %}">The Stats</a>
+      <a class="topNav__item" href="/system/">The System</a>
+      <a class="topNav__item" href="/stats/">The Stats</a>
       <div class="topNav__item topNav__item--dropdown topNav__item--active">
         The Issues
         <div class="topNav__item__dropdownContent">
@@ -42,7 +42,7 @@
           >
         </div>
       </div>
-      <a class="topNav__item" href="{% url 'about' %}">About</a>
+      <a class="topNav__item" href="/about/">About</a>
       <a class="topNav__item" href="{% url 'blog' %}">Blog</a>
       <a class="topNav__item" href="{% url 'contact' %}">Contact</a>
       <a

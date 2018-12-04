@@ -97,4 +97,4 @@ target/
 
 node_modules/
 
-devstatic/css/*.css
+*/devstatic/css/*.css

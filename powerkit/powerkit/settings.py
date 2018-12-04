@@ -157,3 +157,8 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 WAGTAIL_SITE_NAME = 'Power Toolkit Site'
+
+try:
+    from .local_settings import DATABASES
+except ImportError:
+    pass

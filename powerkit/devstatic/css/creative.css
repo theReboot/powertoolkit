@@ -615,14 +615,14 @@ footer .wrapper {
 
 .sectionNav__item {
   text-align: center; }
-  .sectionNav__item > a {
+  .sectionNav__item > * {
     display: block;
     font-weight: 700;
     font-size: 20px; }
     @media (min-width: 500px) and (max-width: 768px) {
-      .sectionNav__item > a {
+      .sectionNav__item > * {
         font-size: 14px; } }
-    .sectionNav__item > a:link, .sectionNav__item > a:active, .sectionNav__item > a:visited {
+    .sectionNav__item > *:link, .sectionNav__item > *:active, .sectionNav__item > *:visited {
       color: #fff;
       text-decoration: none; }
 

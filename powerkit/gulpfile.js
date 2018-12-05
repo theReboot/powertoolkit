@@ -45,7 +45,7 @@ gulp.task("minify-css", ["sass"], function() {
 // minify javascript
 gulp.task('compress', function (cb) {
   pump([
-        gulp.src('devstatic/js/src/main.js'),
+        gulp.src('devstatic/js/src/*.js'),
         uglify(),
         gulp.dest('devstatic/js/dist/')
     ],

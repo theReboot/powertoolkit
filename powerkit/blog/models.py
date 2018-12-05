@@ -22,6 +22,8 @@ class BlogIndex(Page):
             context['featured'] = featured.first()
         return context
 
+    subpage_types = ['blog.BlogPage']
+
 
 class BlogPage(Page):
     intro = models.TextField(blank=True, null=True)

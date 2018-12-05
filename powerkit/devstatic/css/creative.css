@@ -481,7 +481,13 @@ header {
     .topNav {
       width: 100%;
       flex-direction: column;
-      float: none; } }
+      float: none;
+      height: auto; } }
+
+@media (max-width: 500px) {
+  .topNav--closed {
+    height: 0;
+    overflow: hidden; } }
 
 .topNav__menuIcon {
   display: none;

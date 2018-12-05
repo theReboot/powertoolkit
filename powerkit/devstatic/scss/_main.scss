@@ -258,6 +258,14 @@ header {
     width: 100%;
     flex-direction: column;
     float: none;
+    height: auto;
+  }
+}
+
+.topNav--closed {
+  @include mobile {
+    height: 0;
+    overflow: hidden;
   }
 }
 

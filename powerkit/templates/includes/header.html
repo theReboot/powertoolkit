@@ -24,7 +24,7 @@
         />
       </svg>
     </a>
-    <nav class="topNav">
+    <nav class="topNav topNav--closed" id="topNav">
       <a class="topNav__item" href="/system/">The System</a>
       <a class="topNav__item" href="/stats/">The Stats</a>
       <div class="topNav__item topNav__item--dropdown topNav__item--active">
@@ -45,12 +45,7 @@
       <a class="topNav__item" href="/about/">About</a>
       <a class="topNav__item" href="{% url 'blog' %}">Blog</a>
       <a class="topNav__item" href="{% url 'contact' %}">Contact</a>
-      <a
-        href="javascript:void(0);"
-        class="topNav__menuIcon"
-        onclick="showMenu()"
-        >&#9776;</a
-      >
+      <a href="javascript:void(0);" class="topNav__menuIcon" onclick="showMenu()">&#9776;</a>
     </nav>
   </div>
 </header>

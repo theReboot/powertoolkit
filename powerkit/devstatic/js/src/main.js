@@ -1,3 +1,6 @@
-// global functions
+// mobile nav
 
-console.log("main.js");
+function showMenu() {
+  var topNav = document.getElementById("topNav");
+  topNav.classList.toggle("topNav--closed");
+}

@@ -47,7 +47,7 @@ gulp.task('compress', function (cb) {
   pump([
         gulp.src('devstatic/js/src/*.js'),
         uglify(),
-        gulp.dest('devstatic/js/dist/')
+        gulp.dest('devstatic/js/')
     ],
     cb
   );

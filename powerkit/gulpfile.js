@@ -4,6 +4,8 @@ var sass = require("gulp-sass");
 var cleanCSS = require("gulp-clean-css");
 var rename = require("gulp-rename");
 var exec = require("child_process").exec;
+var uglify = require('gulp-uglify');
+var pump = require('pump');
 
 // Compile sass into css
 gulp.task("sass", function() {
@@ -40,6 +42,17 @@ gulp.task("minify-css", ["sass"], function() {
     );
 });
 
+// minify javascript
+gulp.task('compress', function (cb) {
+  pump([
+        gulp.src('devstatic/js/src/*.js'),
+        uglify(),
+        gulp.dest('devstatic/js/')
+    ],
+    cb
+  );
+});
+
 // // Run django server
 // gulp.task("runserver", function() {
 //   var proc = exec("python manage.py runserver");
@@ -53,10 +66,10 @@ gulp.task("minify-css", ["sass"], function() {
 //   });
 // });
 
-gulp.task("default", ["sass", "minify-css"], function() {
+gulp.task("default", ["sass", "minify-css", "compress"], function() {
   gulp.watch("devstatic/scss/**/*.scss", ["sass"]);
   // gulp.watch("css/*.css", ["minify-css"]);
-  gulp.watch("devstatic/js/**/*.js");
+  gulp.watch("devstatic/js/**/*.js", ["compress"]);
   // gulp.watch("devstatic/js/**/*.js", browserSync.reload);
   // gulp.watch("templates/**/*.html", browserSync.reload);
 });

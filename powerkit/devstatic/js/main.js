@@ -1,0 +1,1 @@
+function showMenu(){document.getElementById("topNav").classList.toggle("topNav--closed")}

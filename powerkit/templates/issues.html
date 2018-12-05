@@ -27,7 +27,7 @@
 </section>
        {% include "includes/sectionNav.html" %}
 
-<section>
+<section id="keyPlayers">
   <div class="flexGrid">
     <div class="col"><div class="imagePlaceholder">[photo here]</div></div>
     <div class="col">
@@ -47,7 +47,7 @@
     </div>
   </div>
 </section>
-<section>
+<section id="policyBackground">
   <div class="flexGrid">
     <div class="col">
       <h2>Policy Background</h2>
@@ -67,7 +67,7 @@
     <div class="col"><div class="imagePlaceholder">[photo here]</div></div>
   </div>
 </section>
-<section>
+<section id="keyQuestions">
   <div class="flexGrid">
     <div class="module module--1-2">
       <span class="h3__preHeading">Key Question:</span>
@@ -155,7 +155,7 @@
     </div>
   </div>
 </section>
-<section>
+<section id="resources">
   <h2>Resources</h2>
   <div class="flexGrid">
     <div class="col">
@@ -184,4 +184,6 @@
     </div>
   </div>
 </section>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="{% static 'js/issue.js' %}"></script>
 {% endblock content %}

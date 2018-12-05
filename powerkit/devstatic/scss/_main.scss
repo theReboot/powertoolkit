@@ -124,6 +124,11 @@ footer,
 main {
   padding-left: $sitePad;
   padding-right: $sitePad;
+
+  @include mobile {
+    padding-left: calc(#{$sitePad}/2);
+    padding-right: calc(#{$sitePad}/2);
+  }
 }
 
 main {
@@ -154,6 +159,10 @@ h1 {
   font-size: 74px;
   line-height: 1.2;
   margin: 0 0 1rem 0;
+
+  @include mobile {
+    font-size: 60px;
+  }
 }
 
 .h1__preHeading {
@@ -205,6 +214,10 @@ h3 {
   font-weight: 700;
   line-height: 1.2;
   margin-bottom: 3.5rem;
+
+  @include mobile {
+    font-size: 30px;
+  }
 }
 
 .introSentence--border {
@@ -256,8 +269,16 @@ header {
 
   @include mobile {
     width: 100%;
-    flex-direction: column;
+    flex-direction: row;
     float: none;
+    height: auto;
+  }
+}
+
+.topNav--closed {
+  @include mobile {
+    height: 0;
+    overflow: hidden;
   }
 }
 
@@ -279,13 +300,13 @@ header {
   width: 33%;
   width: calc(33% - #{$colGutter}/ 1.5);
   display: inline-block;
-  padding: 1rem 0 0 0;
-  margin: 0 $colGutter 1.5rem 0;
+  padding: 1rem 0 1.5rem 0;
+  margin: 0 $colGutter 0 0;
   position: relative;
 
   @include mobile {
-    width: 100%;
-    // display: none;
+    width: 50%;
+    margin-right: 0;
   }
 
   &:nth-child(3n) {
@@ -326,6 +347,10 @@ header {
   position: relative;
   padding-right: 10px;
 
+  @include mobile {
+    width: 100%;
+  }
+
   &:hover {
     .topNav__item__dropdownContent {
       transform: scaleY(1);
@@ -338,6 +363,10 @@ header {
     right: 0;
     width: 10px;
     text-align: right;
+
+    @include mobile {
+      top: 1rem;
+    }
   }
 }
 
@@ -348,26 +377,52 @@ header {
   overflow: hidden;
   position: absolute;
   z-index: 2;
-  background: $lightGrey;
+  background: #4e4e4e;
   width: 100%;
+  width: calc(100% + .5rem);
   transition: 0.3s all ease;
+  margin-top: 1rem;
+  left: -.5rem; // this is negative padding to align left edge with parent
+
+  @include mobile {
+    transform: scaleY(1);
+    position: static;
+    background: none;
+    left: auto;
+  }
 }
 
 .topNav__item__dropdownContent__item {
   display: block;
   padding: 0.5rem;
-  border-bottom: 1px solid $black;
+  border-bottom: 2px solid $black;
   transition: 0.2s all ease;
+  font-size: 17px;
+
+  @include mobile {
+    padding: .75rem 0;
+    border-bottom: 2px solid rgba(255,255,255,.2);
+  }
 
   &:hover {
     background: $yellow;
+
+    @include mobile {
+      background: none;
+    }
   }
 
   &:link,
   &:active,
   &:visited {
-    color: $black;
+    color: $white;
     text-decoration: none;
+  }
+
+  &:last-of-type {
+    @include tablet {
+      border: 0;
+    }
   }
 }
 
@@ -446,7 +501,7 @@ footer .wrapper {
 .sectionNav__item {
   text-align: center;
 
-  & > a {
+  & > * {
     display: block;
     font-weight: 700;
     font-size: 20px;

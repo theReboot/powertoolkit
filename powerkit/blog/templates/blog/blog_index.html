@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load wagtailcore_tags %}
+{% load wagtailimages_tags %}
+
+{% block title %}Blog{%endblock title %}
+
+{% block content %}
+<section>
+  {% if featured %}
+  <div
+    class=" imagePlaceholder--overlap"
+  >
+    [featured image from the blog post]
+    {% image featured.feed_image fill-676x467 %}
+  </div>
+  <div class="col-2-3">
+    <div class="h1__preHeading">Blog Post:</div>
+    <h1 class="h1__smaller"><a href="{% pageurl featured %}">{{featured.title}}</a></h1>
+    <p class="introSentence introSentence--border">
+      {{featured.intro}}
+    </p>
+  </div>
+  {% endif %}
+</section>
+<section>
+  <div class="flexGrid">
+    {% for entry in blog_entries %}
+      <div class="module module--1-2">
+        <a href="{% pageurl entry %}">
+          {% image entry.feed_image fill-676x467 %}
+        </a>
+        <h3><a href="{% pageurl entry %}">{{entry.title}}</a></h3>
+        <p>{{entry.date|date}}
+        <p>
+          {{entry.intro}}
+        </p>
+      </div>
+    {% endfor %}
+  </div>
+</section>
+{% endblock content %}

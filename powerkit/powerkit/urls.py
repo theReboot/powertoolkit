@@ -52,17 +52,17 @@ urlpatterns = [
         TemplateView.as_view(template_name='contact.html'),
         name='contact'
     ),
-    path(
-        'blog/',
-        TemplateView.as_view(template_name='blog.html'),
-        name='blog'
-    ),
+    #path(
+    #    'blog/',
+    #    TemplateView.as_view(template_name='blog.html'),
+    #    name='blog'
+    #),
     # @bayo this is temporary. Please remove when appropriate
-    path(
-        'blog/long-history-power-management-nigeria/',
-        TemplateView.as_view(template_name='single-post.html'),
-        name='testPost'
-    ),
+    #path(
+    #    'blog/long-history-power-management-nigeria/',
+    #    TemplateView.as_view(template_name='single-post.html'),
+    #    name='testPost'
+    #),
     # CMS
     re_path(r'^cms/', include(wagtailadmin_urls)),
     re_path(r'^documents/', include(wagtaildocs_urls)),

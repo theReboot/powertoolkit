@@ -1,3 +1,4 @@
+{% load wagtailcore_tags %}
 <header class="siteHeader">
   <div class="wrapper">
     <a href="/">
@@ -30,7 +31,10 @@
       <div class="topNav__item topNav__item--dropdown topNav__item--active">
         The Issues
         <div class="topNav__item__dropdownContent">
-          <a
+          {% for issue in issues %}
+          <a class="topNav__item__dropdownContent__item" href="{% pageurl issue %}">{{issue.title}}</a>
+          {% endfor %}
+          {% comment %} <a
             class="topNav__item__dropdownContent__item"
             href="/issues/"
             >Metering</a
@@ -39,7 +43,7 @@
           <a class="topNav__item__dropdownContent__item" href="#">Issue 3</a>
           <a class="topNav__item__dropdownContent__item" href="#"
             >Really long issue title here</a
-          >
+          > {% endcomment %}
         </div>
       </div>
       <a class="topNav__item" href="/about/">About</a>

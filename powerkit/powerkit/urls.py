@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, re_path, include
-from django.views.generic import TemplateView
+#from django.views.generic import TemplateView
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.conf import settings
 from django.conf.urls.static import static
@@ -37,11 +37,11 @@ urlpatterns = [
     #    TemplateView.as_view(template_name='system.html'),
     #    name='system'
     #),
-    path(
-        'issues/',
-        TemplateView.as_view(template_name='issues.html'),
-        name='issues'
-    ),
+    #path(
+    #    'issues/',
+    #    TemplateView.as_view(template_name='issues.html'),
+    #    name='issues'
+    #),
     #path(
     #    'about/',
     #    TemplateView.as_view(template_name='about.html'),

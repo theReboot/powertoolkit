@@ -11,6 +11,10 @@
   >
     [photo here]
   </div>
+  <figure class="featuredImage">
+    {{ page.featured_image }}
+    <figcaption></figcaption>
+  </figure>
   <div class="col-2-3">
     <div class="h1__preHeading">Issue:</div>
     <h1>{{page.title}}</h1>
@@ -23,7 +27,12 @@
 
 <section id="keyPlayers">
   <div class="flexGrid">
-    <div class="col"><div class="imagePlaceholder">[photo here]</div></div>
+    <div class="col">
+      <figure class="featuredImage">
+        {{ page.player_image }}
+        <figcaption></figcaption>
+      </figure>
+    </div>
     <div class="col">
       <h2>Key Players</h2>
       <p>
@@ -40,7 +49,12 @@
         {{page.policy_background}}
       </p>
     </div>
-    <div class="col"><div class="imagePlaceholder">[photo here]</div></div>
+    <div class="col">
+      <figure class="featuredImage">
+        {{ page.policy_image }}
+        <figcaption></figcaption>
+      </figure>
+    </div>
   </div>
 </section>
 <section id="keyQuestions">
@@ -54,7 +68,7 @@
       </p>
     </div>
     {% endfor %}
-    
+
   </div>
 </section>
 <section id="resources">

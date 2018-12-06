@@ -623,15 +623,23 @@ OTHER
 .photoGrid__content {
   flex: 1;
   position: relative;
-  // height: 200px;
   height: 0;
   padding-bottom: 40%;
   margin-bottom: $colGutter;
   overflow: hidden;
   margin-right: $colGutter;
   background-size: cover;
-  background-color: $yellow;
+  background-color: $white;
   background-blend-mode: multiply;
+  transition: .2s all ease;
+
+  &:hover {
+    background-color: $yellow;
+  }
+
+  &:last-of-type {
+    margin-right: 0;
+  }
 
   &> * {
     text-align: center;
@@ -639,11 +647,16 @@ OTHER
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
-
+    display: block;
   }
 
-  &:last-of-type {
-    margin-right: 0;
+  a {
+    &:link,
+    &:active,
+    &:visited {
+      color: $white;
+      text-decoration: none;
+    }
   }
 
   // .photoGrid typography

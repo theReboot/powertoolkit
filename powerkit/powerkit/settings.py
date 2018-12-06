@@ -59,6 +59,7 @@ INSTALLED_APPS = [
     'stats.apps.StatsConfig',
     'contact.apps.ContactConfig',
     'blog.apps.BlogConfig',
+    'issue.apps.IssueConfig',
 
     # Other Apps
     'core.apps.CoreConfig',

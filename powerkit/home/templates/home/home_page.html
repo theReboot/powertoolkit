@@ -28,7 +28,8 @@
             {{ page.intro }}
           </h1>
           <div class="photoGrid__row">
-            <div class="photoGrid__content photoGrid__content--feature" style="background-image: url('https://www.lifewithcats.tv/wp-content/uploads/2016/06/intro-kittens-puppies.jpg')">
+            {% image page.top_image width-1600 as tmp_photo %}
+            <div class="photoGrid__content photoGrid__content--feature" style="background-image: url('{{ tmp_photo.url }}')">
               <a href="#">
                 <div class="photoGrid__content__textWrap">
                   <div class="preHeading">
@@ -40,17 +41,20 @@
             </div>
           </div>
           <div class="photoGrid__row photoGrid__row--shared">
-            <div class="photoGrid__content" style="background-image: url('https://www.lifewithcats.tv/wp-content/uploads/2016/06/intro-kittens-puppies.jpg')">
+            {% image page.left_image width-500 as tmp_photo %}
+            <div class="photoGrid__content" style="background-image: url('{{ tmp_photo.url }}')">
               <a href="#">
                 <h3>Content 1</h3>
               </a>
             </div>
-            <div class="photoGrid__content" style="background-image: url('https://www.lifewithcats.tv/wp-content/uploads/2016/06/intro-kittens-puppies.jpg')">
+            {% image page.center_image width-500 as tmp_photo %}
+            <div class="photoGrid__content" style="background-image: url('{{ tmp_photo.url }}')">
               <a href="#">
                 <h3>Content 2</h3>
               </a>
             </div>
-            <div class="photoGrid__content" style="background-image: url('https://www.lifewithcats.tv/wp-content/uploads/2016/06/intro-kittens-puppies.jpg')">
+            {% image page.right_image width-500 as tmp_photo %}
+            <div class="photoGrid__content" style="background-image: url('{{ tmp_photo.url }}')">
               <a href="#">
                 <h3>Content 3</h3>
               </a>

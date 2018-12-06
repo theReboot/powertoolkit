@@ -84,6 +84,7 @@ MAIN STYLES
 
 img {
   display: block;
+  max-width: 100%;
 }
 
 figure {
@@ -243,6 +244,12 @@ h4 {
       opacity: .8;
     }
   }
+}
+
+figcaption {
+  font-size: 14px;
+  opacity: .6;
+  margin-top: 1rem;
 }
 
 /*******************************
@@ -534,8 +541,6 @@ OTHER
   @include mobile {
     width: 100%;
   }
-
-
 }
 
 .module {
@@ -588,6 +593,27 @@ OTHER
   @include mobile {
     width: 80vw;
     margin: 0;
+  }
+}
+
+.featuredImage {
+  position: absolute;
+  right: 0;
+  width: 66%;
+  z-index: -1;
+
+  @include mobile {
+    position: static;
+    width: 100%;
+    margin-bottom: 2rem;
+  }
+}
+
+.featuredImage--yellow {
+  background: $yellow;
+
+  & img {
+    mix-blend-mode: multiply;
   }
 }
 

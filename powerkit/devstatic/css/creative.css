@@ -342,7 +342,8 @@ MAIN STYLES
   box-sizing: border-box; }
 
 img {
-  display: block; }
+  display: block;
+  max-width: 100%; }
 
 figure {
   margin: 0 auto; }
@@ -471,6 +472,11 @@ h4 a {
   h3 a:hover,
   h4 a:hover {
     opacity: .8; }
+
+figcaption {
+  font-size: 14px;
+  opacity: .6;
+  margin-top: 1rem; }
 
 /*******************************
 NAVIGATION: header and footer
@@ -730,6 +736,22 @@ OTHER
     .imagePlaceholder {
       width: 80vw;
       margin: 0; } }
+
+.featuredImage {
+  position: absolute;
+  right: 0;
+  width: 66%;
+  z-index: -1; }
+  @media (max-width: 500px) {
+    .featuredImage {
+      position: static;
+      width: 100%;
+      margin-bottom: 2rem; } }
+
+.featuredImage--yellow {
+  background: #cdcf60; }
+  .featuredImage--yellow img {
+    mix-blend-mode: multiply; }
 
 .imagePlaceholder--yellow {
   background: #cdcf60; }

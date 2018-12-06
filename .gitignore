@@ -94,6 +94,7 @@ target/
 
 */deploy.py
 */deploy.sh
+deploy.py
 
 node_modules/
 

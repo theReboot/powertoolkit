@@ -7,14 +7,8 @@
 {% block content %}
 
 <section>
-  <div
-    class="imagePlaceholder imagePlaceholder--overlap imagePlaceholder--yellow"
-  >
-    [photo here]
-  </div>
-  <figure class="featuredImage">
-    image page.featured_image width-900
-    <figcaption></figcaption>
+  <figure class="featuredImage featuredImage--yellow">
+    <img src="http://powersmart.ng/media/images/journalist-speaking-workshop.original.jpg" />
   </figure>
   <div class="col-2-3">
     <div class="h1__preHeading">Issue:</div>
@@ -28,9 +22,10 @@
 <section id="keyPlayers">
   <div class="flexGrid">
     <div class="col">
-      <figure class="featuredImage">
+      <figure>
         image page.player_image width-600
-        <figcaption></figcaption>
+        <img src="http://powersmart.ng/media/images/journalist-speaking-workshop.original.jpg" />
+        <figcaption>Caption of the image goes here.</figcaption>
       </figure>
     </div>
     <div class="col">
@@ -46,13 +41,14 @@
     <div class="col">
       <h2>Policy Background</h2>
       <p>
-        image page.policy_background width-600
+        {{ page.policy_background }}
       </p>
     </div>
     <div class="col">
-      <figure class="featuredImage">
-        {{ page.policy_image }}
-        <figcaption></figcaption>
+      <figure>
+        image page.policy_background width-600
+        <img src="http://powersmart.ng/media/images/journalist-speaking-workshop.original.jpg" />
+        <figcaption>Caption of the image goes here.</figcaption>
       </figure>
     </div>
   </div>

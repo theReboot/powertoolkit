@@ -29,7 +29,7 @@ class IssuePage(Page):
     )
 
     content_panels = Page.content_panels + [
-        FieldPanel('intro'),
+        FieldPanel('intro', classname='full'),
         FieldPanel('key_players', classname='full'),
         ImageChooserPanel('player_image'),
         FieldPanel('policy_background', classname='full'),

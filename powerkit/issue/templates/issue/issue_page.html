@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block title %}{{page.title}} - Issues{%endblock title %}
+
+{% block content %}
+
+<section>
+  <div
+    class="imagePlaceholder imagePlaceholder--overlap imagePlaceholder--yellow"
+  >
+    [photo here]
+  </div>
+  <div class="col-2-3">
+    <div class="h1__preHeading">Issue:</div>
+    <h1>{{page.title}}</h1>
+    <p class="introSentence introSentence--border">
+      {{page.intro}}
+    </p>
+  </div>
+</section>
+       {% include "includes/sectionNav.html" %}
+
+<section id="keyPlayers">
+  <div class="flexGrid">
+    <div class="col"><div class="imagePlaceholder">[photo here]</div></div>
+    <div class="col">
+      <h2>Key Players</h2>
+      <p>
+        {{page.key_players}}
+      </p>
+    </div>
+  </div>
+</section>
+<section id="policyBackground">
+  <div class="flexGrid">
+    <div class="col">
+      <h2>Policy Background</h2>
+      <p>
+        {{page.policy_background}}
+      </p>
+    </div>
+    <div class="col"><div class="imagePlaceholder">[photo here]</div></div>
+  </div>
+</section>
+<section id="keyQuestions">
+  <div class="flexGrid">
+    {% for issue_point in page.issue_points.all %}
+      <div class="module module--1-2">
+      <span class="h3__preHeading">Key Question:</span>
+      <h3>{{ issue_point.point.question }}</h3>
+      <p>
+        {{issue_point.point.answer}}
+      </p>
+    </div>
+    {% endfor %}
+    
+  </div>
+</section>
+<section id="resources">
+  <h2>Resources</h2>
+  <div class="flexGrid">
+    <div class="col">
+      <p>
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Atque magnam
+        voluptatum aspernatur enim. Quos asperiores molestiae necessitatibus
+        deleniti, suscipit debitis animi quis exercitationem. Vero sed est
+        exercitationem. Fugit, ipsum molestias!
+      </p>
+    </div>
+    <div class="col">
+      <p>
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Atque magnam
+        voluptatum aspernatur enim. Quos asperiores molestiae necessitatibus
+        deleniti, suscipit debitis animi quis exercitationem. Vero sed est
+        exercitationem. Fugit, ipsum molestias!
+      </p>
+    </div>
+    <div class="col">
+      <p>
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Atque magnam
+        voluptatum aspernatur enim. Quos asperiores molestiae necessitatibus
+        deleniti, suscipit debitis animi quis exercitationem. Vero sed est
+        exercitationem. Fugit, ipsum molestias!
+      </p>
+    </div>
+  </div>
+</section>
+{% block js %}
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="{% static 'js/issue.js' %}"></script>
+{% endblock js %}
+
+{% endblock content %}

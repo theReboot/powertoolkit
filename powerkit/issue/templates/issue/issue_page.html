@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% load staticfiles %}
 
+
 {% block title %}{{page.title}} - Issues{%endblock title %}
 
 {% block content %}
@@ -12,7 +13,7 @@
     [photo here]
   </div>
   <figure class="featuredImage">
-    {{ page.featured_image }}
+    image page.featured_image width-900
     <figcaption></figcaption>
   </figure>
   <div class="col-2-3">
@@ -23,13 +24,12 @@
     </p>
   </div>
 </section>
-       {% include "includes/sectionNav.html" %}
-
+{% include "includes/sectionNav.html" %}
 <section id="keyPlayers">
   <div class="flexGrid">
     <div class="col">
       <figure class="featuredImage">
-        {{ page.player_image }}
+        image page.player_image width-600
         <figcaption></figcaption>
       </figure>
     </div>
@@ -46,7 +46,7 @@
     <div class="col">
       <h2>Policy Background</h2>
       <p>
-        {{page.policy_background}}
+        image page.policy_background width-600
       </p>
     </div>
     <div class="col">

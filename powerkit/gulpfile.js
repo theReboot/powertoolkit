@@ -6,12 +6,14 @@ var rename = require("gulp-rename");
 var exec = require("child_process").exec;
 var uglify = require('gulp-uglify');
 var pump = require('pump');
+var autoprefixer = require('gulp-autoprefixer');
 
 // Compile sass into css
 gulp.task("sass", function() {
   return gulp
     .src("devstatic/scss/*.scss")
     .pipe(sass())
+    .pipe(autoprefixer())
     .pipe(gulp.dest("devstatic/css"))
     .pipe(
       browserSync.reload({

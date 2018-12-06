@@ -75,7 +75,8 @@ abbr[title] {
   /* 1 */
   text-decoration: underline;
   /* 2 */
-  text-decoration: underline dotted;
+  -webkit-text-decoration: underline dotted;
+          text-decoration: underline dotted;
   /* 2 */ }
 
 /**
@@ -550,7 +551,8 @@ header {
     .topNav__item--dropdown {
       width: 100%; } }
   .topNav__item--dropdown:hover .topNav__item__dropdownContent {
-    transform: scaleY(1); }
+    -webkit-transform: scaleY(1);
+            transform: scaleY(1); }
   .topNav__item--dropdown::after {
     content: "▾";
     position: absolute;
@@ -562,8 +564,10 @@ header {
         top: 1rem; } }
 
 .topNav__item__dropdownContent {
-  transform: scaleY(0);
-  transform-origin: top;
+  -webkit-transform: scaleY(0);
+          transform: scaleY(0);
+  -webkit-transform-origin: top;
+          transform-origin: top;
   display: block;
   overflow: hidden;
   position: absolute;
@@ -576,7 +580,8 @@ header {
   left: -.5rem; }
   @media (max-width: 500px) {
     .topNav__item__dropdownContent {
-      transform: scaleY(1);
+      -webkit-transform: scaleY(1);
+              transform: scaleY(1);
       position: static;
       background: none;
       left: auto; } }
@@ -640,6 +645,7 @@ footer .wrapper {
     text-decoration: none; }
 
 .sectionNav {
+  position: -webkit-sticky;
   position: sticky;
   top: 2rem;
   width: 100%;
@@ -655,7 +661,8 @@ footer .wrapper {
     background: #5b5b5b;
     top: 25px;
     left: 50%;
-    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
     z-index: -1; }
 
 .sectionNav__item {
@@ -755,16 +762,24 @@ OTHER
   overflow: hidden;
   margin-right: 1.5rem;
   background-size: cover;
-  background-color: #cdcf60;
-  background-blend-mode: multiply; }
+  background-color: #fff;
+  background-blend-mode: multiply;
+  transition: .2s all ease; }
+  .photoGrid__content:hover {
+    background-color: #cdcf60; }
+  .photoGrid__content:last-of-type {
+    margin-right: 0; }
   .photoGrid__content > * {
     text-align: center;
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%); }
-  .photoGrid__content:last-of-type {
-    margin-right: 0; }
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+    display: block; }
+  .photoGrid__content a:link, .photoGrid__content a:active, .photoGrid__content a:visited {
+    color: #fff;
+    text-decoration: none; }
   .photoGrid__content .preHeading {
     font-size: 25px;
     text-transform: uppercase;

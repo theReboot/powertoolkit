@@ -501,7 +501,9 @@ header {
       width: 100%;
       flex-direction: row;
       float: none;
-      height: auto; } }
+      height: auto;
+      transition: .2s all ease;
+      height: 270px; } }
 
 @media (max-width: 500px) {
   .topNav--closed {

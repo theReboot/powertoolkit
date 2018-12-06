@@ -15,6 +15,10 @@
     <!-- Custom styles for this template -->
     <link href="https://fonts.google.com/selection?selection.family=Roboto:400,400i,700,700i" rel="stylesheet" />
     <link href="{% static 'css/creative.css' %}" rel="stylesheet" />
+
+    {% block css %}
+    
+    {% endblock css %}
   </head>
 
   <body id="page-top">
@@ -318,5 +322,8 @@
     </main>
     {% include "includes/footer.html" %}
     <script src="{% static 'js/main.js' %}"></script>
+    {% block js %}
+    
+    {% endblock js %}
   </body>
 </html>

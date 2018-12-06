@@ -788,6 +788,7 @@ OTHER
   background-size: cover;
   background-color: #fff;
   background-blend-mode: multiply;
+  background-position: center;
   transition: .2s all ease; }
   .photoGrid__content:hover {
     background-color: #cdcf60; }

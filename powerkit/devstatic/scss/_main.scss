@@ -486,9 +486,10 @@ footer .wrapper {
 
 .sectionNav {
   position: sticky;
-  top: $sitePad;
+  top: 0;
   width: 100%;
   justify-content: space-between;
+  z-index: 3;
 
   @include mobile {
     display: none;
@@ -503,7 +504,35 @@ footer .wrapper {
     top: 25px;
     left: 50%;
     transform: translateX(-50%);
+    transition: .2s all ease;
     z-index: -1;
+  }
+
+  * {
+    transition: .2s all ease;
+  }
+}
+
+.sectionNav--sticking {
+
+  &::before {
+    height: 84px;
+    top: 0;
+    width: 100%;
+    width: calc(100% + #{$sitePad}*2);
+  }
+
+  .sectionNav__item {
+    margin-top: 5px;
+  }
+
+  .sectionNav__item svg {
+    width: 2.5rem;
+    height: 2.7rem;
+  }
+
+  * {
+    font-size: 15px;
   }
 }
 

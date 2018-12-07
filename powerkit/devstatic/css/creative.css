@@ -655,9 +655,10 @@ footer .wrapper {
 .sectionNav {
   position: -webkit-sticky;
   position: sticky;
-  top: 2rem;
+  top: 0;
   width: 100%;
-  justify-content: space-between; }
+  justify-content: space-between;
+  z-index: 3; }
   @media (max-width: 500px) {
     .sectionNav {
       display: none; } }
@@ -671,7 +672,26 @@ footer .wrapper {
     left: 50%;
     -webkit-transform: translateX(-50%);
             transform: translateX(-50%);
+    transition: .2s all ease;
     z-index: -1; }
+  .sectionNav * {
+    transition: .2s all ease; }
+
+.sectionNav--sticking::before {
+  height: 84px;
+  top: 0;
+  width: 100%;
+  width: calc(100% + 2rem*2); }
+
+.sectionNav--sticking .sectionNav__item {
+  margin-top: 5px; }
+
+.sectionNav--sticking .sectionNav__item svg {
+  width: 2.5rem;
+  height: 2.7rem; }
+
+.sectionNav--sticking * {
+  font-size: 15px; }
 
 .sectionNav__item {
   text-align: center; }

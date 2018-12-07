@@ -1,1 +1,1 @@
-function showMenu(){document.getElementById("topNav").classList.toggle("topNav--closed")}
+function showMenu(){document.getElementById("topNav").classList.toggle("topNav--closed")}$(document).ready(function(){$(function(){"/"!==location.pathname&&$('.topNav a[href^="/'+location.pathname.split("/")[1]+'"]').addClass("topNav__item--active")})});

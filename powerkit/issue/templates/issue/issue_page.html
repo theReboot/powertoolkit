@@ -1,14 +1,15 @@
 {% extends "base.html" %}
 {% load staticfiles %}
-
+{% load wagtailcore_tags %}
+{% load wagtailimages_tags %}
 
 {% block title %}{{page.title}} - Issues{%endblock title %}
 
 {% block content %}
 
 <section>
-  <figure class="featuredImage featuredImage--yellow">
-    <img src="http://powersmart.ng/media/images/journalist-speaking-workshop.original.jpg" />
+  <figure class="featuredImage">
+    {% image page.featured_image width-600 %}
   </figure>
   <div class="col-2-3">
     <div class="h1__preHeading">Issue:</div>
@@ -24,7 +25,7 @@
     <div class="col">
       <figure>
         image page.player_image width-600
-        <img src="http://powersmart.ng/media/images/journalist-speaking-workshop.original.jpg" />
+        {% image page.player_image width-600 %}
         <figcaption>Caption of the image goes here.</figcaption>
       </figure>
     </div>
@@ -46,8 +47,7 @@
     </div>
     <div class="col">
       <figure>
-        image page.policy_background width-600
-        <img src="http://powersmart.ng/media/images/journalist-speaking-workshop.original.jpg" />
+        {% image page.policy_image width-600 %}
         <figcaption>Caption of the image goes here.</figcaption>
       </figure>
     </div>

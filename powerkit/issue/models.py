@@ -11,6 +11,13 @@ from wagtail.snippets.models import register_snippet
 
 class IssuePage(Page):
     intro = models.TextField(blank=True, null=True)
+    featured_image = models.ForeignKey(
+        "wagtailimages.Image",
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
     key_players = models.TextField(blank=True, null=True)
     player_image = models.ForeignKey(
         "wagtailimages.Image",
@@ -30,6 +37,7 @@ class IssuePage(Page):
 
     content_panels = Page.content_panels + [
         FieldPanel('intro', classname='full'),
+        ImageChooserPanel('featured_image'),
         FieldPanel('key_players', classname='full'),
         ImageChooserPanel('player_image'),
         FieldPanel('policy_background', classname='full'),

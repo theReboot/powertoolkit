@@ -15,9 +15,9 @@ class BlogIndex(Page):
     def get_context(self, request):
         context = super().get_context(request)
         context['blog_entries'] = BlogPage.objects.child_of(
-            self).live().exclude(featured=True)
+            self).live().exclude(featured=True).order_by('-date')
         featured = BlogPage.objects.child_of(
-            self).live().filter(featured=True)
+            self).live().filter(featured=True).order_by('-date')
         if featured:
             context['featured'] = featured.first()
         return context

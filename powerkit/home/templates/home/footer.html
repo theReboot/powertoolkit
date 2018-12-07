@@ -1,0 +1,31 @@
+{% load wagtailcore_tags %}
+{% load footer_tags %}
+<footer>
+  <div class="wrapper">
+    <div class="footerDescription">
+      <p>
+      {{ footer_text }}
+      </p>
+    </div>
+    <div class="footerNav">
+      <div class="footerNav__column">
+        <a class="footerNav__item" href="/system/">The System</a>
+        <a class="footerNav__item" href="/stats/">The Stats</a>
+        <a class="footerNav__item" href="/about/">About</a>
+        <a class="footerNav__item" href="/blog/">Blog</a>
+        <a class="footerNav__item" href="/contact/">Contact</a>
+      </div>
+      <div class="footerNav__column">
+        <a class="footerNav__item" href="#">The Issues</a>
+        {% for issue in issues %}
+          <a class="footerNav__item" href="{% pageurl issue %}">{{issue.title}}</a>
+        {% endfor %}
+        {% comment %} <a class="footerNav__item" href="#">The Issues</a>
+        <a class="footerNav__item" href="#">Metering</a>
+        <a class="footerNav__item" href="#">Issue #2</a>
+        <a class="footerNav__item" href="#">Issue #3</a>
+        <a class="footerNav__item" href="#">Issue #4</a> {% endcomment %}
+      </div>
+    </div>
+  </div>
+</footer>

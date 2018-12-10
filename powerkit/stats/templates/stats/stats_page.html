@@ -3,6 +3,10 @@
 
 {% block title %}Stats{% endblock title %}
 
+{% block css %}
+
+{% endblock css %}
+
 {% block content %}
     <section>
         <div class="col-2-3">
@@ -44,9 +48,139 @@
             </div>
           </div>
         </section>
-    <section>
-        <h2>Meter Status as of September 2018</h2>
-           <div class="col"><div class="imagePlaceholder">[chart here]</div></div>
+    <section id="app">
+     
+        <h2>Meter Status as of <span v-text="year"></span></h2>
+          <div class="col-2-3">
+            Select year
+            <select class="form-control" style="width:200px" v-model="year">
+                <option v-for="yr in years" :value="yr">[yr]</option>
+            </select>
+            <button @click="updateChart()">refresh</button>
+          </div>
+           <div class="col">
+            <div class="chart" style="position: relative; height:60vh; width:80vw;">
+              <canvas id="statusChart"></canvas>
+            </div>
+            {% comment %} <div class="imagePlaceholder">[chart here]</div> {% endcomment %}
+           </div>
 
     </section>
 {% endblock content %}
+
+{% block js %}
+<script src="{% static 'js/Chart.min.js' %}"></script>
+<script src="{% static 'js/vue.min.js' %}"></script>
+<script src="https://unpkg.com/vue-resource@1.3.1/dist/vue-resource.min.js"></script>
+<script>
+  var vm = new Vue({
+    el: '#app',
+    delimiters: ["[","]"],
+    data: {
+      years: [],
+      year: null,
+      statuses: [],
+      chart: null
+    },
+    mounted() {
+      console.log('vue ready');
+      this.setupChart();
+    },
+    methods: {
+      setupChart: function(year=2017) {
+        console.log(`fetching data for ...${year}`);
+        const url = `/stats/chart/${year}/`;
+        console.log(url);
+        this.$http.get(url).then(response => {
+          console.log(response.body);
+          this.years = response.body.years;
+          this.statuses = response.body.statuses;
+          this.year = response.body.current_year;
+
+          let ctx = document.getElementById('statusChart').getContext('2d');
+          Chart.defaults.global.defaultFontColor = 'white';
+          Chart.defaults.global.defaultFontSize = 24;
+          chart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+              labels: this.labels,
+              //backgroundColor: 'rgba(250, 250, 250, 0.7)',
+              datasets: [
+                {
+                  label: 'Total Customers',
+                  data: this.totalCustomers,
+                  fill: true,
+                  borderColor: 'rgba(83, 71, 189, 1)',
+                  backgroundColor: 'rgba(83, 71, 189, 0.7)',
+                },
+                {
+                  label: 'Metered Customers',
+                  data: this.meteredCustomers,
+                  fill: true,
+                  borderColor: 'rgba(205, 207, 96, 1)',
+                  backgroundColor: 'rgba(205, 207, 96, 0.7)',
+                }
+              ]
+            },
+            options: {
+              responsive:true,
+              maintainAspectRatio: true,
+              scales: {
+                  yAxes: [{
+                      ticks: {
+                          beginAtZero:true,
+                          fontColor: '#fff',
+                          fontSize: 24,
+                          callback: function(value, index, values) {
+                            return value.toLocaleString();
+                          }
+                      },
+                      gridLines: {
+                        display: true,
+                        color: '#ccc',
+                    }
+                  }],
+                  xAxes: [{
+                    ticks: {
+                      beginAtZero: true,
+                    },
+                    
+                  }]
+              }
+            }
+          }); // chart loaded
+        }); // http request end
+      },
+      updateChart: function() {
+        console.log('UPDATING CHART')
+        console.log(this.year);
+        const url = `/stats/chart/${this.year}/`;
+        this.$http.get(url).then(response => {
+          console.log(response.body)
+          this.statuses = response.body.statuses;
+          
+          chart.data.datasets[0].data = this.totalCustomers;
+          chart.data.datasets[1].data = this.meteredCustomers;
+          chart.data.labels = this.labels;
+          chart.update();
+        })
+      },
+      changeYear: function() {
+        console.log('just placeholder');
+        //this.fetch_data(this.year);
+      }
+    },
+    computed: {
+      labels: function() {
+        return this.statuses.map((item) =>item.disco);
+      },
+      totalCustomers: function() {
+        return this.statuses.map(item => item.total);
+      },
+      meteredCustomers: function() {
+        return this.statuses.map(item => item.metered);
+      }
+    }
+  })
+</script>
+{% endblock js %}

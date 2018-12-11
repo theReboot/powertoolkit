@@ -162,7 +162,7 @@ WAGTAIL_SITE_NAME = 'Power Toolkit Site'
 
 # Pagination
 
-ITEMS_PER_PAGE = 2
+ITEMS_PER_PAGE = 10
 
 try:
     from .local_settings import DATABASES

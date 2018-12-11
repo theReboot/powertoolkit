@@ -50,13 +50,14 @@
         </section>
     <section id="app">
      
-        <h2>Meter Status as of <span v-text="year"></span></h2>
+        <h2 v-if="!loading">Meter Status as of <span v-text="year"></span></h2>
+        <h2 v-if="loading">Loading.... Please wait</h2>
           <div class="col-2-3">
             Select year
-            <select class="form-control" style="width:200px" v-model="year">
+            <select class="form-control" style="width:200px" v-model="year" @change="updateChart()">
                 <option v-for="yr in years" :value="yr">[yr]</option>
             </select>
-            <button @click="updateChart()">refresh</button>
+            <a :href="'/stats/download/' + year + '/'" class="btn">Download xlsx</a>
           </div>
            <div class="col">
             <div class="chart" style="position: relative; height:60vh; width:80vw;">
@@ -80,7 +81,8 @@
       years: [],
       year: null,
       statuses: [],
-      chart: null
+      chart: null,
+      loading: false
     },
     mounted() {
       console.log('vue ready');
@@ -88,11 +90,11 @@
     },
     methods: {
       setupChart: function(year=2017) {
-        console.log(`fetching data for ...${year}`);
+        this.loading = true;
+
         const url = `/stats/chart/${year}/`;
-        console.log(url);
         this.$http.get(url).then(response => {
-          console.log(response.body);
+          this.loading = false;
           this.years = response.body.years;
           this.statuses = response.body.statuses;
           this.year = response.body.current_year;
@@ -152,11 +154,10 @@
         }); // http request end
       },
       updateChart: function() {
-        console.log('UPDATING CHART')
-        console.log(this.year);
+        this.loading = true;
         const url = `/stats/chart/${this.year}/`;
         this.$http.get(url).then(response => {
-          console.log(response.body)
+          this.loading = false;
           this.statuses = response.body.statuses;
           
           chart.data.datasets[0].data = this.totalCustomers;

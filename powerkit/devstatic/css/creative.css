@@ -856,3 +856,6 @@ canvas {
   width: 1000px !important;
   height: 400px !important;
   margin-top: 50px; }
+
+a.btn {
+  color: #fff; }

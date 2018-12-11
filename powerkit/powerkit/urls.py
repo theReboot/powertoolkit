@@ -30,6 +30,7 @@ from stats import views as stat_views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('stats/chart/<int:year>/', stat_views.get_data),
+    path('stats/download/<int:year>/', stat_views.download),
     #path(
     #    'stats/',
     #    TemplateView.as_view(template_name='stats.html'),

@@ -160,6 +160,10 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 WAGTAIL_SITE_NAME = 'Power Toolkit Site'
 
+# Pagination
+
+ITEMS_PER_PAGE = 2
+
 try:
     from .local_settings import DATABASES
 except ImportError:

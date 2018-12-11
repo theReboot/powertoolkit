@@ -6,47 +6,42 @@
 {% block title %}Welcome{% endblock title %}
 
 {% block content %}
-<main>
-      <div class="wrapper">
-        <section class="photoGrid">
-          <h1 class="introSentence">
-            {{ page.intro }}
-          </h1>
-          <div class="photoGrid__row">
-            {% image page.top_image width-1600 as tmp_photo %}
-            <div class="photoGrid__content photoGrid__content--feature" style="background-image: url('{{ tmp_photo.url }}')">
-              <a href="/metering/">
-                <div class="photoGrid__content__textWrap">
-                  <div class="preHeading">
-                    Featured Issue:
-                  </div>
-                  <h1>Metering</h1>
-                </div>
-              </a>
-            </div>
+<section class="photoGrid">
+  <h1 class="introSentence">
+    {{ page.intro }}
+  </h1>
+  <div class="photoGrid__row">
+    {% image page.top_image width-1600 as tmp_photo %}
+    <div class="photoGrid__content photoGrid__content--feature" style="background-image: url('{{ tmp_photo.url }}')">
+      <a href="/metering/">
+        <div class="photoGrid__content__textWrap">
+          <div class="preHeading">
+            Featured Issue:
           </div>
-          <div class="photoGrid__row photoGrid__row--shared">
-            {% image page.left_image width-500 as tmp_photo %}
-            <div class="photoGrid__content" style="background-image: url('{{ tmp_photo.url }}')">
-              <a href="#">
-                <h3>Content 1</h3>
-              </a>
-            </div>
-            {% image page.center_image width-500 as tmp_photo %}
-            <div class="photoGrid__content" style="background-image: url('{{ tmp_photo.url }}')">
-              <a href="#">
-                <h3>Content 2</h3>
-              </a>
-            </div>
-            {% image page.right_image width-500 as tmp_photo %}
-            <div class="photoGrid__content" style="background-image: url('{{ tmp_photo.url }}')">
-              <a href="#">
-                <h3>Content 3</h3>
-              </a>
-            </div>
-          </div>
-        </section>
-
-      </div>
-    </main>
+          <h1>Metering</h1>
+        </div>
+      </a>
+    </div>
+  </div>
+  <div class="photoGrid__row photoGrid__row--shared">
+    {% image page.left_image width-500 as tmp_photo %}
+    <div class="photoGrid__content" style="background-image: url('{{ tmp_photo.url }}')">
+      <a href="#">
+        <h3>Content 1</h3>
+      </a>
+    </div>
+    {% image page.center_image width-500 as tmp_photo %}
+    <div class="photoGrid__content" style="background-image: url('{{ tmp_photo.url }}')">
+      <a href="#">
+        <h3>Content 2</h3>
+      </a>
+    </div>
+    {% image page.right_image width-500 as tmp_photo %}
+    <div class="photoGrid__content" style="background-image: url('{{ tmp_photo.url }}')">
+      <a href="#">
+        <h3>Content 3</h3>
+      </a>
+    </div>
+  </div>
+</section>
 {% endblock content %}

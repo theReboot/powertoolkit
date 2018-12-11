@@ -370,8 +370,8 @@ main {
     header,
     footer,
     main {
-      padding-left: calc(2rem/2);
-      padding-right: calc(2rem/2); } }
+      padding-left: calc(2rem/ 2);
+      padding-right: calc(2rem/ 2); } }
 
 main {
   color: #fff; }
@@ -454,7 +454,7 @@ h1 a,
 h2 a,
 h3 a,
 h4 a {
-  transition: .2s all ease; }
+  transition: 0.2s all ease; }
   h1 a:link, h1 a:visited, h1 a:active,
   h2 a:link,
   h2 a:visited,
@@ -471,11 +471,11 @@ h4 a {
   h2 a:hover,
   h3 a:hover,
   h4 a:hover {
-    opacity: .8; }
+    opacity: 0.8; }
 
 figcaption {
   font-size: 14px;
-  opacity: .6;
+  opacity: 0.6;
   margin-top: 1rem; }
 
 /*******************************
@@ -502,7 +502,7 @@ header {
       flex-direction: row;
       float: none;
       height: auto;
-      transition: .2s all ease;
+      transition: 0.2s all ease;
       height: 270px; } }
 
 @media (max-width: 500px) {
@@ -582,10 +582,10 @@ header {
   z-index: 2;
   background: #4e4e4e;
   width: 100%;
-  width: calc(100% + .5rem);
+  width: calc(100% + 0.5rem);
   transition: 0.3s all ease;
   margin-top: 1rem;
-  left: -.5rem; }
+  left: -0.5rem; }
   @media (max-width: 500px) {
     .topNav__item__dropdownContent {
       -webkit-transform: scaleY(1);
@@ -602,7 +602,7 @@ header {
   font-size: 17px; }
   @media (max-width: 500px) {
     .topNav__item__dropdownContent__item {
-      padding: .75rem 0;
+      padding: 0.75rem 0;
       border-bottom: 2px solid rgba(255, 255, 255, 0.2); } }
   .topNav__item__dropdownContent__item:hover {
     background: #cdcf60; }
@@ -672,16 +672,16 @@ footer .wrapper {
     left: 50%;
     -webkit-transform: translateX(-50%);
             transform: translateX(-50%);
-    transition: .2s all ease;
+    transition: 0.2s all ease;
     z-index: -1; }
   .sectionNav * {
-    transition: .2s all ease; }
+    transition: 0.2s all ease; }
 
 .sectionNav--sticking::before {
   height: 84px;
   top: 0;
   width: 100%;
-  width: calc(100% + 2rem*2); }
+  width: calc(100% + 2rem* 2); }
 
 .sectionNav--sticking .sectionNav__item {
   margin-top: 5px; }
@@ -809,7 +809,7 @@ OTHER
   background-color: #fff;
   background-blend-mode: multiply;
   background-position: center;
-  transition: .2s all ease; }
+  transition: 0.2s all ease; }
   .photoGrid__content:hover {
     background-color: #cdcf60; }
   .photoGrid__content:last-of-type {
@@ -839,6 +839,12 @@ OTHER
         font-size: 50px; } }
   .photoGrid__content h3 {
     font-size: 30px; }
+
+.pagination {
+  color: #fff;
+  text-align: center; }
+  .pagination a {
+    color: #fff; }
 
 #contact-section ul.contact-us {
   list-style-type: none; }

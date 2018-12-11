@@ -57,7 +57,7 @@
             <select class="form-control" style="width:200px" v-model="year" @change="updateChart()">
                 <option v-for="yr in years" :value="yr">[yr]</option>
             </select>
-            <a :href="'/stats/download/' + year + '/'" class="btn">Download xlsx</a>
+            <a :href="'/stats/download/' + year + '/'" class="btn">Download xlsx for <span v-text="year"></span></a>
           </div>
            <div class="col">
             <div class="chart" style="position: relative; height:60vh; width:80vw;">

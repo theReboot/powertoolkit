@@ -29,7 +29,7 @@
       <a class="topNav__item" href="/system/">The System</a>
       <a class="topNav__item" href="/stats/">The Stats</a>
       <div class="topNav__item topNav__item--dropdown">
-        The Issues
+        <a href="/issues/" class="white">The Issues</a>
         <div class="topNav__item__dropdownContent">
           {% for issue in issues %}
           <a class="topNav__item__dropdownContent__item" href="{% pageurl issue %}">{{issue.title}}</a>

@@ -1,10 +1,13 @@
 from django.db import models
+from django.core.paginator import Paginator
+from django.conf import settings
 
 from modelcluster.fields import ParentalKey
 
 from wagtail.core.models import Page, Orderable
 from wagtail.core.fields import RichTextField
-from wagtail.admin.edit_handlers import FieldPanel, MultiFieldPanel, InlinePanel
+from wagtail.admin.edit_handlers import FieldPanel, MultiFieldPanel,\
+    InlinePanel
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.search import index
 
@@ -14,8 +17,15 @@ class BlogIndex(Page):
 
     def get_context(self, request):
         context = super().get_context(request)
-        context['blog_entries'] = BlogPage.objects.child_of(
-            self).live().exclude(featured=True).order_by('-date')
+        blog_entries = BlogPage.objects.child_of(self).live(
+            ).exclude(featured=True).order_by('-date')
+        paginator = Paginator(blog_entries, settings.ITEMS_PER_PAGE)
+        page = request.GET.get('page', 1)
+        context['blog_entries'] = paginator.get_page(page)
+        #import pdb;pdb.set_trace()
+
+        #context['blog_entries'] = BlogPage.objects.child_of(
+        #    self).live().exclude(featured=True).order_by('-date')
         featured = BlogPage.objects.child_of(
             self).live().filter(featured=True).order_by('-date')
         if featured:

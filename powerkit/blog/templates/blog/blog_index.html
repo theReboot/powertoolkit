@@ -35,5 +35,23 @@
       </div>
     {% endfor %}
   </div>
+
+  <div class="pagination">
+    <span class="step-links">
+        {% if blog_entries.has_previous %}
+            <a href="?page=1">&laquo; first</a>
+            <a href="?page={{ blog_entries.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ blog_entries.number }} of {{ blog_entries.paginator.num_pages }}.
+        </span>
+
+        {% if blog_entries.has_next %}
+            <a href="?page={{ blog_entries.next_page_number }}">next</a>
+            <a href="?page={{ blog_entries.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </span>
+</div>
 </section>
 {% endblock content %}

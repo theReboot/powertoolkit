@@ -858,10 +858,15 @@ OTHER
   width: 863px;
   height: 264px; }
 
+.chart-container {
+  position: relative;
+  margin: auto;
+  height: 80vh;
+  width: 80vw; }
+
 canvas {
-  width: 1000px !important;
-  height: 400px !important;
-  margin-top: 50px; }
+  margin-top: 50px;
+  border: 1px solid white; }
 
 a.btn {
   color: #fff; }

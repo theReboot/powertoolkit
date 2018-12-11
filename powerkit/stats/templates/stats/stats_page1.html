@@ -101,7 +101,7 @@
           let ctx = document.getElementById('statusChart').getContext('2d');
           Chart.defaults.global.defaultFontColor = 'white';
           Chart.defaults.global.defaultFontSize = 24;
-          chart = new Chart(ctx, {
+          chart = new Chart('statusChart', {
             type: 'bar',
             data: {
               labels: this.labels,
@@ -124,6 +124,7 @@
               ]
             },
             options: {
+              responsive:false,
               maintainAspectRatio: false,
               scales: {
                   yAxes: [{

@@ -18,7 +18,7 @@
     {% for issue in issues %}
       <div class="module module--1-2">
         <a href="{% pageurl issue %}">
-          {% image issue.featured_image width-600 %}
+          {% image issue.featured_image original %}
         </a>
         <h3><a href="{% pageurl issue %}">{{issue.title}}</a></h3>
         <p>

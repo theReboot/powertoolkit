@@ -9,7 +9,7 @@
 <section>
   {% if featured %}
   <div class="featuredImage">
-    {% image featured.feed_image width-600 %}
+    {% image featured.feed_image original %}
   </div>
   <div class="col-2-3">
     <div class="h1__preHeading">Blog Post:</div>
@@ -25,7 +25,7 @@
     {% for entry in blog_entries %}
       <div class="module module--1-2">
         <a href="{% pageurl entry %}">
-          {% image entry.feed_image width-600 %}
+          {% image entry.feed_image original %}
         </a>
         <h3><a href="{% pageurl entry %}">{{entry.title}}</a></h3>
         <p>{{entry.date|date}}

@@ -1,4 +1,6 @@
 from django.db import models
+from django.core.paginator import Paginator
+from django.conf import settings
 
 from modelcluster.fields import ParentalKey
 
@@ -7,6 +9,22 @@ from wagtail.admin.edit_handlers import FieldPanel, InlinePanel
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.snippets.edit_handlers import SnippetChooserPanel
 from wagtail.snippets.models import register_snippet
+
+
+class IssueIndex(Page):
+    intro = models.TextField(null=True, blank=True)
+
+    content_panels = Page.content_panels + [
+        FieldPanel('intro', classname='full'),
+    ]
+
+    def get_context(self, request):
+        context = super().get_context(request)
+        issues_list = IssuePage.objects.child_of(self).live()
+        paginator = Paginator(issues_list, settings.ITEMS_PER_PAGE)
+        page = request.GET.get('page', 1)
+        context['issues'] = paginator.get_page(page)
+        return context
 
 
 class IssuePage(Page):

@@ -13,7 +13,7 @@
 </div>
 </section>
 <section>
-  <h2>Map Goes Here</h2>
+  <h2>System Map</h2>
   <div class="table table--3col" id="v-system-table">
     <div class="table__column">
       <div class="table__cell table__cell--header">
@@ -22,10 +22,10 @@
       <div v-for="agency in agencies">
         <div class="table__cell">
           <div class="table__cell__name">
-            {{ agency.name }}
+            <span v-text="agency.name"></span>
           </div>
           <div class="table__cell__description">
-            {{ agency.description }}
+            <span v-text="agency.description"></span>
           </div>
         </div>
       </div>
@@ -37,10 +37,10 @@
       <div v-for="genco in gencos">
         <div class="table__cell">
           <div class="table__cell__name">
-            {{ genco.name }}
+            <span v-text="genco.name"></span>
           </div>
           <div class="table__cell__description">
-            {{ genco.description }}
+            <span v-text="genco.description"></span>
           </div>
         </div>
       </div>
@@ -52,10 +52,10 @@
       <div v-for="disco in discos">
         <div class="table__cell">
           <div class="table__cell__name">
-            {{ disco.name }}
+            <span v-text="disco.name"></span>
           </div>
           <div class="table__cell__description">
-            {{ disco.description }}
+            <span v-text="disco.description"></span>
           </div>
         </div>
       </div>

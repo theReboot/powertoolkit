@@ -756,6 +756,7 @@ OTHER
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  margin-bottom: 2rem;
 
   @include mobile {
     flex-direction: column;
@@ -779,4 +780,15 @@ OTHER
 .table__cell--header {
   background: $yellow;
   color: $black;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.table__cell__name {
+  font-weight: 700;
+}
+
+.table__cell__description {
+  font-size: 14px;
+  opacity: .5;
 }

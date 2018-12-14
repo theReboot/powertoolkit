@@ -550,6 +550,10 @@ header {
     color: #fff;
     text-decoration: none; }
 
+.topNav__item a:link, .topNav__item a:active, .topNav__item a:visited {
+  color: #fff;
+  text-decoration: none; }
+
 .topNav__item--active::before {
   width: 100%; }
 

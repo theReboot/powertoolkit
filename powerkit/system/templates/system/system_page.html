@@ -13,6 +13,63 @@
 </div>
 </section>
 <section>
+  <h2>System Map</h2>
+  <div class="table table--3col" id="v-system-table">
+    <div class="table__column">
+      <div class="table__cell table__cell--header">
+        Agencies
+      </div>
+      <div v-for="agency in agencies">
+        <div class="table__cell">
+          <div class="table__cell__name">
+            <span v-text="agency.name"></span>
+          </div>
+          <div class="table__cell__description">
+            <span v-text="agency.description"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="table__column">
+      <div class="table__cell table__cell--header">
+        Gencos
+      </div>
+      <div v-for="genco in gencos">
+        <div class="table__cell">
+          <div class="table__cell__name">
+            <span v-text="genco.name"></span>
+          </div>
+          <div class="table__cell__description">
+            <span v-text="genco.description"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="table__column">
+      <div class="table__cell table__cell--header">
+        Discos
+      </div>
+      <div v-for="disco in discos">
+        <div class="table__cell">
+          <div class="table__cell__name">
+            <span v-text="disco.name"></span>
+          </div>
+          <div class="table__cell__description">
+            <span v-text="disco.description"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="flexGrid">
+    <div class="col-2-3">
+      <p>Agencies are cumulatively tasked with the responsibility of regulating, standardizing, growing, expanding and stabilizing the power sector as stipulated by the policies establishing them, their functions are distinct, however in some cases, these functions overlap.</p>
+      <p>Generating companies basically generate electricity in Nigeria, today referred to as Gencos, there are 23 of them managing the grid-connected power plants. In Nigeria today, the primary sources of electricity generations are thermal, hydroelectric and gas.</p>
+      <p>There are 11 Distribution Companies generally referred to as Discos, that distribute electricity to homes and industries in all l 36 states in Nigeria. The came into being following the Power Sector Reform Act of 2005 which called for unbundling of the PHCN and paving the way to privatization.</p>
+    </div>
+  </div>
+</section>
+<section>
   <h2>Resources</h2>
   <div class="flexGrid">
     <div class="col">
@@ -45,3 +102,8 @@
   </div>
 </section>
 {% endblock content %}
+
+{% block js %}
+<script src="{% static 'js/vue.min.js' %}"></script>
+<script src="{% static 'js/system.js' %}"></script>
+{% endblock js %}

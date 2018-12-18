@@ -347,6 +347,16 @@ header {
   }
 }
 
+// This targets dropdown menu items
+.topNav__item a {
+  &:link,
+  &:active,
+  &:visited {
+    color: #fff;
+    text-decoration: none;
+  }
+}
+
 .topNav__item--active {
   &::before {
     width: 100%;
@@ -747,4 +757,48 @@ OTHER
   a {
     color: $white;
   }
+}
+
+// tables
+
+.table {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+
+  @include mobile {
+    flex-direction: column;
+  }
+}
+
+.table--3col .table__column {
+  width: 30%;
+  width: calc(33% - #{$colGutter}*2/3);
+
+  @include mobile {
+    width: 100%;
+  }
+}
+
+.table__cell {
+  padding: 1rem;
+  border-bottom: 1px solid $white;
+}
+
+.table__cell--header {
+  background: $yellow;
+  color: $black;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.table__cell__name {
+  font-weight: 700;
+}
+
+.table__cell__description {
+  font-size: 14px;
+  opacity: .5;
 }

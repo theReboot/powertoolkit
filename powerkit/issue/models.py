@@ -4,6 +4,7 @@ from django.conf import settings
 
 from modelcluster.fields import ParentalKey
 
+from wagtail.core.fields import RichTextField
 from wagtail.core.models import Page, Orderable
 from wagtail.admin.edit_handlers import FieldPanel, InlinePanel
 from wagtail.images.edit_handlers import ImageChooserPanel
@@ -36,7 +37,8 @@ class IssuePage(Page):
         on_delete=models.SET_NULL,
         related_name='+'
     )
-    key_players = models.TextField(blank=True, null=True)
+    #key_players = models.TextField(blank=True, null=True)
+    key_players = RichTextField(null=True, blank=True)
     player_image = models.ForeignKey(
         "wagtailimages.Image",
         null=True,
@@ -44,7 +46,8 @@ class IssuePage(Page):
         on_delete=models.SET_NULL,
         related_name='+'
     )
-    policy_background = models.TextField(blank=True, null=True)
+    #policy_background = models.TextField(blank=True, null=True)
+    policy_background = RichTextField(null=True, blank=True)
     policy_image = models.ForeignKey(
         "wagtailimages.Image",
         null=True,

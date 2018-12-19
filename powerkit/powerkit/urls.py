@@ -25,12 +25,14 @@ from wagtail.documents import urls as wagtaildocs_urls
 from wagtail.core import urls as wagtail_urls
 
 from stats import views as stat_views
+from system import views as system_views
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('stats/chart/<int:year>/', stat_views.get_data),
     path('stats/download/<int:year>/', stat_views.download),
+    path('system/data/', system_views.get_data),
     #path(
     #    'stats/',
     #    TemplateView.as_view(template_name='stats.html'),

@@ -16,9 +16,11 @@ class StatsPage(Page):
 @register_snippet
 class Disco(models.Model):
     name = models.CharField(max_length=100)
+    location = models.CharField(max_length=100, blank=True, null=True)
 
     panels = [
         FieldPanel('name'),
+        FieldPanel('location'),
     ]
 
     def __str__(self):

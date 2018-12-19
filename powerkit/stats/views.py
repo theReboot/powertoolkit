@@ -10,7 +10,7 @@ def get_data(request, year):
     out = [
         {
             'id': status.id,
-            'disco': status.disco.name,
+            'disco': status.disco.location,
             'total': status.total_customers,
             'metered': status.metered_customers,
             'year': status.year
@@ -27,7 +27,7 @@ def download(request, year):
         perc = status.metered_customers * 100 // status.total_customers
         line = [
             idx + 1,
-            status.disco.name.upper(),
+            status.disco.location.upper(),
             status.total_customers,
             status.metered_customers,
             gap,

@@ -1,0 +1,317 @@
+[
+{
+    "model": "stats.statspage",
+    "pk": 7,
+    "fields": {
+        "intro": "Introductory text for the stats page goes here. It could be about two to three sentences, but this example will just be two."
+    }
+},
+{
+    "model": "stats.disco",
+    "pk": 1,
+    "fields": {
+        "name": "AEDC",
+        "location": "Abuja"
+    }
+},
+{
+    "model": "stats.disco",
+    "pk": 2,
+    "fields": {
+        "name": "BEDC",
+        "location": "Benin"
+    }
+},
+{
+    "model": "stats.disco",
+    "pk": 3,
+    "fields": {
+        "name": "EKEDP",
+        "location": "Eko"
+    }
+},
+{
+    "model": "stats.disco",
+    "pk": 4,
+    "fields": {
+        "name": "Enugu Disco",
+        "location": "Enugu"
+    }
+},
+{
+    "model": "stats.disco",
+    "pk": 5,
+    "fields": {
+        "name": "IBEDC",
+        "location": "Ibadan"
+    }
+},
+{
+    "model": "stats.disco",
+    "pk": 6,
+    "fields": {
+        "name": "Ikeja Disco",
+        "location": "Ikeja"
+    }
+},
+{
+    "model": "stats.disco",
+    "pk": 7,
+    "fields": {
+        "name": "JEDC",
+        "location": "Jos"
+    }
+},
+{
+    "model": "stats.disco",
+    "pk": 8,
+    "fields": {
+        "name": "Kaduna Electric",
+        "location": "Kaduna"
+    }
+},
+{
+    "model": "stats.disco",
+    "pk": 9,
+    "fields": {
+        "name": "KEDCO",
+        "location": "Kano"
+    }
+},
+{
+    "model": "stats.disco",
+    "pk": 10,
+    "fields": {
+        "name": "PHED",
+        "location": "Port-Harcourt"
+    }
+},
+{
+    "model": "stats.disco",
+    "pk": 11,
+    "fields": {
+        "name": "YEDC",
+        "location": "Yola"
+    }
+},
+{
+    "model": "stats.meteringstatus",
+    "pk": 1,
+    "fields": {
+        "disco": 1,
+        "total_customers": 826929,
+        "metered_customers": 450041,
+        "year": 2017
+    }
+},
+{
+    "model": "stats.meteringstatus",
+    "pk": 2,
+    "fields": {
+        "disco": 2,
+        "total_customers": 774226,
+        "metered_customers": 535953,
+        "year": 2017
+    }
+},
+{
+    "model": "stats.meteringstatus",
+    "pk": 3,
+    "fields": {
+        "disco": 3,
+        "total_customers": 442201,
+        "metered_customers": 268558,
+        "year": 2017
+    }
+},
+{
+    "model": "stats.meteringstatus",
+    "pk": 4,
+    "fields": {
+        "disco": 4,
+        "total_customers": 809829,
+        "metered_customers": 224445,
+        "year": 2017
+    }
+},
+{
+    "model": "stats.meteringstatus",
+    "pk": 5,
+    "fields": {
+        "disco": 5,
+        "total_customers": 1474364,
+        "metered_customers": 609604,
+        "year": 2017
+    }
+},
+{
+    "model": "stats.meteringstatus",
+    "pk": 6,
+    "fields": {
+        "disco": 6,
+        "total_customers": 835736,
+        "metered_customers": 467758,
+        "year": 2017
+    }
+},
+{
+    "model": "stats.meteringstatus",
+    "pk": 7,
+    "fields": {
+        "disco": 7,
+        "total_customers": 384691,
+        "metered_customers": 187415,
+        "year": 2017
+    }
+},
+{
+    "model": "stats.meteringstatus",
+    "pk": 8,
+    "fields": {
+        "disco": 8,
+        "total_customers": 641582,
+        "metered_customers": 238901,
+        "year": 2017
+    }
+},
+{
+    "model": "stats.meteringstatus",
+    "pk": 9,
+    "fields": {
+        "disco": 9,
+        "total_customers": 472453,
+        "metered_customers": 162664,
+        "year": 2017
+    }
+},
+{
+    "model": "stats.meteringstatus",
+    "pk": 10,
+    "fields": {
+        "disco": 10,
+        "total_customers": 488600,
+        "metered_customers": 237188,
+        "year": 2017
+    }
+},
+{
+    "model": "stats.meteringstatus",
+    "pk": 11,
+    "fields": {
+        "disco": 11,
+        "total_customers": 293478,
+        "metered_customers": 69282,
+        "year": 2017
+    }
+},
+{
+    "model": "stats.meteringstatus",
+    "pk": 12,
+    "fields": {
+        "disco": 1,
+        "total_customers": 1591677,
+        "metered_customers": 527900,
+        "year": 2018
+    }
+},
+{
+    "model": "stats.meteringstatus",
+    "pk": 13,
+    "fields": {
+        "disco": 2,
+        "total_customers": 888143,
+        "metered_customers": 548261,
+        "year": 2018
+    }
+},
+{
+    "model": "stats.meteringstatus",
+    "pk": 14,
+    "fields": {
+        "disco": 3,
+        "total_customers": 496442,
+        "metered_customers": 222344,
+        "year": 2018
+    }
+},
+{
+    "model": "stats.meteringstatus",
+    "pk": 15,
+    "fields": {
+        "disco": 4,
+        "total_customers": 938311,
+        "metered_customers": 429623,
+        "year": 2018
+    }
+},
+{
+    "model": "stats.meteringstatus",
+    "pk": 16,
+    "fields": {
+        "disco": 5,
+        "total_customers": 1693346,
+        "metered_customers": 669105,
+        "year": 2018
+    }
+},
+{
+    "model": "stats.meteringstatus",
+    "pk": 17,
+    "fields": {
+        "disco": 6,
+        "total_customers": 910465,
+        "metered_customers": 447299,
+        "year": 2018
+    }
+},
+{
+    "model": "stats.meteringstatus",
+    "pk": 18,
+    "fields": {
+        "disco": 7,
+        "total_customers": 486580,
+        "metered_customers": 170409,
+        "year": 2018
+    }
+},
+{
+    "model": "stats.meteringstatus",
+    "pk": 19,
+    "fields": {
+        "disco": 8,
+        "total_customers": 543654,
+        "metered_customers": 136037,
+        "year": 2018
+    }
+},
+{
+    "model": "stats.meteringstatus",
+    "pk": 20,
+    "fields": {
+        "disco": 9,
+        "total_customers": 508943,
+        "metered_customers": 126539,
+        "year": 2018
+    }
+},
+{
+    "model": "stats.meteringstatus",
+    "pk": 21,
+    "fields": {
+        "disco": 10,
+        "total_customers": 524255,
+        "metered_customers": 355205,
+        "year": 2018
+    }
+},
+{
+    "model": "stats.meteringstatus",
+    "pk": 22,
+    "fields": {
+        "disco": 11,
+        "total_customers": 346342,
+        "metered_customers": 71580,
+        "year": 2018
+    }
+}
+]

@@ -1,0 +1,455 @@
+[
+{
+    "model": "system.systempage",
+    "pk": 6,
+    "fields": {
+        "intro": "Introductory text for the system page goes here. It could be about two to three sentences, but this example will just be two."
+    }
+},
+{
+    "model": "system.agency",
+    "pk": 1,
+    "fields": {
+        "name": "NBET",
+        "description": "Purchases electricity from GenCo's through Power Purchase Agreements (PPAs); and uses Vesting contracts to resell to Distribution Companies and other large general service customers who take electricity from the transmission system."
+    }
+},
+{
+    "model": "system.agency",
+    "pk": 2,
+    "fields": {
+        "name": "NEMSA",
+        "description": "Ensures safety standards in all electrical installations and  the Nigerian Electricity Supply Industry (NESI)"
+    }
+},
+{
+    "model": "system.agency",
+    "pk": 3,
+    "fields": {
+        "name": "REA",
+        "description": "An implementation agency tasked with the electrification of rural and unserved communities in Nigeria"
+    }
+},
+{
+    "model": "system.agency",
+    "pk": 4,
+    "fields": {
+        "name": "TCN",
+        "description": "Licensed to transmit electricity, conduct system operations and ring fenced electricity trading."
+    }
+},
+{
+    "model": "system.agency",
+    "pk": 5,
+    "fields": {
+        "name": "NERC",
+        "description": "Independent body, established by the Electric Power Sector Reform Act of 2005 to undertake the technical and economic regulation of the Nigerian Electricity Supply Industry."
+    }
+},
+{
+    "model": "system.agency",
+    "pk": 6,
+    "fields": {
+        "name": "NELMCO",
+        "description": "Provides investor confidence that investments in PHCN Successor Companies(SCs) will be free of encumbrances from possible future litigations arising from legacy debts, staff pensions, suppliers and third party liabilities."
+    }
+},
+{
+    "model": "system.agency",
+    "pk": 7,
+    "fields": {
+        "name": "NDPHC",
+        "description": "A government initiative, incorporated to manage the National Integrated Power Project (NIPP) with a goal to stabilizing Nigeria\u2019s electricity supply system"
+    }
+},
+{
+    "model": "system.gencotype",
+    "pk": 1,
+    "fields": {
+        "name": "Gas Turbine"
+    }
+},
+{
+    "model": "system.gencotype",
+    "pk": 2,
+    "fields": {
+        "name": "Gas Fired Steam Turbine"
+    }
+},
+{
+    "model": "system.gencotype",
+    "pk": 3,
+    "fields": {
+        "name": "Gas and Thermal Turbine"
+    }
+},
+{
+    "model": "system.gencotype",
+    "pk": 4,
+    "fields": {
+        "name": "Hydro-electric"
+    }
+},
+{
+    "model": "system.location",
+    "pk": 1,
+    "fields": {
+        "name": "Egbin, Lagos State"
+    }
+},
+{
+    "model": "system.location",
+    "pk": 2,
+    "fields": {
+        "name": "Aba, Abia State"
+    }
+},
+{
+    "model": "system.location",
+    "pk": 3,
+    "fields": {
+        "name": "Abia State"
+    }
+},
+{
+    "model": "system.location",
+    "pk": 4,
+    "fields": {
+        "name": "Rivers State"
+    }
+},
+{
+    "model": "system.location",
+    "pk": 5,
+    "fields": {
+        "name": "Lagos State"
+    }
+},
+{
+    "model": "system.location",
+    "pk": 6,
+    "fields": {
+        "name": "Imo State"
+    }
+},
+{
+    "model": "system.location",
+    "pk": 7,
+    "fields": {
+        "name": "Kogi State"
+    }
+},
+{
+    "model": "system.location",
+    "pk": 8,
+    "fields": {
+        "name": "Ikot Abasi, Akwa Ibom State"
+    }
+},
+{
+    "model": "system.location",
+    "pk": 9,
+    "fields": {
+        "name": "Benin City, Edo State"
+    }
+},
+{
+    "model": "system.location",
+    "pk": 10,
+    "fields": {
+        "name": "Calabar, Cross Rivers State"
+    }
+},
+{
+    "model": "system.location",
+    "pk": 11,
+    "fields": {
+        "name": "Okpai, Delta State"
+    }
+},
+{
+    "model": "system.location",
+    "pk": 12,
+    "fields": {
+        "name": "Ogun State"
+    }
+},
+{
+    "model": "system.location",
+    "pk": 13,
+    "fields": {
+        "name": "Omotosho, Ondo State"
+    }
+},
+{
+    "model": "system.location",
+    "pk": 14,
+    "fields": {
+        "name": "Sapele, Delta State"
+    }
+},
+{
+    "model": "system.location",
+    "pk": 15,
+    "fields": {
+        "name": "Ughelli, Delta State"
+    }
+},
+{
+    "model": "system.location",
+    "pk": 16,
+    "fields": {
+        "name": "Niger State"
+    }
+},
+{
+    "model": "system.genco",
+    "pk": 1,
+    "fields": {
+        "name": "AES",
+        "kind": 1,
+        "capacity": 270,
+        "location": 1
+    }
+},
+{
+    "model": "system.genco",
+    "pk": 2,
+    "fields": {
+        "name": "Aba Power Station",
+        "kind": 1,
+        "capacity": 140,
+        "location": 2
+    }
+},
+{
+    "model": "system.genco",
+    "pk": 3,
+    "fields": {
+        "name": "Afam Power Station VI",
+        "kind": 1,
+        "capacity": 624,
+        "location": 4
+    }
+},
+{
+    "model": "system.genco",
+    "pk": 4,
+    "fields": {
+        "name": "Afam Power Station (IV-V)",
+        "kind": 1,
+        "capacity": 726,
+        "location": 4
+    }
+},
+{
+    "model": "system.genco",
+    "pk": 5,
+    "fields": {
+        "name": "Alaoji Power Station",
+        "kind": 1,
+        "capacity": 1074,
+        "location": 3
+    }
+},
+{
+    "model": "system.genco",
+    "pk": 6,
+    "fields": {
+        "name": "Egbin Thermal Power Station",
+        "kind": 2,
+        "capacity": 1320,
+        "location": 1
+    }
+},
+{
+    "model": "system.genco",
+    "pk": 7,
+    "fields": {
+        "name": "Egbema Power Station",
+        "kind": 1,
+        "capacity": 338,
+        "location": 6
+    }
+},
+{
+    "model": "system.genco",
+    "pk": 8,
+    "fields": {
+        "name": "Geregu I Power Station",
+        "kind": 1,
+        "capacity": 414,
+        "location": 7
+    }
+},
+{
+    "model": "system.genco",
+    "pk": 9,
+    "fields": {
+        "name": "Geregu NIPP",
+        "kind": 1,
+        "capacity": 434,
+        "location": 7
+    }
+},
+{
+    "model": "system.genco",
+    "pk": 10,
+    "fields": {
+        "name": "Ibom Power Stattion",
+        "kind": 1,
+        "capacity": 190,
+        "location": 8
+    }
+},
+{
+    "model": "system.genco",
+    "pk": 11,
+    "fields": {
+        "name": "Ihovbor Power Station NIPP",
+        "kind": 1,
+        "capacity": 450,
+        "location": 9
+    }
+},
+{
+    "model": "system.genco",
+    "pk": 12,
+    "fields": {
+        "name": "Odukpani Power Station",
+        "kind": 1,
+        "capacity": 561,
+        "location": 10
+    }
+},
+{
+    "model": "system.genco",
+    "pk": 13,
+    "fields": {
+        "name": "Okpai  Power Station",
+        "kind": 1,
+        "capacity": 480,
+        "location": 11
+    }
+},
+{
+    "model": "system.genco",
+    "pk": 14,
+    "fields": {
+        "name": "Olorunsogo Power Station",
+        "kind": 1,
+        "capacity": 336,
+        "location": 12
+    }
+},
+{
+    "model": "system.genco",
+    "pk": 15,
+    "fields": {
+        "name": "Olorunsogo II Power Station NIPP",
+        "kind": 1,
+        "capacity": 675,
+        "location": 12
+    }
+},
+{
+    "model": "system.genco",
+    "pk": 16,
+    "fields": {
+        "name": "Omoku Power Station",
+        "kind": 1,
+        "capacity": 150,
+        "location": 4
+    }
+},
+{
+    "model": "system.genco",
+    "pk": 17,
+    "fields": {
+        "name": "Omoku II Power Station NIPP",
+        "kind": 1,
+        "capacity": 225,
+        "location": 4
+    }
+},
+{
+    "model": "system.genco",
+    "pk": 18,
+    "fields": {
+        "name": "Omotosho I Power Station",
+        "kind": 1,
+        "capacity": 336,
+        "location": 13
+    }
+},
+{
+    "model": "system.genco",
+    "pk": 19,
+    "fields": {
+        "name": "Omotosho II Power Station NIPP",
+        "kind": 1,
+        "capacity": 450,
+        "location": 13
+    }
+},
+{
+    "model": "system.genco",
+    "pk": 20,
+    "fields": {
+        "name": "Sapele Power Station",
+        "kind": 3,
+        "capacity": 1020,
+        "location": 14
+    }
+},
+{
+    "model": "system.genco",
+    "pk": 21,
+    "fields": {
+        "name": "Sapele II Power Station NIPP",
+        "kind": 1,
+        "capacity": 450,
+        "location": 14
+    }
+},
+{
+    "model": "system.genco",
+    "pk": 22,
+    "fields": {
+        "name": "Transcorp Ughelli Power Station",
+        "kind": 1,
+        "capacity": 900,
+        "location": 15
+    }
+},
+{
+    "model": "system.genco",
+    "pk": 23,
+    "fields": {
+        "name": "Jebba Power Station",
+        "kind": 4,
+        "capacity": 540,
+        "location": 16
+    }
+},
+{
+    "model": "system.genco",
+    "pk": 24,
+    "fields": {
+        "name": "Kainji Power Station",
+        "kind": 4,
+        "capacity": 800,
+        "location": 16
+    }
+},
+{
+    "model": "system.genco",
+    "pk": 25,
+    "fields": {
+        "name": "Shiroro Power Station",
+        "kind": 4,
+        "capacity": 600,
+        "location": 16
+    }
+}
+]

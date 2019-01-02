@@ -881,7 +881,8 @@ OTHER
 
 .table__column {
   max-height: 500px;
-  overflow: scroll; }
+  overflow: scroll;
+  background: rgba(255, 255, 255, 0.2); }
   @media (max-width: 500px) {
     .table__column {
       max-height: none; } }

@@ -791,6 +791,7 @@ OTHER
 .table__column {
   max-height: 500px;
   overflow: scroll;
+  background: rgba(255,255,255,.2);
 
   @include mobile {
     max-height: none;

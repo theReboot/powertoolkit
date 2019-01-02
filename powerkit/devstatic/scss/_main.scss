@@ -759,6 +759,21 @@ OTHER
   }
 }
 
+.illustration { // used for system illustraion SVGs
+  margin: 0 2rem;
+}
+
+.smoke--animated {
+  animation: moveSmoke 4s infinite linear;
+  opacity: .6;
+}
+
+@keyframes moveSmoke {
+  to {
+    transform: translateY(-52px);
+  }
+}
+
 // tables
 
 .table {

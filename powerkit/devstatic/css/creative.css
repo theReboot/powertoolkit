@@ -851,6 +851,24 @@ OTHER
   .pagination a {
     color: #fff; }
 
+.illustration {
+  margin: 0 2rem; }
+
+.smoke--animated {
+  -webkit-animation: moveSmoke 4s infinite linear;
+          animation: moveSmoke 4s infinite linear;
+  opacity: .6; }
+
+@-webkit-keyframes moveSmoke {
+  to {
+    -webkit-transform: translateY(-52px);
+            transform: translateY(-52px); } }
+
+@keyframes moveSmoke {
+  to {
+    -webkit-transform: translateY(-52px);
+            transform: translateY(-52px); } }
+
 .table {
   width: 100%;
   display: flex;

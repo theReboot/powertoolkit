@@ -14,12 +14,50 @@
         {% image page.featured_image original %}
     </div>
     <div class="col-2-3">
-    <h1>{{page.title}}</h1>
+    <div class="h1__preHeading"></div>
+    <h1 class="h1__smaller">Training</h1>
     <p class="introSentence introSentence--border">
         {{ page.intro }}
     </p>
     </div>
 </section>
+<section>
+    <h2>{{page.title}}</h2>
+    <div class="flexGrid">
+        <div class="col">
+            {{page.description|richtext}}
+        </div>
+        <div class="col">
+            <div class="col-2-3">
+                <div class="flexGrid">
+                    <div class="col">
+                        <p>
+                            Class Instructor:
+                        <br />
+                        <strong>{{page.instructor}}</strong></p>
+                    </div>
+                    <div class="col">
+                        <p>
+                            Course Duration:
+                        <br />
+                        <strong>{{duration}} hours</strong></p>
+                    </div>
+                </div>
+                <div class="flexGrid">
+                    <div class="col">
+                        <p>Audience: <br />
+                        <strong>{{page.audience}}</strong>
+                        </p>
+                    </div>
+                </div>
+                <div>
+                    <button class="btn">Start Training</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 <section>
   <div>
         <ol>

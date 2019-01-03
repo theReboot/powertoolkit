@@ -8,6 +8,9 @@ from wagtail.images.edit_handlers import ImageChooserPanel
 
 class LearningIndex(Page):
     intro = models.TextField(null=True, blank=True)
+    description = RichTextField(blank=True, null=True)
+    instructor = models.CharField(max_length=200, blank=True)
+    audience = models.TextField(null=True, blank=True)
     featured_image = models.ForeignKey(
         'wagtailimages.Image',
         null=True,
@@ -20,10 +23,14 @@ class LearningIndex(Page):
         context = super().get_context(request)
         learning_pages = LearningPage.objects.child_of(self).live()
         context['modules'] = learning_pages
+        context['duration'] = sum(pg.duration for pg in learning_pages)
         return context
 
     content_panels = Page.content_panels + [
         FieldPanel('intro', classname='full'),
+        FieldPanel('instructor'),
+        FieldPanel('audience', classname='full'),
+        FieldPanel('description', classname='full'),
         ImageChooserPanel('featured_image'),
     ]
 
@@ -33,6 +40,7 @@ class LearningIndex(Page):
 class LearningPage(Page):
     outline = models.TextField(null=True, blank=True)
     goals = RichTextField(null=True, blank=True)
+    duration = models.PositiveIntegerField(default=0)
 
     def get_context(self, request):
         context = super().get_context(request)
@@ -41,7 +49,8 @@ class LearningPage(Page):
         return context
 
     content_panels = Page.content_panels + [
-        FieldPanel('outline'),
+        FieldPanel('outline', classname='full'),
+        FieldPanel('duration'),
         FieldPanel('goals'),
     ]
 

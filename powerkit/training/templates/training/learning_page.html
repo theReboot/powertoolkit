@@ -1,4 +1,4 @@
-{% extends "training/base.html" %}
+{% extends "base.html" %}
 {% load staticfiles %}
 {% load wagtailcore_tags %}
 
@@ -13,7 +13,7 @@
     </p>
     <h3>Goals</h3>
     <p>
-        {{ page.goals|richtext }}
+        {{ page.body|richtext }}
     </p>
     <h3>Sessions</h3>
     <ol>

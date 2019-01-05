@@ -21,7 +21,8 @@ class LearningIndex(Page):
 
     def get_context(self, request):
         context = super().get_context(request)
-        learning_pages = LearningPage.objects.child_of(self).live()
+        learning_pages = LearningPage.objects.child_of(self).order_by(
+            'placement').live()
         context['modules'] = learning_pages
         context['duration'] = sum(pg.duration for pg in learning_pages)
         return context
@@ -41,6 +42,7 @@ class LearningPage(Page):
     outline = models.TextField(null=True, blank=True)
     goals = RichTextField(null=True, blank=True)
     duration = models.PositiveIntegerField(default=0)
+    placement = models.PositiveIntegerField(default=1)
 
     def get_context(self, request):
         context = super().get_context(request)
@@ -52,6 +54,7 @@ class LearningPage(Page):
         FieldPanel('outline', classname='full'),
         FieldPanel('duration'),
         FieldPanel('goals'),
+        FieldPanel('placement'),
     ]
 
     parent_page_types = ['training.LearningIndex']

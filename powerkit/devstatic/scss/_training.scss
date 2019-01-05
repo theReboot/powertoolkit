@@ -1,0 +1,65 @@
+#learning-index-section {
+  .container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    .list {
+      width: 66%;
+      .row {
+        display: flex;
+        padding: 1em;
+        flex-direction: row;
+        justify-content: space-evenly;
+        font-family: Roboto;
+        border-bottom: 1px solid $white;
+        .placement {
+          font-size: 134px;
+          font-weight: bold;
+          text-align: center;
+          letter-spacing: -0.1em;
+          padding: 0.2em;
+        }
+        .content {
+          justify-content: center;
+          flex-direction: column;
+          vertical-align: middle;
+          display: flex;
+          padding: 0.2em;
+          .title {
+            font-size: 34px;
+            line-height: normal;
+            font-weight: bold;
+            a {
+              color: $white;
+              text-decoration: none;
+            }
+          }
+          .body {
+            font-size: 18px;
+            line-height: 25px;
+            font-weight: normal;
+          }
+        }
+        .status {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          .fa-check {
+            color: $yellow;
+          }
+        }
+      }
+    }
+  }
+}
+
+button {
+  background-color: $yellow;
+  margin: 2rem;
+  padding: 1em;
+  font-family: Roboto;
+  font-weight: bold;
+  color: $white;
+  font-size: 15px;
+}

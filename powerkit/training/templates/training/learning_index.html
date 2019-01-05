@@ -2,6 +2,9 @@
 {% load staticfiles %}
 {% load wagtailcore_tags %}
 {% load wagtailimages_tags %}
+{% block css %}
+    <link href="{% static 'vendor/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" />
+{% endblock css %}
 
 {% load staticfiles %}
 
@@ -51,21 +54,30 @@
                     </div>
                 </div>
                 <div>
-                    <button class="btn">Start Training</button>
+                    <button class="button">Start Training</button>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<section>
-  <div>
-        <ol>
-    {% for module in modules %}
-        <li><p><a href="{% pageurl module %}">{{module.title}}</a></p>
-        <p>{{module.outline}}</p></li>
-    {% endfor %}
-        </ol>
+<section id="learning-index-section">
+  <div class="container">
+    <div class="list">
+        {% for module in modules %}
+            <div class="row">
+                <div class="placement">{{module.placement}}</div>
+                <div class="content">
+                    <div class="title"><a href="{% pageurl module %}">{{module.title}}</a></div>
+                    <div class="body">{{module.outline}}</div>
+                </div>
+                <div class="status">
+                    <i class="fa fa-check fa-3x text-danger"></i>
+                    Completed
+                </div>
+            </div>
+        {% endfor %}
+    </div>
   </div>
 </section>
 

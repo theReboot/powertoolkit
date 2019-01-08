@@ -984,10 +984,11 @@ a.btn {
         #learning-index-section .container .list .row .status .fa-check {
           color: #cdcf60; }
 
-button {
+#learning-index-section a.button {
   background-color: #cdcf60;
-  margin: 2rem;
+  margin-top: 5em;
   padding: 1em;
+  text-decoration: none;
   font-family: Roboto;
   font-weight: bold;
   color: #fff;

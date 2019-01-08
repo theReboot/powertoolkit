@@ -11,7 +11,7 @@
 {% block title %}Powerkit Learning{% endblock title %}
 
 {% block content %}
-
+<div id="learning-index-section">
  <section>
     <div class="featuredImage">
         {% image page.featured_image original %}
@@ -54,14 +54,14 @@
                     </div>
                 </div>
                 <div>
-                    <button class="button">Start Training</button>
+                    <a href="#" class="button">Start Training</a>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<section id="learning-index-section">
+<section>
   <div class="container">
     <div class="list">
         {% for module in modules %}
@@ -80,5 +80,6 @@
     </div>
   </div>
 </section>
+</div>
 
 {% endblock content %}

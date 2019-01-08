@@ -52,14 +52,14 @@
       }
     }
   }
-}
-
-button {
-  background-color: $yellow;
-  margin: 2rem;
-  padding: 1em;
-  font-family: Roboto;
-  font-weight: bold;
-  color: $white;
-  font-size: 15px;
+  a.button {
+    background-color: $yellow;
+    margin-top: 5em;
+    padding: 1em;
+    text-decoration: none;
+    font-family: Roboto;
+    font-weight: bold;
+    color: $white;
+    font-size: 15px;
+  }
 }

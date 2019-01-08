@@ -74,7 +74,13 @@ The sass files are in `powertoolkit/powerkit/devstatic/scss/`
 The css files are in `powertoolkit/powerkit/devstatic/css/`
 
 
-Log on to the Content Management Site:
---------------------------------------
+Go to the Site
+--------------
 
-Go to `http://localhost:8000` and login with your username and password 
+Go to `http://localhost:8000` 
+
+
+Content Management System
+=========================
+
+The application uses Wagtail (https://wagtail.io/) for content management.

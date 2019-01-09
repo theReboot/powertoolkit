@@ -12,27 +12,35 @@
     <p>
         {{ page.outline }}
     </p>
-    <h3>Content</h3>
-    <p>
-        {{ page.body|richtext }}
-    </p>
-    <ol>
+    
     {% for session in module_sessions %}
-     <li><p><a href="{% pageurl session %}">{{session.title}}</a></p></li>
+      <h3>{{session.title}}</h3>
+      {{session.body|richtext}}
     {% endfor %}
-    </ol>
     </div>
     <nav class="sessionNav">
       <div class="sessionNav__controls">
-        <div class="sessionNav__controls__button sessionNav__controls__button--previous">
-          <a href="#">Previous</a>
-        </div>
+          {% if module_sessions.has_previous %}
+            <div class="sessionNav__controls__button sessionNav__controls__button--next">
+              <a href="?page={{ module_sessions.previous_page_number }}">Previous</a>
+            </div>
+          {% else %}
+            <div class="sessionNav__controls__button sessionNav__controls__button--previous">
+              <a href="#">Start</a>
+            </div>
+          {% endif %}
         <div class="sessionNav__controls__status">
-          1/8
+          {{ module_sessions.number }}/{{ module_sessions.paginator.num_pages }}
         </div>
-        <div class="sessionNav__controls__button sessionNav__controls__button--next">
-          <a href="#">Next</a>
-        </div>
+        {% if module_sessions.has_next %}
+            <div class="sessionNav__controls__button sessionNav__controls__button--next">
+              <a href="?page={{ module_sessions.next_page_number }}">Next</a>
+            </div>
+          {% else %}
+            <div class="sessionNav__controls__button sessionNav__controls__button--previous">
+              <a href="#">End</a>
+            </div>
+          {% endif %}
       </div>
     </nav>
 </section>

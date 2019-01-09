@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.paginator import Paginator
 
 from wagtail.core.models import Page
 from wagtail.core.fields import RichTextField
@@ -48,7 +49,12 @@ class LearningPage(Page):
     def get_context(self, request):
         context = super().get_context(request)
         learning_sessions = LearningSessionPage.objects.child_of(self).live()
-        context['module_sessions'] = learning_sessions
+
+        #pagination
+        paginator = Paginator(learning_sessions, 1)
+        page = request.GET.get('page', 1)
+        context['module_sessions'] = paginator.get_page(page)
+
         return context
 
     content_panels = Page.content_panels + [

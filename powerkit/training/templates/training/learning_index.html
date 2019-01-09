@@ -28,87 +28,105 @@
             {{page.description|richtext}}
         </div>
         <div class="col">
-            <div class="col-2-3">
-                <div class="flexGrid">
-                    <div class="col">
-                        <p>
-                          <span class="label">
-                            Class Instructor:
-                          </span>
-                        <br />
-                        <strong>{{page.instructor}}</strong></p>
-                    </div>
-                    <div class="col">
-                        <p>
-                          <span class="label">
-                            Course Duration:
-                          </span>
-                        <br />
-                        <strong>{{duration}} hours</strong></p>
-                    </div>
-                </div>
-                <div class="flexGrid">
-                    <div class="col">
-                        <p>
-                          <span class="label">
-                            Audience:
-                          </span>
-                          <br />
-                          <strong>{{page.audience}}</strong>
-                        </p>
-                    </div>
-                </div>
+          <div class="flexGrid">
+              <div class="col">
+                  <p>
+                    <span class="label">
+                      Class Instructor:
+                    </span>
+                  <br />
+                  <strong>{{page.instructor}}</strong></p>
+              </div>
+              <div class="col">
+                  <p>
+                    <span class="label">
+                      Course Duration:
+                    </span>
+                  <br />
+                  <strong>{{duration}} hours</strong></p>
+              </div>
+          </div>
+          <div class="flexGrid">
+              <div class="col">
+                  <p>
+                    <span class="label">
+                      Audience:
+                    </span>
+                    <br />
+                    <strong>{{page.audience}}</strong>
+                  </p>
+              </div>
+          </div>
 
-                {% if user.is_authenticated %}
-                <div class="userDashboard">
-                  <div class="userDashboard__welcome">
-                    Welcome {{ user.first_name }}!
-                  </div>
-                </div>
-
-                <div class="flexGrid">
-                    <div class="col">
-                        <a href="#" class="button">
-                          Continue Training
-                        </a>
-                    </div>
-                    <div class="col">
-                        <a href="{% url 'logout' %}" class="button button--secondary"><i class="key"> Log out</i></a>
-                    </div>
-                </div>
-                <!-- Understanding investigate journalism -->
-                <div class="meter">
-                   <span style="width: 25%"></span>
-                </div>
-                25% Complete
-                {% else %}
-                <div class="flexGrid">
-                    <div class="col">
-                        <a href="{% url 'login' %}" class="button">Login to Start Training</a>
-                    </div>
-                </div>
-                {% endif %}
+          {% if user.is_authenticated %}
+          <div class="userDashboard">
+            <div class="userDashboard__welcome">
+              Welcome {{ user.first_name }}!
             </div>
+          </div>
+
+          <div class="flexGrid">
+              <div class="col">
+                  <a href="#" class="button">
+                    Continue training
+                  </a>
+              </div>
+              <div class="col">
+                  <a href="{% url 'logout' %}" class="button button--secondary"><i class="key"> Log out</i></a>
+              </div>
+          </div>
+          <!-- Understanding investigate journalism -->
+          <div class="meter">
+             <span style="width: 25%"></span>
+          </div>
+          25% Complete
+          {% else %}
+          <div class="flexGrid">
+              <div class="col">
+                  <a href="{% url 'login' %}" class="button">Login to start training</a>
+              </div>
+          </div>
+          {% endif %}
         </div>
     </div>
 </section>
 
 <section>
-  <div class="container">
-    <div class="list">
-        {% for module in modules %}
-            <div class="row">
-                <div class="placement">{{module.placement}}</div>
-                <div class="content">
-                    <div class="title"><a href="{% pageurl module %}">{{module.title}}</a></div>
-                    <div class="body">{{module.outline}}</div>
-                </div>
-                <div class="status">
-                    <i class="fa fa-check fa-3x text-danger"></i>
-                    Completed
-                </div>
+  <div class="lessonList">
+    <div class="lessonList__row lessonList__row--completed">
+        <div class="lessonList__row__placement">0</div>
+        <div class="lessonList__row__content">
+            <div class="title"><a href="#">Testing completed lesson</a></div>
+            <div class="body">Description of the lesson you've already completed. Longer description goes here.</div>
+        </div>
+        <div class="status">
+            <i class="fa fa-check fa-3x text-danger"></i>
+            Completed
+        </div>
+    </div>
+    {% for module in modules %}
+        <div class="lessonList__row">
+            <div class="lessonList__row__placement">{{module.placement}}</div>
+            <div class="lessonList__row__content">
+                <div class="title"><a href="{% pageurl module %}">{{module.title}}</a></div>
+                <div class="body">{{module.outline}}</div>
             </div>
-        {% endfor %}
+            <div class="status">
+                <i class="fa fa-check fa-3x text-danger"></i>
+                Completed
+            </div>
+        </div>
+    {% endfor %}
+    <div class="lessonList__row lessonList__row--locked">
+        <div class="lessonList__row__placement">0</div>
+        <div class="lessonList__row__content">
+            <div class="title"><a href="#">Testing locked lesson</a></div>
+            <div class="body">Description of the lesson you won't have access to because you haven't completed prior lessons.</div>
+        </div>
+        <div class="status">
+            <i class="fa fa-check fa-3x text-danger"></i>
+            Completed
+        </div>
     </div>
   </div>
 </section>

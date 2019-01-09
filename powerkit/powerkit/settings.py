@@ -166,6 +166,8 @@ WAGTAIL_SITE_NAME = 'Power Toolkit Site'
 
 ITEMS_PER_PAGE = 10
 
+LOGIN_REDIRECT_URL = '/learning/'
+
 try:
     from .local_settings import DATABASES
 except ImportError:

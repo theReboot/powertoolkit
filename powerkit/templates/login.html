@@ -6,6 +6,9 @@
 {% block content %}
 <section id="login-form">
     <div class="flexGrid">
+    <div class="col"></div>
+    <div class="col">
+        <h3 class="header">Login</h3>
         <div class="form">
             <form action="." method="post">{% csrf_token %}
                 {% if form.non_field_errors %}
@@ -35,7 +38,10 @@
 
                 <input type="submit" value="Login">
             </form>
+            <div class="footer">You don't have an account? <a href="#">Sign Up</a></div>
         </div>
+        </div>
+    <div class="col"></div>
     </div>
 </section>
 {% endblock content %}

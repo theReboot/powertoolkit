@@ -1042,8 +1042,10 @@ a.btn {
   font-size: 15px; }
 
 #login-form input[type="text"],
+#login-form input[type="password"],
 #login-form select,
 #register-form input[type="text"],
+#register-form input[type="password"],
 #register-form select {
   width: 100%;
   padding: 12px 20px;
@@ -1051,7 +1053,9 @@ a.btn {
   display: inline-block;
   border: 1px solid #ccc;
   border-radius: 4px;
-  box-sizing: border-box; }
+  box-sizing: border-box;
+  background: #111111;
+  color: #fff; }
 
 #login-form input[type="submit"],
 #register-form input[type="submit"] {
@@ -1071,5 +1075,19 @@ a.btn {
 #login-form div.form,
 #register-form div.form {
   border-radius: 5px;
-  background-color: #f2f2f2;
+  background-color: #5b5b5b;
   padding: 20px; }
+  #login-form div.form .alert-danger,
+  #register-form div.form .alert-danger {
+    color: red;
+    text-align: center; }
+
+#login-form h3.header,
+#register-form h3.header {
+  text-align: center; }
+
+#login-form .footer a,
+#register-form .footer a {
+  color: #cdcf60;
+  text-decoration: none;
+  font-weight: bold; }

@@ -1043,9 +1043,11 @@ a.btn {
 
 #login-form input[type="text"],
 #login-form input[type="password"],
+#login-form input[type="email"],
 #login-form select,
 #register-form input[type="text"],
 #register-form input[type="password"],
+#register-form input[type="email"],
 #register-form select {
   width: 100%;
   padding: 12px 20px;

@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
+from django.contrib.auth import authenticate, login
 from django.contrib import messages
 
 from core.forms import RegistrationForm
@@ -21,7 +22,11 @@ def register(request):
             usr.last_name = last_name
             usr.save()
             messages.info(request, 'You have registered successfully')
-            return redirect('login')
+            # authenticate and login
+            user = authenticate(request, username=email, password=password)
+            if user is not None:
+                login(request, user)
+                return redirect('/learning/')
     else:
         form = RegistrationForm()
     return render(request, 'register.html', {'form': form})

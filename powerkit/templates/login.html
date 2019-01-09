@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+<section id="login-form">
+    <div class="flexGrid">
+        <div class="form">
+            <form action="." method="post">{% csrf_token %}
+                {% if form.non_field_errors %}
+                    {% for error in form.non_field_errors %}
+                        <div class="alert alert-danger">
+                        {{ error }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+
+                <div class="form-group">
+                    {% if form.username.errors %}
+                        <div class="alert alert-danger">
+                            {{ form.username.errors }}
+                        </div>
+                    {% endif %}
+                    {{ form.username }}
+                </div>
+                 <div class="form-group">
+                    {% if form.password.errors %}
+                        <div class="alert alert-danger">
+                            {{ form.password.errors }}
+                        </div>
+                    {% endif %}
+                    {{ form.password }}
+                </div>
+
+                <input type="submit" value="Login">
+            </form>
+        </div>
+    </div>
+</section>
+{% endblock content %}
+
+{% block js %}
+<script>
+  $('#id_username').attr('placeholder', 'Email');
+  $('#id_username').addClass('form-control');
+
+  $('#id_password').attr('placeholder', 'Password');
+  $('#id_password').addClass('form-control');
+  </script>
+{% endblock js %}

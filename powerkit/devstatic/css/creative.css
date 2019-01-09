@@ -991,51 +991,61 @@ canvas {
 a.btn {
   color: #fff; }
 
-.learning-index-section .container {
-  width: 100%;
-  display: flex;
-  justify-content: center; }
-  .learning-index-section .container .list {
-    width: 66%; }
-    .learning-index-section .container .list .row {
-      display: flex;
-      padding: 1em;
-      flex-direction: row;
-      justify-content: space-evenly;
-      font-family: Roboto;
-      border-bottom: 1px solid #fff; }
-      .learning-index-section .container .list .row .placement {
-        font-size: 134px;
-        font-weight: bold;
-        text-align: center;
-        letter-spacing: -0.1em;
-        padding: 0.2em; }
-      .learning-index-section .container .list .row .content {
-        justify-content: center;
-        flex-direction: column;
-        vertical-align: middle;
-        display: flex;
-        padding: 0.2em; }
-        .learning-index-section .container .list .row .content .title {
-          font-size: 34px;
-          line-height: normal;
-          font-weight: bold; }
-          .learning-index-section .container .list .row .content .title a {
-            color: #fff;
-            text-decoration: none; }
-        .learning-index-section .container .list .row .content .body {
-          font-size: 18px;
-          line-height: 25px;
-          font-weight: normal; }
-      .learning-index-section .container .list .row .status {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center; }
-        .learning-index-section .container .list .row .status .fa-check {
-          color: #cdcf60; }
+.lessonList {
+  max-width: 800px;
+  margin: 0 auto; }
 
-.learning-index-section .button {
+.lessonList__row {
+  display: flex;
+  padding: 1rem;
+  flex-direction: row;
+  justify-content: space-evenly;
+  font-family: Roboto;
+  border-bottom: 1px solid #fff; }
+  @media (max-width: 500px) {
+    .lessonList__row {
+      flex-direction: column; } }
+
+.lessonList__row--locked {
+  opacity: .5; }
+
+.lessonList__row--completed {
+  opacity: .1; }
+
+.lessonList__row__placement {
+  font-size: 134px;
+  font-weight: bold;
+  text-align: center;
+  letter-spacing: -0.1rem;
+  padding: 1rem; }
+
+.lessonList__row__content {
+  justify-content: center;
+  flex-direction: column;
+  vertical-align: middle;
+  display: flex;
+  padding: 0.2rem; }
+  .lessonList__row__content .title {
+    font-size: 34px;
+    line-height: normal;
+    font-weight: bold; }
+    .lessonList__row__content .title a {
+      color: #fff;
+      text-decoration: none; }
+  .lessonList__row__content .body {
+    font-size: 18px;
+    line-height: 25px;
+    font-weight: normal; }
+
+.status {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; }
+  .status .fa-check {
+    color: #cdcf60; }
+
+.button {
   background-color: #cdcf60;
   display: inline-block;
   margin-top: 1.5rem;

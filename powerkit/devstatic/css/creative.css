@@ -399,7 +399,7 @@ h1 {
   margin: 0 0 1rem 0; }
   @media (max-width: 500px) {
     h1 {
-      font-size: 60px; } }
+      font-size: 50px; } }
 
 .h1__preHeading {
   font-size: 30px;
@@ -729,6 +729,10 @@ LEARNING MODULE STYLES
   margin-bottom: -5rem;
   z-index: 3;
   left: 0; }
+  @media (max-width: 500px) {
+    .sessionNav {
+      width: calc(100% + 2rem);
+      margin-left: calc(-2rem / 2); } }
 
 .sessionNav__controls {
   display: flex;
@@ -738,6 +742,9 @@ LEARNING MODULE STYLES
   font-weight: 700;
   align-items: center;
   max-width: 600px; }
+  @media (max-width: 500px) {
+    .sessionNav__controls {
+      font-size: 16px; } }
 
 .sessionNav__controls__button {
   flex: 1;

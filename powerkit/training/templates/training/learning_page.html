@@ -12,7 +12,7 @@
     <p>
         {{ page.outline }}
     </p>
-    
+
     {% for session in module_sessions %}
       <h3>{{session.title}}</h3>
       {{session.body|richtext}}
@@ -21,12 +21,12 @@
     <nav class="sessionNav">
       <div class="sessionNav__controls">
           {% if module_sessions.has_previous %}
-            <div class="sessionNav__controls__button sessionNav__controls__button--next">
+            <div class="sessionNav__controls__button sessionNav__controls__button--previous">
               <a href="?page={{ module_sessions.previous_page_number }}">Previous</a>
             </div>
           {% else %}
             <div class="sessionNav__controls__button sessionNav__controls__button--previous">
-              <a href="#">Start</a>
+              <!-- <a href="#">Start</a> -->
             </div>
           {% endif %}
         <div class="sessionNav__controls__status">
@@ -37,8 +37,8 @@
               <a href="?page={{ module_sessions.next_page_number }}">Next</a>
             </div>
           {% else %}
-            <div class="sessionNav__controls__button sessionNav__controls__button--previous">
-              <a href="{% url 'complete_training' %}">End</a>
+            <div class="sessionNav__controls__button sessionNav__controls__button--next">
+              <a href="{% url 'complete_training' %}">Next Lesson</a>
             </div>
           {% endif %}
       </div>

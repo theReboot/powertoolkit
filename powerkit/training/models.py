@@ -101,6 +101,8 @@ class Training(models.Model):
 
     @property
     def percent_completion(self):
+        if not self.schedules.all():
+            return 0
         _completed = self.schedules.filter(completed=True).count()
         _all = self.schedules.count()
         return _completed * 100 / _all

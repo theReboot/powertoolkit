@@ -721,8 +721,12 @@ LEARNING MODULE STYLES
 .sessionNav {
   background: #3B3B3B;
   width: 100%;
-  position: fixed;
+  width: calc(100% + 2rem*2);
+  margin-left: -2rem;
+  position: -webkit-sticky;
+  position: sticky;
   bottom: 0;
+  margin-bottom: -5rem;
   z-index: 3;
   left: 0; }
 

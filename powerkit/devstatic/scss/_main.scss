@@ -579,8 +579,11 @@ LEARNING MODULE STYLES
 .sessionNav {
   background: #3B3B3B;
   width: 100%;
-  position: fixed;
+  width: calc(100% + #{$sitePad}*2);
+  margin-left: -#{$sitePad};
+  position: sticky;
   bottom: 0;
+  margin-bottom: -5rem; // this is the footer margin-top plus section padding-bottom
   z-index: 3;
   left: 0;
 }

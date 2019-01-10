@@ -18,7 +18,7 @@ def start_training(request):
         _training.started = timezone.now()
         _training.save()
 
-    schedules = _training.schedules.all()
+    schedules = _training.schedules.order_by('id')
     current = schedules[0]
     current.current = True
     current.save()

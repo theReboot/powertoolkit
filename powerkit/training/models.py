@@ -1,5 +1,7 @@
 from django.db import models
+from django.contrib.auth.models import User
 from django.core.paginator import Paginator
+from django.utils import timezone
 
 from wagtail.core.models import Page
 from wagtail.core.fields import RichTextField
@@ -77,3 +79,29 @@ class LearningSessionPage(Page):
     ]
 
     parent_page_types = ['training.LearningPage']
+
+
+class Training(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    started = models.DateTimeField(default=timezone.now)
+    completed = models.DateTimeField(blank=True, null=True)
+
+    def __str__(self):
+        return self.user.username
+
+    @property
+    def percent_completion(self):
+        _completed = self.schedules.filter(completed=True).count()
+        _all = self.schedules.count()
+        return _completed * 100 / _all
+
+
+class TrainingSchedule(models.Model):
+    user_training = models.ForeignKey(
+        Training, on_delete=models.CASCADE, related_name='schedules')
+    learning_page = models.ForeignKey(LearningPage, on_delete=models.CASCADE)
+    current = models.BooleanField(default=False)
+    completed = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.learning_page.title

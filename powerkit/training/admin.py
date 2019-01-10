@@ -1,3 +1,13 @@
 from django.contrib import admin
 
-# Register your models here.
+from training.models import Training, TrainingSchedule
+
+
+@admin.register(Training)
+class TrainingAdmin(admin.ModelAdmin):
+    list_display = ['user', 'started', 'completed', 'percent_completion']
+
+
+@admin.register(TrainingSchedule)
+class TrainingScheduleAdmin(admin.ModelAdmin):
+    list_display = ['user_training', 'learning_page', 'current', 'completed']

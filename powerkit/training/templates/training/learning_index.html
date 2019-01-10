@@ -67,9 +67,15 @@
 
           <div class="flexGrid">
               <div class="col">
-                  <a href="#" class="button">
+                {% if current_schedule %}
+                  <a href="{% url 'continue_training' %}" class="button">
                     Continue training
                   </a>
+                {% else %}
+                  <a href="{% url 'start_training' %}" class="button">
+                    Start training
+                  </a>
+                {% endif %}
               </div>
               <div class="col">
                   <a href="{% url 'logout' %}" class="button button--secondary"><i class="key"> Log out</i></a>
@@ -77,9 +83,9 @@
           </div>
           <!-- Understanding investigate journalism -->
           <div class="meter">
-             <span style="width: 25%"></span>
+             <span style="width: {{training.percent_completion}}%"></span>
           </div>
-          25% Complete
+          {{ training.percent_completion }}% Complete
           {% else %}
           <div class="flexGrid">
               <div class="col">
@@ -104,19 +110,48 @@
             Completed
         </div>
     </div>
-    {% for module in modules %}
-        <div class="lessonList__row">
-            <div class="lessonList__row__placement">{{module.placement}}</div>
-            <div class="lessonList__row__content">
-                <div class="title"><a href="{% pageurl module %}">{{module.title}}</a></div>
-                <div class="body">{{module.outline}}</div>
+    {% if schedules and current_schedule %}
+        {% for schedule in schedules %}
+            <div class="lessonList__row 
+                {% if schedule.completed %}lessonList__row--completed{% endif %}
+                {% if schedule.pending %}lessonList__row--locked{% endif %}
+            ">
+                <div class="lessonList__row__placement">{{schedule.learning_page.placement}}</div>
+                <div class="lessonList__row__content">
+                    <div class="title"><a href="{% pageurl schedule.learning_page %}">{{schedule.learning_page.title}}</a></div>
+                    <div class="body">{{schedule.learning_page.outline}}</div>
+                </div>
+                <div class="status">
+                    {% if schedule.completed %}
+                        <i class="fa fa-check fa-3x text-danger"></i>
+                        Completed
+                    {% endif %}
+                    {% if schedule.current %}
+                        <i class="fa fa-hourglass fa-2x text-success"></i>
+                        Ongoing
+                    {% endif %}
+                    {% if schedule.pending %}
+                        <i class="fa fa-lock fa-2x text-success"></i>
+                        Pending
+                    {% endif %}
+                </div>
             </div>
-            <div class="status">
-                <i class="fa fa-check fa-3x text-danger"></i>
-                Completed
+        {% endfor %}
+    {% else %}
+        {% for module in modules %}
+            <div class="lessonList__row">
+                <div class="lessonList__row__placement">{{module.placement}}</div>
+                <div class="lessonList__row__content">
+                    <div class="title"><a href="{% pageurl module %}">{{module.title}}</a></div>
+                    <div class="body">{{module.outline}}</div>
+                </div>
+                <div class="status">
+                    <i class="fa fa-check fa-3x text-danger"></i>
+                    Completed
+                </div>
             </div>
-        </div>
-    {% endfor %}
+        {% endfor %}
+    {% endif %}
     <div class="lessonList__row lessonList__row--locked">
         <div class="lessonList__row__placement">0</div>
         <div class="lessonList__row__content">

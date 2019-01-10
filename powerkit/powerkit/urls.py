@@ -44,6 +44,7 @@ urlpatterns = [
     path('accounts/register/',
          core_views.register,
          name='register'),
+    path('training/', include('training.urls')),
 
     # CMS
     re_path(r'^cms/', include(wagtailadmin_urls)),

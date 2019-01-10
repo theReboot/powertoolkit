@@ -4,6 +4,7 @@ from django.contrib.auth import authenticate, login
 from django.contrib import messages
 
 from core.forms import RegistrationForm
+from training.models import Training, TrainingSchedule, LearningPage
 
 
 def register(request):
@@ -22,6 +23,14 @@ def register(request):
             usr.last_name = last_name
             usr.save()
             messages.info(request, 'You have registered successfully')
+            # create training schedule
+            _training = Training.objects.create(user=usr)
+            # No schedule is marked as current yet (bug or feature?)
+            for learning_page in LearningPage.objects.order_by('placement'):
+                TrainingSchedule.objects.create(
+                    user_training=_training,
+                    learning_page=learning_page)
+
             # authenticate and login
             user = authenticate(request, username=email, password=password)
             if user is not None:

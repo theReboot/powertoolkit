@@ -1007,10 +1007,10 @@ a.btn {
       flex-direction: column; } }
 
 .lessonList__row--locked {
-  opacity: .5; }
+  opacity: 0.5; }
 
 .lessonList__row--completed {
-  opacity: .1; }
+  opacity: 0.1; }
 
 .lessonList__row__placement {
   font-size: 134px;
@@ -1042,7 +1042,7 @@ a.btn {
   flex-direction: column;
   justify-content: center;
   align-items: center; }
-  .status .fa-check {
+  .status .fa {
     color: #cdcf60; }
 
 .button {
@@ -1061,12 +1061,12 @@ a.btn {
   background: none;
   border: 1px solid #fff;
   color: #fff;
-  opacity: .7; }
+  opacity: 0.7; }
 
 .button__details {
   display: block;
   font-size: 14px;
-  margin-top: .5rem; }
+  margin-top: 0.5rem; }
 
 .userDashboard {
   border-top: 1px solid #fff;
@@ -1083,7 +1083,7 @@ a.btn {
   background: #555;
   border-radius: 25px;
   margin-top: 2rem;
-  margin-bottom: .5rem;
+  margin-bottom: 0.5rem;
   padding: 10px;
   box-shadow: inset 0 -1px 1px rgba(255, 255, 255, 0.3); }
 

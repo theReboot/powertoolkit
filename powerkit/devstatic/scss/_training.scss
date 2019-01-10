@@ -1,4 +1,3 @@
-
 .lessonList {
   max-width: 800px;
   margin: 0 auto;
@@ -17,11 +16,11 @@
 }
 
 .lessonList__row--locked {
-  opacity: .5;
+  opacity: 0.5;
 }
 
 .lessonList__row--completed {
-  opacity: .1;
+  opacity: 0.1;
 }
 
 .lessonList__row__placement {
@@ -58,7 +57,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  .fa-check {
+  .fa {
     color: $yellow;
   }
 }
@@ -76,17 +75,18 @@
   font-size: 18px;
 }
 
-.button--secondary.button--secondary { // doubled-up for specificity hack
+.button--secondary.button--secondary {
+  // doubled-up for specificity hack
   background: none;
   border: 1px solid $white;
   color: $white;
-  opacity: .7;
+  opacity: 0.7;
 }
 
 .button__details {
   display: block;
   font-size: 14px;
-  margin-top: .5rem;
+  margin-top: 0.5rem;
 }
 
 .userDashboard {
@@ -100,14 +100,14 @@
 }
 
 .meter {
-	height: 20px;  /* Can be anything */
-	position: relative;
-	background: #555;
-	border-radius: 25px;
+  height: 20px; /* Can be anything */
+  position: relative;
+  background: #555;
+  border-radius: 25px;
   margin-top: 2rem;
-  margin-bottom: .5rem;
-	padding: 10px;
-	box-shadow: inset 0 -1px 1px rgba(255,255,255,0.3);
+  margin-bottom: 0.5rem;
+  padding: 10px;
+  box-shadow: inset 0 -1px 1px rgba(255, 255, 255, 0.3);
 }
 
 .meter > span {
@@ -120,12 +120,11 @@
   background-color: $yellow;
   background-image: linear-gradient(
     center bottom,
-    rgb(43,194,83) 37%,
-    rgb(84,240,84) 69%
+    rgb(43, 194, 83) 37%,
+    rgb(84, 240, 84) 69%
   );
-  box-shadow:
-    inset 0 2px 9px  rgba(255,255,255,0.3),
-    inset 0 -2px 6px rgba(0,0,0,0.4);
+  box-shadow: inset 0 2px 9px rgba(255, 255, 255, 0.3),
+    inset 0 -2px 6px rgba(0, 0, 0, 0.4);
   position: absolute;
   left: 0;
   top: 0;

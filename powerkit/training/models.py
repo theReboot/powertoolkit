@@ -28,6 +28,16 @@ class LearningIndex(Page):
             'placement').live()
         context['modules'] = learning_pages
         context['duration'] = sum(pg.duration for pg in learning_pages)
+        try:
+            context['training'] = Training.objects.get(user=request.user)
+        except Training.DoesNotExist:
+            pass
+        schedules = TrainingSchedule.objects.filter(
+            user_training__user=request.user)
+        context['schedules'] = schedules
+        current_schedule = schedules.filter(current=True)
+        if current_schedule:
+            context['current_schedule'] = current_schedule[0]
         return context
 
     content_panels = Page.content_panels + [
@@ -105,3 +115,9 @@ class TrainingSchedule(models.Model):
 
     def __str__(self):
         return self.learning_page.title
+
+    @property
+    def pending(self):
+        if not self.completed and not self.current:
+            return True
+        return False

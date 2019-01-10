@@ -33,7 +33,7 @@ class LearningIndex(Page):
         except Training.DoesNotExist:
             pass
         schedules = TrainingSchedule.objects.filter(
-            user_training__user=request.user)
+            user_training__user=request.user).order_by('id')
         context['schedules'] = schedules
         current_schedule = schedules.filter(current=True)
         if current_schedule:

@@ -7,7 +7,6 @@
   padding: 1rem;
   flex-direction: row;
   justify-content: space-evenly;
-  font-family: Roboto;
   border-bottom: 1px solid $white;
 
   @include mobile {
@@ -69,7 +68,6 @@
   padding: 1rem;
   text-align: center;
   text-decoration: none;
-  font-family: Roboto;
   font-weight: bold;
   color: $black;
   font-size: 18px;

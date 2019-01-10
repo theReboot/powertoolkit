@@ -1,14 +1,22 @@
 from django.shortcuts import redirect
 from django.utils import timezone
 
-from training.models import Training
+from training.models import Training, TrainingSchedule, LearningPage
 
 
 def start_training(request):
     #import pdb;pdb.set_trace()
-    _training = Training.objects.get(user=request.user)
-    _training.started = timezone.now()
-    _training.save()
+    try:
+        _training = Training.objects.get(user=request.user)
+    except Training.DoesNotExist:
+        _training = Training.objects.create(user=request.user)
+        for learning_page in LearningPage.objects.order_by('placement'):
+            TrainingSchedule.objects.create(
+                user_training=_training,
+                learning_page=learning_page)
+    else:
+        _training.started = timezone.now()
+        _training.save()
 
     schedules = _training.schedules.all()
     current = schedules[0]

@@ -85,7 +85,7 @@
           <div class="meter">
              <span style="width: {{training.percent_completion}}%"></span>
           </div>
-          {{ training.percent_completion }}% Complete
+          {{ training.percent_completion|floatformat:"2" }}% Complete
           {% else %}
           <div class="flexGrid">
               <div class="col">
@@ -99,6 +99,7 @@
 
 <section>
   <div class="lessonList">
+  {% comment %}
     <div class="lessonList__row lessonList__row--completed">
         <div class="lessonList__row__placement">0</div>
         <div class="lessonList__row__content">
@@ -110,6 +111,7 @@
             Completed
         </div>
     </div>
+    {% endcomment %}
     {% if schedules and current_schedule %}
         {% for schedule in schedules %}
             <div class="lessonList__row 
@@ -152,6 +154,7 @@
             </div>
         {% endfor %}
     {% endif %}
+    {% comment %}
     <div class="lessonList__row lessonList__row--locked">
         <div class="lessonList__row__placement">0</div>
         <div class="lessonList__row__content">
@@ -163,6 +166,7 @@
             Completed
         </div>
     </div>
+    {% endcomment %}
   </div>
 </section>
 </div>

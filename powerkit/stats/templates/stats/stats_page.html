@@ -16,40 +16,8 @@
         </p>
         </div>
     </section>
-    <section>
-          <h2>Resources</h2>
-          <div class="flexGrid">
-            <div class="col">
-              <p>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Atque
-                magnam voluptatum aspernatur enim. Quos asperiores molestiae
-                necessitatibus deleniti, suscipit debitis animi quis
-                exercitationem. Vero sed est exercitationem. Fugit, ipsum
-                molestias!
-              </p>
-            </div>
-            <div class="col">
-              <p>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Atque
-                magnam voluptatum aspernatur enim. Quos asperiores molestiae
-                necessitatibus deleniti, suscipit debitis animi quis
-                exercitationem. Vero sed est exercitationem. Fugit, ipsum
-                molestias!
-              </p>
-            </div>
-            <div class="col">
-              <p>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Atque
-                magnam voluptatum aspernatur enim. Quos asperiores molestiae
-                necessitatibus deleniti, suscipit debitis animi quis
-                exercitationem. Vero sed est exercitationem. Fugit, ipsum
-                molestias!
-              </p>
-            </div>
-          </div>
-        </section>
     <section id="app">
-     
+
         <h2 v-if="!loading">Meter Status as of <span v-text="year"></span></h2>
         <h2 v-if="loading">Loading.... Please wait</h2>
           <div class="col-2-3">
@@ -63,9 +31,21 @@
             <canvas id="statusChart"></canvas>
           </div>
             {% comment %} <div class="imagePlaceholder">[chart here]</div> {% endcomment %}
-
     </section>
-    
+    <section>
+      <h2>Energy Generation and Energy Losses  </h2>
+      <p>Content to  come.</p>
+    </section>
+    <section>
+      <h2>NESI Financials - Private Sector Spending & Government Spending</h2>
+      <p>Content to  come.</p>
+    </section>
+    <section>
+      <h2>Projections - Generation + Transmission + Access</h2>
+      <p>Content to  come.</p>
+    </section>
+
+
 {% endblock content %}
 
 {% block js %}
@@ -144,7 +124,7 @@
                     ticks: {
                       beginAtZero: true,
                     },
-                    
+
                   }]
               }
             }
@@ -157,7 +137,7 @@
         this.$http.get(url).then(response => {
           this.loading = false;
           this.statuses = response.body.statuses;
-          
+
           chart.data.datasets[0].data = this.totalCustomers;
           chart.data.datasets[1].data = this.meteredCustomers;
           chart.data.labels = this.labels;

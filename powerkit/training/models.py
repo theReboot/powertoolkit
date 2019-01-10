@@ -24,13 +24,17 @@ class LearningIndex(Page):
 
     def get_context(self, request):
         context = super().get_context(request)
+        # import pdb;pdb.set_trace()
         learning_pages = LearningPage.objects.child_of(self).order_by(
             'placement').live()
         context['modules'] = learning_pages
         context['duration'] = sum(pg.duration for pg in learning_pages)
+        if not request.user.is_authenticated:
+            return context
+
         try:
             context['training'] = Training.objects.get(user=request.user)
-        except Training.DoesNotExist:
+        except (Training.DoesNotExist, TypeError):
             pass
         schedules = TrainingSchedule.objects.filter(
             user_training__user=request.user).order_by('id')

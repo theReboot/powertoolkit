@@ -85,7 +85,11 @@
           <div class="meter">
              <span style="width: {{training.percent_completion}}%"></span>
           </div>
-          {{ training.percent_completion|floatformat:"2" }}% Complete
+            {% if training.percent_completion %}
+                {{ training.percent_completion|floatformat:"2" }}% Complete
+            {% else %}
+                0% Complete
+            {% endif %}
           {% else %}
           <div class="flexGrid">
               <div class="col">
@@ -141,15 +145,15 @@
         {% endfor %}
     {% else %}
         {% for module in modules %}
-            <div class="lessonList__row">
+            <div class="lessonList__row lessonList__row--locked">
                 <div class="lessonList__row__placement">{{module.placement}}</div>
                 <div class="lessonList__row__content">
-                    <div class="title"><a href="{% pageurl module %}">{{module.title}}</a></div>
+                    <div class="title">{{module.title}}</div>
                     <div class="body">{{module.outline}}</div>
                 </div>
                 <div class="status">
-                    <i class="fa fa-check fa-3x text-danger"></i>
-                    Completed
+                    <i class="fa fa-lock fa-2x text-success"></i>
+                    Pending
                 </div>
             </div>
         {% endfor %}

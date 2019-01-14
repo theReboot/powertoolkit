@@ -28,6 +28,7 @@ class LearningIndex(Page):
         learning_pages = LearningPage.objects.child_of(self).order_by(
             'placement').live()
         context['modules'] = learning_pages
+        context['first_module'] = learning_pages[0]
         context['duration'] = sum(pg.duration for pg in learning_pages)
         if not request.user.is_authenticated:
             return context

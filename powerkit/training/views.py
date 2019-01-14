@@ -27,13 +27,18 @@ def start_training(request):
     return redirect(current_page.url)
 
 
-def complete(request):
+def complete(request, id):
+    #import pdb;pdb.set_trace()
     _training = Training.objects.get(user=request.user)
+    page = LearningPage.objects.get(pk=id)
+    page.completed = True
+    page.current = False
+    page.save()
     schedules = _training.schedules.all()
-    old = schedules.get(current=True)
-    old.completed = True
-    old.current = False
-    old.save()
+    #old = schedules.get(current=True)
+    #old.completed = True
+    #old.current = False
+    #old.save()
 
     pending = schedules.filter(completed=False)
     if not pending:
@@ -41,10 +46,14 @@ def complete(request):
         _training.save()
         return redirect('/learning/')
     else:
-        current = pending[0]
-        current.current = True
-        current.save()
-        current_page = current.learning_page
+        if schedules.filter(current=True):
+            current = schedules[0]
+            current_page = current.learning_page
+        else:
+            current = pending[0]
+            current.current = True
+            current.save()
+            current_page = current.learning_page
         return redirect(current_page.url)
 
 

@@ -38,7 +38,7 @@
             </div>
           {% else %}
             <div class="sessionNav__controls__button sessionNav__controls__button--next">
-              <a href="{% url 'complete_training' %}">Next Lesson</a>
+              <a href="{% url 'complete_training' id=page.id %}">Next Lesson</a>
             </div>
           {% endif %}
       </div>

@@ -149,7 +149,7 @@
         {% endfor %}
     {% else %}
         {% for module in modules %}
-            {% if module.pk == first_module.pk %}
+            {% if module.pk == first_module.pk and user.is_authenticated %}
                 <div class="lessonList__row">
                     <div class="lessonList__row__placement">{{module.specific.placement}}</div>
                     <div class="lessonList__row__content">

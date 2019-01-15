@@ -28,8 +28,9 @@ class LearningIndex(Page):
         context = super().get_context(request)
         # import pdb;pdb.set_trace()
         #child_pages = self.get_children().live()
-        child_pages = LearningPage.objects.child_of(self).order_by(
-            'placement').live()
+        #child_pages = LearningPage.objects.child_of(self).order_by(
+        #    'placement').live()
+        child_pages = LearningPage.objects.child_of(self).live()
         context['modules'] = child_pages
         context['first_module'] = child_pages[0]
         context['duration'] = sum(pg.specific.duration for pg in child_pages)

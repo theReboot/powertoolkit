@@ -28,13 +28,15 @@ def start_training(request):
 
 
 def complete(request, id):
-    #import pdb;pdb.set_trace()
+    # import pdb;pdb.set_trace()
     _training = Training.objects.get(user=request.user)
-    page = LearningPage.objects.get(pk=id)
-    page.completed = True
-    page.current = False
-    page.save()
     schedules = _training.schedules.all()
+
+    page = LearningPage.objects.get(pk=id)
+    complete = schedules.get(learning_page=page)
+    complete.completed = True
+    complete.current = False
+    complete.save()
     #old = schedules.get(current=True)
     #old.completed = True
     #old.current = False

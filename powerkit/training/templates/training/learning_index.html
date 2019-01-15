@@ -67,7 +67,11 @@
 
           <div class="flexGrid">
               <div class="col">
-                {% if current_schedule %}
+                {% if training and training.completed %}
+                  <a class="button">
+                    Completed!
+                  </a>
+                {% elif current_schedule %}
                   <a href="{% url 'continue_training' %}" class="button">
                     Continue training
                   </a>
@@ -116,7 +120,7 @@
         </div>
     </div>
     {% endcomment %}
-    {% if schedules and current_schedule %}
+    {% if schedules %}
         {% for schedule in schedules %}
             <div class="lessonList__row 
                 {% if schedule.completed %}lessonList__row--completed{% endif %}

@@ -56,7 +56,7 @@ class LearningIndex(Page):
         ImageChooserPanel('featured_image'),
     ]
 
-    subpage_types = ['training.LearningPage', 'training.MCQPage']
+    subpage_types = ['training.LearningPage']
 
 
 class LearningPage(Page):
@@ -68,12 +68,22 @@ class LearningPage(Page):
 
     def get_context(self, request):
         context = super().get_context(request)
-        learning_sessions = LearningSessionPage.objects.child_of(self).live()
+        # import pdb;pdb.set_trace()
 
-        #pagination
-        paginator = Paginator(learning_sessions, 1)
-        page = request.GET.get('page', 1)
-        context['module_sessions'] = paginator.get_page(page)
+        # For LearningSession children
+        learning_sessions = LearningSessionPage.objects.child_of(self).live()
+        if learning_sessions:
+            #pagination
+            paginator = Paginator(learning_sessions, 1)
+            page = request.GET.get('page', 1)
+            context['module_sessions'] = paginator.get_page(page)
+
+        # For Question children
+        question_sessions = QuestionPage.objects.child_of(self).live()
+        if question_sessions:
+            paginator = Paginator(question_sessions, 1)
+            page = request.GET.get('page', 1)
+            context['question_sessions'] = paginator.get_page(page)
 
         return context
 
@@ -159,6 +169,8 @@ class QuestionPage(Page):
 
     def get_context(self, request):
         context = super().get_context(request)
+        #import pdb;pdb.set_trace()
+        context['answers'] = MCQAnswer.objects.child_of(self).live()
 
         return context
 

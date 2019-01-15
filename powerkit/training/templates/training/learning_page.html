@@ -13,36 +13,78 @@
         {{ page.outline }}
     </p>
 
-    {% for session in module_sessions %}
-      <h3>{{session.title}}</h3>
-      {{session.body|richtext}}
-    {% endfor %}
-    </div>
-    <nav class="sessionNav">
-      <div class="sessionNav__controls">
-          {% if module_sessions.has_previous %}
-            <div class="sessionNav__controls__button sessionNav__controls__button--previous">
-              <a href="?page={{ module_sessions.previous_page_number }}">Previous</a>
-            </div>
-          {% else %}
-            <div class="sessionNav__controls__button sessionNav__controls__button--previous">
-              <!-- <a href="#">Start</a> -->
-            </div>
-          {% endif %}
-        <div class="sessionNav__controls__status">
-          {{ module_sessions.number }}/{{ module_sessions.paginator.num_pages }}
-        </div>
-        {% if module_sessions.has_next %}
-            <div class="sessionNav__controls__button sessionNav__controls__button--next">
-              <a href="?page={{ module_sessions.next_page_number }}">Next</a>
-            </div>
-          {% else %}
-            <div class="sessionNav__controls__button sessionNav__controls__button--next">
-              <a href="{% url 'complete_training' id=page.id %}">Next Lesson</a>
-            </div>
-          {% endif %}
+    {% if module_sessions %}
+      {% for session in module_sessions %}
+        <h3>{{session.title}}</h3>
+        {{session.body|richtext}}
+      {% endfor %}
       </div>
-    </nav>
+      <nav class="sessionNav">
+        <div class="sessionNav__controls">
+            {% if module_sessions.has_previous %}
+              <div class="sessionNav__controls__button sessionNav__controls__button--previous">
+                <a href="?page={{ module_sessions.previous_page_number }}">Previous</a>
+              </div>
+            {% else %}
+              <div class="sessionNav__controls__button sessionNav__controls__button--previous">
+                <!-- <a href="#">Start</a> -->
+              </div>
+            {% endif %}
+          <div class="sessionNav__controls__status">
+            {{ module_sessions.number }}/{{ module_sessions.paginator.num_pages }}
+          </div>
+          {% if module_sessions.has_next %}
+              <div class="sessionNav__controls__button sessionNav__controls__button--next">
+                <a href="?page={{ module_sessions.next_page_number }}">Next</a>
+              </div>
+            {% else %}
+              <div class="sessionNav__controls__button sessionNav__controls__button--next">
+                <a href="{% url 'complete_training' id=page.id %}">Next Lesson</a>
+              </div>
+            {% endif %}
+        </div>
+      </nav>
+    {% endif %}
+
+    {% if question_sessions %}
+      {% for question in question_sessions %}
+        <h3>{{question.title}}</h3>
+        {{question.question|richtext}}
+        <div>
+          {% for answer in question.mcq_answers.all %}
+            <div class="answer">
+              {{ forloop.counter }} {{ answer.answer}}
+            </div>
+          {% endfor %}
+        </div>
+      {% endfor %}
+      </div>
+      <nav class="sessionNav">
+        <div class="sessionNav__controls">
+            {% if question_sessions.has_previous %}
+              <div class="sessionNav__controls__button sessionNav__controls__button--previous">
+                <a href="?page={{ question_sessions.previous_page_number }}">Previous</a>
+              </div>
+            {% else %}
+              <div class="sessionNav__controls__button sessionNav__controls__button--previous">
+                <!-- <a href="#">Start</a> -->
+              </div>
+            {% endif %}
+          <div class="sessionNav__controls__status">
+            {{ question_sessions.number }}/{{ question_sessions.paginator.num_pages }}
+          </div>
+          {% if question_sessions.has_next %}
+              <div class="sessionNav__controls__button sessionNav__controls__button--next">
+                <a href="?page={{ question_sessions.next_page_number }}">Next</a>
+              </div>
+            {% else %}
+              <div class="sessionNav__controls__button sessionNav__controls__button--next">
+                <a href="{% url 'complete_training' id=page.id %}">Next Lesson</a>
+              </div>
+            {% endif %}
+        </div>
+      </nav>
+    {% endif %}
 </section>
 
 {% endblock content %}

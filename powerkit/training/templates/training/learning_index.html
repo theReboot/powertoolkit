@@ -147,12 +147,12 @@
         {% for module in modules %}
             {% if module.pk == first_module.pk %}
                 <div class="lessonList__row">
-                    <div class="lessonList__row__placement">{{module.placement}}</div>
+                    <div class="lessonList__row__placement">{{module.specific.placement}}</div>
                     <div class="lessonList__row__content">
                         <div class="title">
                             <a href="{% url 'start_training' %}">{{module.title}}</a>
                         </div>
-                        <div class="body">{{module.outline}}</div>
+                        <div class="body">{{module.specific.outline}}</div>
                     </div>
                     <div class="status">
                         <i class="fa fa-hourglass-start fa-2x text-success"></i>
@@ -161,12 +161,12 @@
                 </div>
             {% else %}
                 <div class="lessonList__row lessonList__row--locked">
-                    <div class="lessonList__row__placement">{{module.placement}}</div>
+                    <div class="lessonList__row__placement">{{module.specific.placement}}</div>
                     <div class="lessonList__row__content">
                         <div class="title">
                             {{ module.title}}
                         </div>
-                        <div class="body">{{module.outline}}</div>
+                        <div class="body">{{module.specific.outline}}</div>
                     </div>
                     <div class="status">
                         <i class="fa fa-lock fa-2x text-success"></i>

@@ -3,10 +3,12 @@ from django.contrib.auth.models import User
 from django.core.paginator import Paginator
 from django.utils import timezone
 
-from wagtail.core.models import Page
+from wagtail.core.models import Page, Orderable
 from wagtail.core.fields import RichTextField
-from wagtail.admin.edit_handlers import FieldPanel
+from wagtail.admin.edit_handlers import FieldPanel, InlinePanel
 from wagtail.images.edit_handlers import ImageChooserPanel
+
+from modelcluster.fields import ParentalKey
 
 
 class LearningIndex(Page):
@@ -25,11 +27,12 @@ class LearningIndex(Page):
     def get_context(self, request):
         context = super().get_context(request)
         # import pdb;pdb.set_trace()
-        learning_pages = LearningPage.objects.child_of(self).order_by(
+        #child_pages = self.get_children().live()
+        child_pages = LearningPage.objects.child_of(self).order_by(
             'placement').live()
-        context['modules'] = learning_pages
-        context['first_module'] = learning_pages[0]
-        context['duration'] = sum(pg.duration for pg in learning_pages)
+        context['modules'] = child_pages
+        context['first_module'] = child_pages[0]
+        context['duration'] = sum(pg.specific.duration for pg in child_pages)
         if not request.user.is_authenticated:
             return context
 
@@ -53,7 +56,7 @@ class LearningIndex(Page):
         ImageChooserPanel('featured_image'),
     ]
 
-    subpage_types = ['training.LearningPage']
+    subpage_types = ['training.LearningPage', 'training.MCQPage']
 
 
 class LearningPage(Page):
@@ -83,7 +86,7 @@ class LearningPage(Page):
     ]
 
     parent_page_types = ['training.LearningIndex']
-    subpage_types = ['training.LearningSessionPage']
+    subpage_types = ['training.LearningSessionPage', 'training.QuestionPage']
 
 
 class LearningSessionPage(Page):
@@ -128,3 +131,52 @@ class TrainingSchedule(models.Model):
         if not self.completed and not self.current:
             return True
         return False
+
+
+class MCQPage(Page):
+    outline = models.TextField(null=True, blank=True)
+    duration = models.PositiveIntegerField(default=0)
+    placement = models.PositiveIntegerField(default=1)
+    body = RichTextField(null=True, blank=True)
+
+    def get_context(self, request):
+        context = super().get_context(request)
+
+        return context
+
+    content_panels = Page.content_panels + [
+        FieldPanel('outline', classname='full'),
+        FieldPanel('body', classname='full'),
+        FieldPanel('duration'),
+        FieldPanel('placement'),
+    ]
+
+    parent_page_types = ['training.LearningIndex']
+
+
+class QuestionPage(Page):
+    question = RichTextField(null=True, blank=True)
+
+    def get_context(self, request):
+        context = super().get_context(request)
+
+        return context
+
+    content_panels = Page.content_panels + [
+        FieldPanel('question', classname='full'),
+        InlinePanel('mcq_answers', label='Answers'),
+    ]
+
+
+class MCQAnswer(Orderable):
+    page = ParentalKey(
+        QuestionPage,
+        on_delete=models.CASCADE,
+        related_name='mcq_answers')
+    answer = models.TextField(null=True, blank=True)
+    correct = models.BooleanField(default=False)
+
+    panels = [
+        FieldPanel('answer'),
+        FieldPanel('correct')
+    ]

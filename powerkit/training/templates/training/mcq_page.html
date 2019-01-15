@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load wagtailcore_tags %}
+
+{% block content %}
+
+<section>
+    <div class="col-2-3">
+    <h1>{{page.title}}</h1>
+    <h4>Duration: {{page.duration}} hr{{page.duration|pluralize}}</h4>
+    <h3>Outline</h3>
+    <p>
+        {{ page.intro }}
+    </p>
+
+    {% for session in module_sessions %}
+      <h3>{{session.title}}</h3>
+      {{session.body|richtext}}
+    {% endfor %}
+    </div>
+    <nav class="sessionNav">
+      <div class="sessionNav__controls">
+          {% if module_sessions.has_previous %}
+            <div class="sessionNav__controls__button sessionNav__controls__button--previous">
+              <a href="?page={{ module_sessions.previous_page_number }}">Previous</a>
+            </div>
+          {% else %}
+            <div class="sessionNav__controls__button sessionNav__controls__button--previous">
+              <!-- <a href="#">Start</a> -->
+            </div>
+          {% endif %}
+        <div class="sessionNav__controls__status">
+          {{ module_sessions.number }}/{{ module_sessions.paginator.num_pages }}
+        </div>
+        {% if module_sessions.has_next %}
+            <div class="sessionNav__controls__button sessionNav__controls__button--next">
+              <a href="?page={{ module_sessions.next_page_number }}">Next</a>
+            </div>
+          {% else %}
+            <div class="sessionNav__controls__button sessionNav__controls__button--next">
+              <a href="{% url 'complete_training' id=page.id %}">Next Lesson</a>
+            </div>
+          {% endif %}
+      </div>
+    </nav>
+</section>
+
+{% endblock content %}

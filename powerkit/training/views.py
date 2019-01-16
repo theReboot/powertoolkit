@@ -1,9 +1,11 @@
 from django.shortcuts import redirect
 from django.utils import timezone
+from django.contrib.auth.decorators import login_required
 
 from training.models import Training, TrainingSchedule, LearningPage
 
 
+@login_required
 def start_training(request):
     #import pdb;pdb.set_trace()
     try:

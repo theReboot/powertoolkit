@@ -1,0 +1,6 @@
+{% load wagtailcore_tags %}
+
+{% for session in module_sessions %}
+    <h3>{{session.title}}</h3>
+    {{session.body|richtext}}
+{% endfor %}

@@ -12,13 +12,10 @@
     <p>
         {{ page.outline }}
     </p>
+    </div>
 
     {% if module_sessions %}
-      {% for session in module_sessions %}
-        <h3>{{session.title}}</h3>
-        {{session.body|richtext}}
-      {% endfor %}
-      </div>
+      {% include "training/_session.html" %}
       <nav class="sessionNav">
         <div class="sessionNav__controls">
             {% if module_sessions.has_previous %}
@@ -45,20 +42,10 @@
         </div>
       </nav>
     {% endif %}
+    </div>
 
     {% if question_sessions %}
-      {% for question in question_sessions %}
-        <h3>{{question.title}}</h3>
-        {{question.question|richtext}}
-        <div>
-          {% for answer in question.mcq_answers.all %}
-            <div class="answer">
-              {{ forloop.counter }} {{ answer.answer}}
-            </div>
-          {% endfor %}
-        </div>
-      {% endfor %}
-      </div>
+       {% include "training/_qa.html" %}
       <nav class="sessionNav">
         <div class="sessionNav__controls">
             {% if question_sessions.has_previous %}
@@ -88,3 +75,13 @@
 </section>
 
 {% endblock content %}
+
+{% block js %}
+<script src="{% static 'js/vue.min.js' %}"></script>
+<script src="https://unpkg.com/vue-resource@1.3.1/dist/vue-resource.min.js"></script>
+<script>
+  var vm = new Vue({
+    el:
+  })
+</script>
+{% endblock js %}

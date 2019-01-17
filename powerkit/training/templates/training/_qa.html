@@ -1,0 +1,13 @@
+{% load wagtailcore_tags %}
+
+{% for question in question_sessions %}
+  <h3>{{question.title}}</h3>
+  {{question.question|richtext}}
+  <div>
+    {% for answer in question.mcq_answers.all %}
+      <h4 class="answer">
+        {{ forloop.counter }} <a href="{% url 'select_answer' id=answer.pk %}">{{ answer.answer}}</a>
+      </h4>
+    {% endfor %}
+  </div>
+{% endfor %}

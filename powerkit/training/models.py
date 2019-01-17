@@ -193,3 +193,12 @@ class MCQAnswer(Orderable):
         FieldPanel('answer'),
         FieldPanel('correct')
     ]
+
+
+class UserAnswer(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    answer = models.ForeignKey(MCQAnswer, on_delete=models.CASCADE)
+    when = models.DateTimeField(default=timezone.now)
+
+    def __str__(self):
+        return self.answer.answer

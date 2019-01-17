@@ -1,8 +1,9 @@
-from django.shortcuts import redirect
+from django.shortcuts import redirect, get_object_or_404
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required
 
-from training.models import Training, TrainingSchedule, LearningPage
+from training.models import Training, TrainingSchedule, LearningPage,\
+    MCQAnswer, UserAnswer
 
 
 @login_required
@@ -70,3 +71,10 @@ def continue_training(request):
     else:
         current_page = schedules[0].learning_page
     return redirect(current_page.url)
+
+
+@login_required
+def select_answer(request, id):
+    mcq_answer = get_object_or_404(MCQAnswer, pk=id)
+    user_answer = UserAnswer.objects.create(
+        answer=mcq_answer, user=request.user)

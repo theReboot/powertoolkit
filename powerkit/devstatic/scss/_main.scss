@@ -92,6 +92,10 @@ figure {
   margin: 0 auto;
 }
 
+fieldset {
+  border: 0;
+}
+
 body {
   background: $black;
   font-family: $sanSerif;
@@ -640,6 +644,21 @@ LEARNING MODULE STYLES
 
 .sessionNav__controls__status {
   flex: 1;
+}
+
+.exam__questionWrap {
+  margin: 0 auto;
+  max-width: 800px;
+}
+
+.exam__questionWrap__question p {
+  font-size: 32px;
+}
+
+.exam__questionWrap__options__option {
+  font-size: 24px;
+  margin-bottom: 1rem;
+  display: block;
 }
 
 /*******************************

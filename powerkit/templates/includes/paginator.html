@@ -1,0 +1,25 @@
+<nav class="sessionNav">
+    <div class="sessionNav__controls">
+        {% if paginator.has_previous %}
+            <div class="sessionNav__controls__button sessionNav__controls__button--previous">
+            <a href="?page={{ paginator.previous_page_number }}">Previous</a>
+            </div>
+        {% else %}
+            <div class="sessionNav__controls__button sessionNav__controls__button--previous">
+            <!-- <a href="#">Start</a> -->
+            </div>
+        {% endif %}
+        <div class="sessionNav__controls__status">
+            {{ paginator.number }}/{{ paginator.paginator.num_pages }}
+        </div>
+        {% if paginator.has_next %}
+            <div class="sessionNav__controls__button sessionNav__controls__button--next">
+            <a href="?page={{ paginator.next_page_number }}">Next</a>
+            </div>
+        {% else %}
+            <div class="sessionNav__controls__button sessionNav__controls__button--next">
+            <a href="{% url 'complete_training' id=page_id %}">Next Lesson</a>
+            </div>
+        {% endif %}
+    </div>
+</nav>

@@ -2,39 +2,71 @@
 {% load staticfiles %}
 
 {% for question in question_sessions %}
-<form class="exam__questionWrap">
+<div class="exam__questionWrap" id="app">
+    <vue-snotify></vue-snotify>
   <div class="h1__preHeading">
-    {{ question.title }}
+    [qtn.title]
   </div>
   <div class="exam__questionWrap__question">
-    {{ question.question | richtext }}
+    <div v-html="qtn.text"></div>
   </div>
   <fieldset class="exam__questionWrap__options">
-    {% for answer in question.mcq_answers.all %}
-    <label class="exam__questionWrap__options__option">
-      <input type="radio" name="{{ question.title }}" value="{{ answer.answer }}">
-      {{ answer.answer }}
+    <label v-for="answer in answers" class="exam__questionWrap__options__option">
+      <input type="radio" :value="answer.id" name="qtn.id" v-model="selected">
+      <span v-text="answer.text"></span>
     </label>
-    {% endfor %}
+    <button v-if="selected === null" class="button" disabled>Pick an Answer</button>
+    <button v-if="selected && !isChecking" class="button" @click.preventDefault="pickAnswer()">Final Answer</button>
+    <button v-if="selected && isChecking" class="button" disabled>Hang on...</button>
   </fieldset>
-</form>
+</div>
 {% endfor %}
 
+
+{% block css %}
+    <link href="{% static 'vendor/snotify/css/material.css' %}" rel="stylesheet" />
+{% endblock css %}
+
 {% block js %}
-<script src="{% static 'js/vue.min.js' %}"></script>
+<script src="{% static 'js/vue.js' %}"></script>
+<script src="{% static 'js/vue-snotify.js' %}"></script>
 <script src="https://unpkg.com/vue-resource@1.3.1/dist/vue-resource.min.js"></script>
 <script>
+
   var vm = new Vue({
-    el: '#app',
-    delimiters: ["[","]"],
-    data: {
-      questionId: {{question_id}}
-    },
-    mounted() {
-      console.log('vue ready');
-      console.log('question is ');
-      console.log(this.questionId)
-    }
-  })
+      el: '#app',
+      delimiters: ["[","]"],
+      data: {
+        questionId: {{question_id}},
+        qtn: null,
+        answers: [],
+        selected: null,
+        isChecking: false,
+      },
+      mounted() {
+        console.log('vue ready');
+        console.log('question is ');
+        console.log(this.questionId);
+        this.getQuestion(this.questionId);
+      },
+      methods: {
+        getQuestion: function(questionId) {
+          console.log(questionId);
+          const url = `/training/question/${questionId}/`;
+          console.log(url);
+          this.$http.get(url).then(response => {
+            console.log(response);
+            this.qtn = response.body.question;
+            this.answers = response.body.answers;
+          })
+        },
+        pickAnswer: function() {
+          console.log(this.selected);
+          this.isChecking = true;
+        }
+      }
+    })
+
+  
 </script>
 {% endblock js %}

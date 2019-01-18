@@ -1,5 +1,7 @@
 from django.shortcuts import redirect, get_object_or_404
+from django.http import JsonResponse
 from django.utils import timezone
+from django.utils.html import escape
 from django.contrib.auth.decorators import login_required
 
 from training.models import Training, TrainingSchedule, LearningPage,\
@@ -82,3 +84,19 @@ def select_answer(request, id):
 
 def get_question(request, id):
     qtn = get_object_or_404(QuestionPage, pk=id)
+    question = {
+        'id': qtn.id,
+        'text': qtn.question,
+        'title': qtn.title
+    }
+    answers = [
+        {
+            'id': ans.id,
+            'text': ans.answer,
+            'correct': ans.correct
+        } for ans in qtn.mcq_answers.all()]
+    return JsonResponse(
+        {
+            'question': question,
+            'answers': answers
+        })

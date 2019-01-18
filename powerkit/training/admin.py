@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from training.models import Training, TrainingSchedule
+from training.models import Training, TrainingSchedule, UserAnswer
 
 
 @admin.register(Training)
@@ -11,3 +11,8 @@ class TrainingAdmin(admin.ModelAdmin):
 @admin.register(TrainingSchedule)
 class TrainingScheduleAdmin(admin.ModelAdmin):
     list_display = ['user_training', 'learning_page', 'current', 'completed']
+
+
+@admin.register(UserAnswer)
+class UserAnswerAdmin(admin.ModelAdmin):
+    list_display = ['user', 'answer', 'when']

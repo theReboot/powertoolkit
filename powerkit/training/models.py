@@ -84,7 +84,9 @@ class LearningPage(Page):
         if question_sessions:
             paginator = Paginator(question_sessions, 1)
             page = request.GET.get('page', 1)
-            context['question_sessions'] = paginator.get_page(page)
+            questions = paginator.get_page(page)
+            context['question_sessions'] = questions
+            context['question_id'] = questions[0].pk
 
         return context
 

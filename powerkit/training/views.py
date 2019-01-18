@@ -3,7 +3,7 @@ from django.utils import timezone
 from django.contrib.auth.decorators import login_required
 
 from training.models import Training, TrainingSchedule, LearningPage,\
-    MCQAnswer, UserAnswer
+    MCQAnswer, UserAnswer, QuestionPage
 
 
 @login_required
@@ -78,3 +78,7 @@ def select_answer(request, id):
     mcq_answer = get_object_or_404(MCQAnswer, pk=id)
     user_answer = UserAnswer.objects.create(
         answer=mcq_answer, user=request.user)
+
+
+def get_question(request, id):
+    qtn = get_object_or_404(QuestionPage, pk=id)

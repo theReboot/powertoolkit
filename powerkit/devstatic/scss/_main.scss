@@ -649,10 +649,15 @@ LEARNING MODULE STYLES
 .exam__questionWrap {
   margin: 0 auto;
   max-width: 800px;
+
+  .h1__preHeading {
+    font-size: 20px;
+    margin-bottom: 1rem;
+  }
 }
 
 .exam__questionWrap__question p {
-  font-size: 32px;
+  font-size: 24px;
 }
 
 .exam__questionWrap__options__option {

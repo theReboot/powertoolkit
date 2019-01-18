@@ -20,6 +20,15 @@
   }
 }
 
+.lessonList__completed {
+  transition: .3s all ease;
+  overflow: hidden;
+}
+
+.lessonList__completed--hidden {
+  height: 0;
+}
+
 .lessonList__row {
   display: flex;
   padding: 1rem;
@@ -40,9 +49,9 @@
 .lessonList__row--completed {
   // opacity: 0.1;
   //
-  height: 20px;
-  background: red;
-  overflow: hidden;
+  // height: 20px;
+  // background: red;
+  // overflow: hidden;
 }
 
 .lessonList__row__placement {

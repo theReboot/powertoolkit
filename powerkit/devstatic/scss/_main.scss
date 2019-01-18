@@ -1025,3 +1025,16 @@ OTHER
   font-size: 14px;
   opacity: .5;
 }
+
+.toggleButton {
+  display: inline-block;
+  margin: 1rem auto;
+  padding: 1rem;
+  border: 2px solid $white;
+  border-radius: 2rem;
+  text-transform: uppercase;
+  font-style: italic;
+  font-size: 14px;
+  letter-spacing: 2px;
+  cursor: pointer;
+}

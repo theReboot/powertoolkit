@@ -1094,6 +1094,18 @@ OTHER
   font-size: 14px;
   opacity: .5; }
 
+.toggleButton {
+  display: inline-block;
+  margin: 1rem auto;
+  padding: 1rem;
+  border: 2px solid #fff;
+  border-radius: 2rem;
+  text-transform: uppercase;
+  font-style: italic;
+  font-size: 14px;
+  letter-spacing: 2px;
+  cursor: pointer; }
+
 #contact-section ul.contact-us {
   list-style-type: none; }
   #contact-section ul.contact-us li {
@@ -1133,6 +1145,13 @@ a.btn {
     .lessonList__featured .lessonList__row__content .title a {
       color: #111111; }
 
+.lessonList__completed {
+  transition: .3s all ease;
+  overflow: hidden; }
+
+.lessonList__completed--hidden {
+  height: 0; }
+
 .lessonList__row {
   display: flex;
   padding: 1rem;
@@ -1146,11 +1165,6 @@ a.btn {
 .lessonList__row--locked {
   opacity: 0.5;
   cursor: not-allowed; }
-
-.lessonList__row--completed {
-  height: 20px;
-  background: red;
-  overflow: hidden; }
 
 .lessonList__row__placement {
   font-size: 134px;

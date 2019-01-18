@@ -96,6 +96,44 @@
   </section>
   <section>
     <div class="lessonList">
+      <div class="toggleButton toggleButton--viewCompleted">
+        View completed lessons
+      </div>
+      <div class="lessonList__completed lessonList__completed--hidden">
+        <div class="lessonList__row lessonList__row--completed">
+          <div class="lessonList__row__placement">1</div>
+          <div class="lessonList__row__content">
+            <div class="title"><a href="#">Title of the lesson</a></div>
+            <div class="body">Description of the lesson goes below the title here. Second sentence of the description to test its limits.</div>
+          </div>
+          <div class="status">
+            <i class="fa fa-check fa-3x text-danger"></i>
+            Completed
+          </div>
+        </div>
+        <div class="lessonList__row lessonList__row--completed">
+          <div class="lessonList__row__placement">2</div>
+          <div class="lessonList__row__content">
+            <div class="title"><a href="#">Title of the lesson</a></div>
+            <div class="body">Description of the lesson goes below the title here. Second sentence of the description to test its limits.</div>
+          </div>
+          <div class="status">
+            <i class="fa fa-check fa-3x text-danger"></i>
+            Completed
+          </div>
+        </div>
+        <div class="lessonList__row lessonList__row--completed">
+          <div class="lessonList__row__placement">3</div>
+          <div class="lessonList__row__content">
+            <div class="title"><a href="#">Title of the lesson</a></div>
+            <div class="body">Description of the lesson goes below the title here. Second sentence of the description to test its limits.</div>
+          </div>
+          <div class="status">
+            <i class="fa fa-check fa-3x text-danger"></i>
+            Completed
+          </div>
+        </div>
+      </div>
       <div class="lessonList__featured">
         <div class="lessonList__row">
             <div class="lessonList__row__placement">4</div>
@@ -195,5 +233,15 @@
     </div>
   </section>
 </div>
+
+<script type="text/javascript">
+  const completedLessonButton = document.querySelector('.toggleButton--viewCompleted');
+  const completedLessons = document.querySelector('.lessonList__completed');
+
+  completedLessonButton.onclick = function() {
+    console.log('clicked!');
+    completedLessons.classList.toggle('lessonList__completed--hidden');
+  }
+</script>
 
 {% endblock content %}

@@ -80,6 +80,9 @@
             this.isChecking = false;
             this.isCorrect = response.body.correct;
             this.completed = true;
+            if (this.isCorrect === true) {
+              setTimeout(function() {this.getQuestion()}.bind(this), 1500);
+            }
           })
         }
       },

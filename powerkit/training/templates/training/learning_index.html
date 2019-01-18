@@ -96,55 +96,11 @@
   </section>
   <section>
     <div class="lessonList">
-      <div class="toggleButton toggleButton--viewCompleted">
-        View completed lessons
-      </div>
-      <div class="lessonList__completed lessonList__completed--hidden">
-        <div class="lessonList__row lessonList__row--completed">
-          <div class="lessonList__row__placement">1</div>
-          <div class="lessonList__row__content">
-            <div class="title"><a href="#">Title of the lesson</a></div>
-            <div class="body">Description of the lesson goes below the title here. Second sentence of the description to test its limits.</div>
-          </div>
-          <div class="status">
-            <i class="fa fa-check fa-3x text-danger"></i>
-            Completed
-          </div>
-        </div>
-        <div class="lessonList__row lessonList__row--completed">
-          <div class="lessonList__row__placement">2</div>
-          <div class="lessonList__row__content">
-            <div class="title"><a href="#">Title of the lesson</a></div>
-            <div class="body">Description of the lesson goes below the title here. Second sentence of the description to test its limits.</div>
-          </div>
-          <div class="status">
-            <i class="fa fa-check fa-3x text-danger"></i>
-            Completed
-          </div>
-        </div>
-        <div class="lessonList__row lessonList__row--completed">
-          <div class="lessonList__row__placement">3</div>
-          <div class="lessonList__row__content">
-            <div class="title"><a href="#">Title of the lesson</a></div>
-            <div class="body">Description of the lesson goes below the title here. Second sentence of the description to test its limits.</div>
-          </div>
-          <div class="status">
-            <i class="fa fa-check fa-3x text-danger"></i>
-            Completed
-          </div>
-        </div>
-      </div>
-      <div class="lessonList__featured">
-        <div class="lessonList__row">
-            <div class="lessonList__row__placement">4</div>
-            <div class="lessonList__row__content">
-              <div class="preHeading">Next lesson:</div>
-              <div class="title"><a href="#">Title of the lesson you're starting</a></div>
-              <div class="body">Description of the lesson you're about to begin. Longer description goes here.</div>
-            </div>
-        </div>
-      </div>
     {% comment %}
+    <div class="toggleButton toggleButton--viewCompleted">
+      View completed lessons
+    </div>
+    <div class="lessonList__completed lessonList__completed--hidden">
       <div class="lessonList__row lessonList__row--completed">
           <div class="lessonList__row__placement">0</div>
           <div class="lessonList__row__content">
@@ -156,9 +112,24 @@
               Completed
           </div>
       </div>
-      {% endcomment %}
+    </div>
+    {% endcomment %}
       {% if schedules %}
           {% for schedule in schedules %}
+            {% if schedule.current %}
+              <div class="lessonList__featured">
+                <div class="lessonList__row">
+                    <div class="lessonList__row__placement">{{schedule.learning_page.placement}}</div>
+                    <div class="lessonList__row__content">
+                      <div class="preHeading">Next lesson:</div>
+                      <div class="title"><a href="{% pageurl schedule.learning_page %}">{{schedule.learning_page.title}}</a></div>
+                      <div class="body">{{schedule.learning_page.outline}}</div>
+                    </div>
+                </div>
+              </div>
+            {% endif %}
+
+            {% if not schedule.current %}
               <div class="lessonList__row
                   {% if schedule.completed %}lessonList__row--completed{% endif %}
                   {% if schedule.pending %}lessonList__row--locked{% endif %}
@@ -183,6 +154,7 @@
                       {% endif %}
                   </div>
               </div>
+            {% endif %}
           {% endfor %}
       {% else %}
           {% for module in modules %}

@@ -115,6 +115,26 @@
     </div>
     {% endcomment %}
       {% if schedules %}
+          {% if completed %}
+            <div class="toggleButton toggleButton--viewCompleted">
+              View completed lessons
+            </div>
+            <div class="lessonList__completed lessonList__completed--hidden">
+            {% for schedule_completed in completed %}
+              <div class="lessonList__row lessonList__row--completed">
+                  <div class="lessonList__row__placement">{{schedule_completed.learning_page.placement}}</div>
+                  <div class="lessonList__row__content">
+                      <div class="title"><a href="{% pageurl schedule_completed.learning_page %}">{{schedule_completed.learning_page.title}}</a></div>
+                      <div class="body">{{schedule_completed.learning_page.outline}}</div>
+                  </div>
+                  <div class="status">
+                      <i class="fa fa-check fa-3x text-danger"></i>
+                      Completed
+                  </div>
+              </div>
+            {% endfor %}
+            </div>
+          {% endif %}
           {% for schedule in schedules %}
             {% if schedule.current %}
               <div class="lessonList__featured">
@@ -129,7 +149,7 @@
               </div>
             {% endif %}
 
-            {% if not schedule.current %}
+            {% if not schedule.current and not schedule.completed %}
               <div class="lessonList__row
                   {% if schedule.completed %}lessonList__row--completed{% endif %}
                   {% if schedule.pending %}lessonList__row--locked{% endif %}

@@ -128,3 +128,18 @@
   top: 0;
   overflow: hidden;
 }
+
+/* Notifications */
+
+.notification {
+  padding: 0.5em;
+  margin: 1em;
+  font-weight: bold;
+  font-size: 24px;
+  &.notification-failure {
+    background-color: red;
+  }
+  &.notification-success {
+    background-color: $yellow;
+  }
+}

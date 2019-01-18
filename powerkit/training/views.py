@@ -77,13 +77,27 @@ def continue_training(request):
 
 @login_required
 def select_answer(request, id):
+    #import pdb;pdb.set_trace()
     mcq_answer = get_object_or_404(MCQAnswer, pk=id)
-    user_answer = UserAnswer.objects.create(
-        answer=mcq_answer, user=request.user)
+    UserAnswer.objects.create(answer=mcq_answer, user=request.user)
+    return JsonResponse(
+        {
+            'success': True,
+            'correct': mcq_answer.correct
+        }
+    )
 
 
-def get_question(request, id):
-    qtn = get_object_or_404(QuestionPage, pk=id)
+@login_required
+def get_question(request):
+    answered = [
+        ans.answer.page.id for ans in UserAnswer.objects.filter(
+            user=request.user)
+    ]
+    questions = QuestionPage.objects.exclude(id__in=answered)
+    if not questions:
+        return JsonResponse({'completed': True})
+    qtn = questions[0]
     question = {
         'id': qtn.id,
         'text': qtn.question,
@@ -98,5 +112,6 @@ def get_question(request, id):
     return JsonResponse(
         {
             'question': question,
-            'answers': answers
+            'answers': answers,
+            'completed': False
         })

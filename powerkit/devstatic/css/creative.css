@@ -1129,6 +1129,17 @@ a.btn {
   top: 0;
   overflow: hidden; }
 
+/* Notifications */
+.notification {
+  padding: 0.5em;
+  margin: 1em;
+  font-weight: bold;
+  font-size: 24px; }
+  .notification.notification-failure {
+    background-color: red; }
+  .notification.notification-success {
+    background-color: #cdcf60; }
+
 #login-form input[type="text"],
 #login-form input[type="password"],
 #login-form input[type="email"],

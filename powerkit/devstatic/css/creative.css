@@ -1096,15 +1096,21 @@ OTHER
 
 .toggleButton {
   display: inline-block;
-  margin: 1rem auto;
-  padding: 1rem;
-  border: 2px solid #fff;
-  border-radius: 2rem;
+  margin: 1rem auto 2rem;
+  padding: 10px 20px;
+  border: 1px solid #fff;
+  border-radius: 20px;
   text-transform: uppercase;
   font-style: italic;
-  font-size: 14px;
+  font-size: 11px;
   letter-spacing: 2px;
-  cursor: pointer; }
+  cursor: pointer;
+  transition: .2s all ease; }
+  .toggleButton:hover {
+    background: rgba(255, 255, 255, 0.2); }
+
+.toggleButtonWrap {
+  text-align: center; }
 
 #contact-section ul.contact-us {
   list-style-type: none; }
@@ -1149,7 +1155,9 @@ a.btn {
   transition: .3s all ease;
   overflow: hidden;
   -webkit-transform: scaleY(1);
-          transform: scaleY(1); }
+          transform: scaleY(1);
+  -webkit-transform-origin: top;
+          transform-origin: top; }
 
 .lessonList__completed--hidden {
   height: 0;

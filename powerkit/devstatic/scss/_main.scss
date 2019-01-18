@@ -1028,13 +1028,22 @@ OTHER
 
 .toggleButton {
   display: inline-block;
-  margin: 1rem auto;
-  padding: 1rem;
-  border: 2px solid $white;
-  border-radius: 2rem;
+  margin: 1rem auto 2rem;
+  padding: 10px 20px;
+  border: 1px solid $white;
+  border-radius: 20px;
   text-transform: uppercase;
   font-style: italic;
-  font-size: 14px;
+  font-size: 11px;
   letter-spacing: 2px;
   cursor: pointer;
+  transition: .2s all ease;
+
+  &:hover {
+    background: rgba(255,255,255,.2);
+  }
+}
+
+.toggleButtonWrap {
+  text-align: center;
 }

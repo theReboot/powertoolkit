@@ -98,8 +98,10 @@
     <div class="lessonList">
       {% if schedules %}
           {% if completed %}
-            <div class="toggleButton toggleButton--viewCompleted">
-              View completed lessons
+            <div class="toggleButtonWrap">
+              <div class="toggleButton toggleButton--viewCompleted">
+                View completed lessons
+              </div>
             </div>
             <div class="lessonList__completed lessonList__completed--hidden">
             {% for schedule_completed in completed %}

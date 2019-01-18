@@ -24,6 +24,7 @@
   transition: .3s all ease;
   overflow: hidden;
   transform: scaleY(1);
+  transform-origin: top;
 }
 
 .lessonList__completed--hidden {

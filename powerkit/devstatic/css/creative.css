@@ -477,6 +477,13 @@ h4 a {
   h4 a:hover {
     opacity: 0.8; }
 
+.preHeading {
+  display: block;
+  text-transform: uppercase;
+  opacity: 0.5;
+  letter-spacing: 4px;
+  font-weight: 500; }
+
 figcaption {
   font-size: 14px;
   opacity: 0.6;
@@ -1116,6 +1123,16 @@ a.btn {
   max-width: 800px;
   margin: 0 auto; }
 
+.lessonList__featured {
+  background: #cdcf60; }
+  .lessonList__featured .lessonList__row {
+    padding-top: 0;
+    padding-bottom: 0; }
+  .lessonList__featured .lessonList__row__content {
+    color: #111111; }
+    .lessonList__featured .lessonList__row__content .title a {
+      color: #111111; }
+
 .lessonList__row {
   display: flex;
   padding: 1rem;
@@ -1127,10 +1144,13 @@ a.btn {
       flex-direction: column; } }
 
 .lessonList__row--locked {
-  opacity: 0.5; }
+  opacity: 0.5;
+  cursor: not-allowed; }
 
 .lessonList__row--completed {
-  opacity: 0.1; }
+  height: 20px;
+  background: red;
+  overflow: hidden; }
 
 .lessonList__row__placement {
   font-size: 134px;

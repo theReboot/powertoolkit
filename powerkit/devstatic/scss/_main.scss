@@ -666,6 +666,8 @@ LEARNING MODULE STYLES
   display: block;
 }
 
+// start timer animation. Including this comment because we have two options here, and one will need to be removed.
+
 .pieWrap {
   position: absolute;
   background: #3B3B3B;
@@ -733,6 +735,24 @@ LEARNING MODULE STYLES
 }
 
 @include timer('.pieWrap', 1.5, 35px, white, '0px solid rgba(0,0,0,0.2)');
+
+// line
+
+.sessionNav::before {
+  content: '';
+  width: 0;
+  height: 5px;
+  background: $yellow;
+  position: absolute;
+  transition: width 1.5s;
+  left: 0;
+}
+
+.sessionNav--loading::before {
+  width: 100%;
+}
+
+// end timer animation
 
 /*******************************
 OTHER

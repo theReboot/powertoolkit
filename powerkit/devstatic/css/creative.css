@@ -871,6 +871,18 @@ LEARNING MODULE STYLES
   50%, 100% {
     opacity: 0; } }
 
+.sessionNav::before {
+  content: '';
+  width: 0;
+  height: 5px;
+  background: #cdcf60;
+  position: absolute;
+  transition: width 1.5s;
+  left: 0; }
+
+.sessionNav--loading::before {
+  width: 100%; }
+
 /*******************************
 OTHER
 *******************************/

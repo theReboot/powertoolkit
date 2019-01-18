@@ -23,10 +23,12 @@
 .lessonList__completed {
   transition: .3s all ease;
   overflow: hidden;
+  transform: scaleY(1);
 }
 
 .lessonList__completed--hidden {
   height: 0;
+  transform: scaleY(0);
 }
 
 .lessonList__row {

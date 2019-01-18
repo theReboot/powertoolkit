@@ -791,6 +791,86 @@ LEARNING MODULE STYLES
   margin-bottom: 1rem;
   display: block; }
 
+.pieWrap {
+  position: absolute;
+  background: #3B3B3B;
+  right: 2rem; }
+
+.pieWrap, .pieWrap * {
+  box-sizing: border-box; }
+
+.pieWrap {
+  width: 35px;
+  height: 35px; }
+
+.pieWrap .pieWrap__pie {
+  width: 50%;
+  height: 100%;
+  -webkit-transform-origin: 100% 50%;
+          transform-origin: 100% 50%;
+  position: absolute;
+  background: white;
+  border: 0px solid rgba(0,0,0,0.2); }
+
+.pieWrap .pieWrap__pie--spinner {
+  border-radius: 100% 0 0 100% / 50% 0 0 50%;
+  z-index: 200;
+  border-right: none;
+  -webkit-animation: rota 1.5s linear infinite;
+          animation: rota 1.5s linear infinite; }
+
+.pieWrap:hover .pieWrap__pie--spinner,
+.pieWrap:hover .pieWrap__pie--filler,
+.pieWrap:hover .pieWrap__mask {
+  -webkit-animation-play-state: running;
+          animation-play-state: running; }
+
+.pieWrap .pieWrap__pie--filler {
+  border-radius: 0 100% 100% 0 / 0 50% 50% 0;
+  left: 50%;
+  opacity: 0;
+  z-index: 100;
+  animation: opa 1.5s steps(1, end) infinite reverse;
+  border-left: none; }
+
+.pieWrap .pieWrap__mask {
+  width: 50%;
+  height: 100%;
+  position: absolute;
+  background: inherit;
+  opacity: 1;
+  z-index: 300;
+  -webkit-animation: opa 1.5s steps(1, end) infinite;
+          animation: opa 1.5s steps(1, end) infinite; }
+
+@-webkit-keyframes rota {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg); }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg); } }
+
+@keyframes rota {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg); }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg); } }
+
+@-webkit-keyframes opa {
+  0% {
+    opacity: 1; }
+  50%, 100% {
+    opacity: 0; } }
+
+@keyframes opa {
+  0% {
+    opacity: 1; }
+  50%, 100% {
+    opacity: 0; } }
+
 /*******************************
 OTHER
 *******************************/

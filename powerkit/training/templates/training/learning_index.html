@@ -12,16 +12,7 @@
 
 {% block content %}
 <div class="learning-index-section">
- <section>
-    <div class="col-2-3">
-    <div class="h1__preHeading"></div>
-    <h1 class="h1__smaller">Training</h1>
-    <p class="introSentence introSentence--border">
-        {{ page.intro }}
-    </p>
-    </div>
-</section>
-<section>
+  <section>
     <h2>{{page.title}}</h2>
     <div class="flexGrid">
         <div class="col">
@@ -85,7 +76,6 @@
                   <a href="{% url 'logout' %}" class="button button--secondary"><i class="key"> Log out</i></a>
               </div>
           </div>
-          <!-- Understanding investigate journalism -->
           <div class="meter">
              <span style="width: {{training.percent_completion}}%"></span>
           </div>
@@ -103,98 +93,107 @@
           {% endif %}
         </div>
     </div>
-</section>
-
-<section>
-  <div class="lessonList">
-  {% comment %}
-    <div class="lessonList__row lessonList__row--completed">
-        <div class="lessonList__row__placement">0</div>
-        <div class="lessonList__row__content">
-            <div class="title"><a href="#">Testing completed lesson</a></div>
-            <div class="body">Description of the lesson you've already completed. Longer description goes here.</div>
-        </div>
-        <div class="status">
-            <i class="fa fa-check fa-3x text-danger"></i>
-            Completed
-        </div>
-    </div>
-    {% endcomment %}
-    {% if schedules %}
-        {% for schedule in schedules %}
-            <div class="lessonList__row 
-                {% if schedule.completed %}lessonList__row--completed{% endif %}
-                {% if schedule.pending %}lessonList__row--locked{% endif %}
-            ">
-                <div class="lessonList__row__placement">{{schedule.learning_page.placement}}</div>
-                <div class="lessonList__row__content">
-                    <div class="title"><a href="{% pageurl schedule.learning_page %}">{{schedule.learning_page.title}}</a></div>
-                    <div class="body">{{schedule.learning_page.outline}}</div>
-                </div>
-                <div class="status">
-                    {% if schedule.completed %}
-                        <i class="fa fa-check fa-3x text-danger"></i>
-                        Completed
-                    {% endif %}
-                    {% if schedule.current %}
-                        <i class="fa fa-hourglass fa-2x text-success"></i>
-                        Ongoing
-                    {% endif %}
-                    {% if schedule.pending %}
-                        <i class="fa fa-lock fa-2x text-success"></i>
-                        Pending
-                    {% endif %}
-                </div>
+  </section>
+  <section>
+    <div class="lessonList">
+      <div class="lessonList__featured">
+        <div class="lessonList__row">
+            <div class="lessonList__row__placement">4</div>
+            <div class="lessonList__row__content">
+              <div class="preHeading">Next lesson:</div>
+              <div class="title"><a href="#">Title of the lesson you're starting</a></div>
+              <div class="body">Description of the lesson you're about to begin. Longer description goes here.</div>
             </div>
-        {% endfor %}
-    {% else %}
-        {% for module in modules %}
-            {% if module.pk == first_module.pk and user.is_authenticated %}
-                <div class="lessonList__row">
-                    <div class="lessonList__row__placement">{{module.specific.placement}}</div>
-                    <div class="lessonList__row__content">
-                        <div class="title">
-                            <a href="{% url 'start_training' %}">{{module.title}}</a>
-                        </div>
-                        <div class="body">{{module.specific.outline}}</div>
-                    </div>
-                    <div class="status">
-                        <i class="fa fa-hourglass-start fa-2x text-success"></i>
-                        Start
-                    </div>
-                </div>
-            {% else %}
-                <div class="lessonList__row lessonList__row--locked">
-                    <div class="lessonList__row__placement">{{module.specific.placement}}</div>
-                    <div class="lessonList__row__content">
-                        <div class="title">
-                            {{ module.title}}
-                        </div>
-                        <div class="body">{{module.specific.outline}}</div>
-                    </div>
-                    <div class="status">
-                        <i class="fa fa-lock fa-2x text-success"></i>
-                        Pending
-                    </div>
-                </div>
-            {% endif %}
-        {% endfor %}
-    {% endif %}
+        </div>
+      </div>
     {% comment %}
-    <div class="lessonList__row lessonList__row--locked">
-        <div class="lessonList__row__placement">0</div>
-        <div class="lessonList__row__content">
-            <div class="title"><a href="#">Testing locked lesson</a></div>
-            <div class="body">Description of the lesson you won't have access to because you haven't completed prior lessons.</div>
-        </div>
-        <div class="status">
-            <i class="fa fa-check fa-3x text-danger"></i>
-            Completed
-        </div>
+      <div class="lessonList__row lessonList__row--completed">
+          <div class="lessonList__row__placement">0</div>
+          <div class="lessonList__row__content">
+              <div class="title"><a href="#">Testing completed lesson</a></div>
+              <div class="body">Description of the lesson you've already completed. Longer description goes here.</div>
+          </div>
+          <div class="status">
+              <i class="fa fa-check fa-3x text-danger"></i>
+              Completed
+          </div>
+      </div>
+      {% endcomment %}
+      {% if schedules %}
+          {% for schedule in schedules %}
+              <div class="lessonList__row
+                  {% if schedule.completed %}lessonList__row--completed{% endif %}
+                  {% if schedule.pending %}lessonList__row--locked{% endif %}
+              ">
+                  <div class="lessonList__row__placement">{{schedule.learning_page.placement}}</div>
+                  <div class="lessonList__row__content">
+                      <div class="title"><a href="{% pageurl schedule.learning_page %}">{{schedule.learning_page.title}}</a></div>
+                      <div class="body">{{schedule.learning_page.outline}}</div>
+                  </div>
+                  <div class="status">
+                      {% if schedule.completed %}
+                          <i class="fa fa-check fa-3x text-danger"></i>
+                          Completed
+                      {% endif %}
+                      {% if schedule.current %}
+                          <i class="fa fa-hourglass fa-2x text-success"></i>
+                          Ongoing
+                      {% endif %}
+                      {% if schedule.pending %}
+                          <i class="fa fa-lock fa-2x text-success"></i>
+                          Pending
+                      {% endif %}
+                  </div>
+              </div>
+          {% endfor %}
+      {% else %}
+          {% for module in modules %}
+              {% if module.pk == first_module.pk and user.is_authenticated %}
+                  <div class="lessonList__row">
+                      <div class="lessonList__row__placement">{{module.specific.placement}}</div>
+                      <div class="lessonList__row__content">
+                          <div class="title">
+                              <a href="{% url 'start_training' %}">{{module.title}}</a>
+                          </div>
+                          <div class="body">{{module.specific.outline}}</div>
+                      </div>
+                      <div class="status">
+                          <i class="fa fa-hourglass-start fa-2x text-success"></i>
+                          Start
+                      </div>
+                  </div>
+              {% else %}
+                  <div class="lessonList__row lessonList__row--locked">
+                      <div class="lessonList__row__placement">{{module.specific.placement}}</div>
+                      <div class="lessonList__row__content">
+                          <div class="title">
+                              {{ module.title}}
+                          </div>
+                          <div class="body">{{module.specific.outline}}</div>
+                      </div>
+                      <div class="status">
+                          <i class="fa fa-lock fa-2x text-success"></i>
+                          Pending
+                      </div>
+                  </div>
+              {% endif %}
+          {% endfor %}
+      {% endif %}
+      {% comment %}
+      <div class="lessonList__row lessonList__row--locked">
+          <div class="lessonList__row__placement">0</div>
+          <div class="lessonList__row__content">
+              <div class="title"><a href="#">Testing locked lesson</a></div>
+              <div class="body">Description of the lesson you won't have access to because you haven't completed prior lessons.</div>
+          </div>
+          <div class="status">
+              <i class="fa fa-check fa-3x text-danger"></i>
+              Completed
+          </div>
+      </div>
+      {% endcomment %}
     </div>
-    {% endcomment %}
-  </div>
-</section>
+  </section>
 </div>
 
 {% endblock content %}

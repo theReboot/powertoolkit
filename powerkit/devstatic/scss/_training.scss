@@ -2,6 +2,24 @@
   max-width: 800px;
   margin: 0 auto;
 }
+
+.lessonList__featured {
+  background: $yellow;
+
+  .lessonList__row {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  .lessonList__row__content {
+    color: $black;
+
+    .title a {
+      color: $black;
+    }
+  }
+}
+
 .lessonList__row {
   display: flex;
   padding: 1rem;
@@ -16,10 +34,15 @@
 
 .lessonList__row--locked {
   opacity: 0.5;
+  cursor: not-allowed;
 }
 
 .lessonList__row--completed {
-  opacity: 0.1;
+  // opacity: 0.1;
+  //
+  height: 20px;
+  background: red;
+  overflow: hidden;
 }
 
 .lessonList__row__placement {

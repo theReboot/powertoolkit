@@ -2,16 +2,22 @@
 {% load staticfiles %}
 
 {% for question in question_sessions %}
-  <h3>{{question.title}}</h3>
-  <p>{{question_id}}</p>
-  {{question.question|richtext}}
-  <div>
-    {% for answer in question.mcq_answers.all %}
-      <h4 class="answer">
-        {{ forloop.counter }} <a href="{% url 'select_answer' id=answer.pk %}">{{ answer.answer}}</a>
-      </h4>
-    {% endfor %}
+<form class="exam__questionWrap">
+  <div class="h1__preHeading">
+    {{ question.title }}
   </div>
+  <div class="exam__questionWrap__question">
+    {{ question.question | richtext }}
+  </div>
+  <fieldset class="exam__questionWrap__options">
+    {% for answer in question.mcq_answers.all %}
+    <label class="exam__questionWrap__options__option">
+      <input type="radio" name="{{ question.title }}" value="{{ answer.answer }}">
+      {{ answer.answer }}
+    </label>
+    {% endfor %}
+  </fieldset>
+</form>
 {% endfor %}
 
 {% block js %}

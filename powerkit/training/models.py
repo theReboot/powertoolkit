@@ -44,6 +44,7 @@ class LearningIndex(Page):
         schedules = TrainingSchedule.objects.filter(
             user_training__user=request.user).order_by('id')
         context['schedules'] = schedules
+        context['completed'] = schedules.filter(completed=True)
         current_schedule = schedules.filter(current=True)
         if current_schedule:
             context['current_schedule'] = current_schedule[0]

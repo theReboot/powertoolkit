@@ -744,6 +744,20 @@ LEARNING MODULE STYLES
       width: calc(100% + 2rem);
       margin-left: calc(-2rem / 2); } }
 
+.sessionNav::before {
+  content: '';
+  width: 0;
+  height: 5px;
+  opacity: 1;
+  background: #cdcf60;
+  position: absolute;
+  left: 0;
+  transition: width 1.5s, opacity 1.6s .4s; }
+
+.sessionNav--loading::before {
+  width: 100%;
+  opacity: 0; }
+
 .sessionNav__controls {
   display: flex;
   margin: 0 auto;
@@ -797,98 +811,6 @@ LEARNING MODULE STYLES
   font-size: 24px;
   margin-bottom: 1rem;
   display: block; }
-
-.pieWrap {
-  position: absolute;
-  background: #3B3B3B;
-  right: 2rem; }
-
-.pieWrap, .pieWrap * {
-  box-sizing: border-box; }
-
-.pieWrap {
-  width: 35px;
-  height: 35px; }
-
-.pieWrap .pieWrap__pie {
-  width: 50%;
-  height: 100%;
-  -webkit-transform-origin: 100% 50%;
-          transform-origin: 100% 50%;
-  position: absolute;
-  background: white;
-  border: 0px solid rgba(0,0,0,0.2); }
-
-.pieWrap .pieWrap__pie--spinner {
-  border-radius: 100% 0 0 100% / 50% 0 0 50%;
-  z-index: 200;
-  border-right: none;
-  -webkit-animation: rota 1.5s linear infinite;
-          animation: rota 1.5s linear infinite; }
-
-.pieWrap:hover .pieWrap__pie--spinner,
-.pieWrap:hover .pieWrap__pie--filler,
-.pieWrap:hover .pieWrap__mask {
-  -webkit-animation-play-state: running;
-          animation-play-state: running; }
-
-.pieWrap .pieWrap__pie--filler {
-  border-radius: 0 100% 100% 0 / 0 50% 50% 0;
-  left: 50%;
-  opacity: 0;
-  z-index: 100;
-  animation: opa 1.5s steps(1, end) infinite reverse;
-  border-left: none; }
-
-.pieWrap .pieWrap__mask {
-  width: 50%;
-  height: 100%;
-  position: absolute;
-  background: inherit;
-  opacity: 1;
-  z-index: 300;
-  -webkit-animation: opa 1.5s steps(1, end) infinite;
-          animation: opa 1.5s steps(1, end) infinite; }
-
-@-webkit-keyframes rota {
-  0% {
-    -webkit-transform: rotate(0deg);
-            transform: rotate(0deg); }
-  100% {
-    -webkit-transform: rotate(360deg);
-            transform: rotate(360deg); } }
-
-@keyframes rota {
-  0% {
-    -webkit-transform: rotate(0deg);
-            transform: rotate(0deg); }
-  100% {
-    -webkit-transform: rotate(360deg);
-            transform: rotate(360deg); } }
-
-@-webkit-keyframes opa {
-  0% {
-    opacity: 1; }
-  50%, 100% {
-    opacity: 0; } }
-
-@keyframes opa {
-  0% {
-    opacity: 1; }
-  50%, 100% {
-    opacity: 0; } }
-
-.sessionNav::before {
-  content: '';
-  width: 0;
-  height: 5px;
-  background: #cdcf60;
-  position: absolute;
-  transition: width 1.5s;
-  left: 0; }
-
-.sessionNav--loading::before {
-  width: 100%; }
 
 /*******************************
 OTHER
@@ -1147,7 +1069,8 @@ a.btn {
     padding-top: 0;
     padding-bottom: 0; }
   .lessonList__featured .lessonList__row__content {
-    color: #111111; }
+    color: #111111;
+    flex: 5; }
     .lessonList__featured .lessonList__row__content .title a {
       color: #111111; }
 
@@ -1166,7 +1089,7 @@ a.btn {
 
 .lessonList__row {
   display: flex;
-  padding: 1rem;
+  padding: 1rem 0;
   flex-direction: row;
   justify-content: space-evenly;
   border-bottom: 1px solid #fff; }
@@ -1183,14 +1106,22 @@ a.btn {
   font-weight: bold;
   text-align: center;
   letter-spacing: -0.1rem;
-  padding: 1rem; }
+  padding: 1rem;
+  flex: 1; }
 
 .lessonList__row__content {
   justify-content: center;
   flex-direction: column;
   vertical-align: middle;
   display: flex;
-  padding: 0.2rem; }
+  padding: 0.2rem;
+  flex: 4; }
+  @media (min-width: 500px) and (max-width: 768px) {
+    .lessonList__row__content {
+      flex: 3; } }
+  @media (max-width: 500px) {
+    .lessonList__row__content {
+      flex: 1; } }
   .lessonList__row__content .title {
     font-size: 34px;
     line-height: normal;
@@ -1207,7 +1138,8 @@ a.btn {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center; }
+  align-items: center;
+  flex: 1; }
   .status .fa {
     color: #cdcf60; }
 

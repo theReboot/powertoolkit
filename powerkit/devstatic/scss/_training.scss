@@ -13,6 +13,7 @@
 
   .lessonList__row__content {
     color: $black;
+    flex: 5; // this is +1 from the non-featured to accommodate for the missing status
 
     .title a {
       color: $black;
@@ -34,7 +35,7 @@
 
 .lessonList__row {
   display: flex;
-  padding: 1rem;
+  padding: 1rem 0;
   flex-direction: row;
   justify-content: space-evenly;
   border-bottom: 1px solid $white;
@@ -63,6 +64,7 @@
   text-align: center;
   letter-spacing: -0.1rem;
   padding: 1rem;
+  flex: 1;
 }
 .lessonList__row__content {
   justify-content: center;
@@ -70,6 +72,15 @@
   vertical-align: middle;
   display: flex;
   padding: 0.2rem;
+  flex: 4;
+
+  @include tablet {
+    flex: 3;
+  }
+
+  @include mobile {
+    flex: 1;
+  }
 
   .title {
     font-size: 34px;
@@ -91,6 +102,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  flex: 1;
   .fa {
     color: $yellow;
   }

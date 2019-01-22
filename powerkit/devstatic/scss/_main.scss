@@ -605,6 +605,24 @@ LEARNING MODULE STYLES
   }
 }
 
+.sessionNav::before {
+  content: '';
+  width: 0;
+  height: 5px;
+  opacity: 1;
+  background: $yellow;
+  position: absolute;
+  left: 0;
+  transition: width 1.5s, opacity 1.6s .4s;
+}
+
+.sessionNav--loading::before {
+  width: 100%;
+  opacity: 0;
+}
+
+
+
 .sessionNav__controls {
   display: flex;
   margin: 0 auto;
@@ -673,94 +691,6 @@ LEARNING MODULE STYLES
   margin-bottom: 1rem;
   display: block;
 }
-
-// start timer animation. Including this comment because we have two options here, and one will need to be removed.
-
-.pieWrap {
-  position: absolute;
-  background: #3B3B3B;
-  right: $sitePad;
-}
-
-@mixin timer($item, $duration, $size, $color, $border, $hover: running) {
-  #{$item}, #{$item} * { box-sizing: border-box; }
-
-  #{$item} {
-    width: $size;
-    height: $size;
-  }
-
-  #{$item} .pieWrap__pie {
-    width: 50%;
-    height: 100%;
-    transform-origin: 100% 50%;
-    position: absolute;
-    background: $color;
-    border: #{$border};
-  }
-
-  #{$item} .pieWrap__pie--spinner {
-    border-radius: 100% 0 0 100% / 50% 0 0 50%;
-    z-index: 200;
-    border-right: none;
-    animation: rota $duration + s linear infinite;
-  }
-
-  #{$item}:hover .pieWrap__pie--spinner,
-  #{$item}:hover .pieWrap__pie--filler,
-  #{$item}:hover .pieWrap__mask {
-    animation-play-state: $hover;
-  }
-
-  #{$item} .pieWrap__pie--filler {
-    border-radius: 0 100% 100% 0 / 0 50% 50% 0;
-    left: 50%;
-    opacity: 0;
-    z-index: 100;
-    animation: opa $duration + s steps(1,end) infinite reverse;
-    border-left: none;
-  }
-
-  #{$item} .pieWrap__mask {
-    width: 50%;
-    height: 100%;
-    position: absolute;
-    background: inherit;
-    opacity: 1;
-    z-index: 300;
-    animation: opa $duration + s steps(1,end) infinite;
-  }
-
-  @keyframes rota {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-  }
-
-  @keyframes opa {
-    0% { opacity: 1; }
-    50%, 100% { opacity: 0; }
-  }
-}
-
-@include timer('.pieWrap', 1.5, 35px, white, '0px solid rgba(0,0,0,0.2)');
-
-// line
-
-.sessionNav::before {
-  content: '';
-  width: 0;
-  height: 5px;
-  background: $yellow;
-  position: absolute;
-  transition: width 1.5s;
-  left: 0;
-}
-
-.sessionNav--loading::before {
-  width: 100%;
-}
-
-// end timer animation
 
 /*******************************
 OTHER

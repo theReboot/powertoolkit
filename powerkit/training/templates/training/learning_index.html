@@ -99,9 +99,7 @@
       {% if schedules %}
           {% if completed %}
             <div class="toggleButtonWrap">
-              <div class="toggleButton toggleButton--viewCompleted">
-                View completed lessons
-              </div>
+              <div class="toggleButton toggleButton--viewCompleted">Show completed lessons</div>
             </div>
             <div class="lessonList__completed lessonList__completed--hidden">
             {% for schedule_completed in completed %}
@@ -211,13 +209,19 @@
 </div>
 
 <script type="text/javascript">
-  const completedLessonButton = document.querySelector('.toggleButton--viewCompleted');
-  const completedLessons = document.querySelector('.lessonList__completed');
+const completedLessonButton = document.querySelector('.toggleButton--viewCompleted');
+const completedLessons = document.querySelector('.lessonList__completed');
 
-  completedLessonButton.onclick = function() {
-    console.log('clicked!');
-    completedLessons.classList.toggle('lessonList__completed--hidden');
+completedLessonButton.onclick = function() {
+  completedLessons.classList.toggle('lessonList__completed--hidden');
+
+  if (completedLessonButton.innerHTML == "Show completed lessons") {
+    completedLessonButton.innerHTML = "Hide completed lessons";
   }
+  else {
+    completedLessonButton.innerHTML = "Show completed lessons";
+  }
+}
 </script>
 
 {% endblock content %}

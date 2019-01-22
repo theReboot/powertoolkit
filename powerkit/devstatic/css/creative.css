@@ -1064,13 +1064,21 @@ a.btn {
   margin: 0 auto; }
 
 .lessonList__featured {
-  background: #cdcf60; }
+  background: #cdcf60;
+  width: 100%;
+  width: calc(100% + 2rem);
+  margin-left: calc(-2rem / 2);
+  padding: calc(2rem / 2); }
   .lessonList__featured .lessonList__row {
     padding-top: 0;
-    padding-bottom: 0; }
+    padding-bottom: 0;
+    border: 0; }
   .lessonList__featured .lessonList__row__content {
     color: #111111;
     flex: 5; }
+    @media (max-width: 500px) {
+      .lessonList__featured .lessonList__row__content {
+        flex: auto; } }
     .lessonList__featured .lessonList__row__content .title a {
       color: #111111; }
 
@@ -1095,10 +1103,13 @@ a.btn {
   border-bottom: 1px solid #fff; }
   @media (max-width: 500px) {
     .lessonList__row {
-      flex-direction: column; } }
+      flex-wrap: wrap; } }
 
 .lessonList__row--locked {
   opacity: 0.5;
+  cursor: not-allowed; }
+
+.lessonList__row--locked .title a {
   cursor: not-allowed; }
 
 .lessonList__row__placement {
@@ -1108,6 +1119,13 @@ a.btn {
   letter-spacing: -0.1rem;
   padding: 1rem;
   flex: 1; }
+  @media (max-width: 500px) {
+    .lessonList__row__placement {
+      font-size: 100px;
+      padding: 0;
+      order: 1;
+      text-align: left;
+      flex: auto; } }
 
 .lessonList__row__content {
   justify-content: center;
@@ -1121,14 +1139,19 @@ a.btn {
       flex: 3; } }
   @media (max-width: 500px) {
     .lessonList__row__content {
-      flex: 1; } }
+      flex: auto;
+      order: 3;
+      width: 100%; } }
   .lessonList__row__content .title {
     font-size: 34px;
     line-height: normal;
     font-weight: bold; }
     .lessonList__row__content .title a {
       color: #fff;
-      text-decoration: none; }
+      text-decoration: none;
+      line-height: 1;
+      display: block;
+      margin-bottom: 10px; }
   .lessonList__row__content .body {
     font-size: 18px;
     line-height: 25px;
@@ -1140,6 +1163,11 @@ a.btn {
   justify-content: center;
   align-items: center;
   flex: 1; }
+  @media (max-width: 500px) {
+    .status {
+      padding: 0;
+      order: 2;
+      flex: 0; } }
   .status .fa {
     color: #cdcf60; }
 

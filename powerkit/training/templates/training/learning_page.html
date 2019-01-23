@@ -6,16 +6,10 @@
 {% block content %}
 
 <section>
-    <div class="col-2-3">
-    <h1>{{page.title}}</h1>
-    <h4>Duration: {{page.duration}} hr{{page.duration|pluralize}}</h4>
-    <h3>Outline</h3>
-    <p>
-        {{ page.outline }}
-    </p>
-    </div>
+   
 
     {% if module_sessions %}
+      {% include "training/_learning_page_header.html" %}
       {% include "training/_session.html" %}
       {% comment %} {% show_pagination module_sessions page.id %} {% endcomment %}
     {% endif %}

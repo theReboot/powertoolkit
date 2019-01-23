@@ -152,6 +152,10 @@ class TrainingSchedule(models.Model):
             return True
         return False
 
+    @property
+    def has_questions(self):
+        return self.learning_page.has_questions
+
 
 class MCQPage(Page):
     outline = models.TextField(null=True, blank=True)

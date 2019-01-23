@@ -158,7 +158,17 @@
               ">
                   <div class="lessonList__row__placement">{{schedule.learning_page.placement}}</div>
                   <div class="lessonList__row__content">
-                      <div class="title"><a href="{% pageurl schedule.learning_page %}">{{schedule.learning_page.title}}</a></div>
+                      <div class="title">
+                        {% if schedule.pending %}
+                          <a>
+                            {{schedule.learning_page.title}}
+                          </a>
+                        {% else %}
+                          <a href="{% pageurl schedule.learning_page %}">
+                            {{schedule.learning_page.title}}
+                          </a>
+                        {% endif %}
+                      </div>
                       <div class="body">{{schedule.learning_page.outline}}</div>
                   </div>
                   <div class="status">

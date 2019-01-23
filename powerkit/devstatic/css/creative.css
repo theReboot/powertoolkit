@@ -1100,6 +1100,8 @@ a.btn {
           transform: scaleY(1);
   -webkit-transform-origin: top;
           transform-origin: top; }
+  .lessonList__completed .lessonList__row:last-of-type {
+    border: 0; }
 
 .lessonList__completed--hidden {
   height: 0;

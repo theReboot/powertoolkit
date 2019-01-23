@@ -75,6 +75,7 @@ var vm = new Vue({
       moveNext() {
           if(this.sessionIndex < this.sessions.length - 1){
               this.sessionIndex += 1;
+              window.scrollTo(0, 0);
           }
       },
       movePrev() {

@@ -102,6 +102,12 @@ class LearningPage(Page):
     parent_page_types = ['training.LearningIndex']
     subpage_types = ['training.LearningSessionPage', 'training.QuestionPage']
 
+    @property
+    def has_questions(self):
+        if QuestionPage.objects.child_of(self):
+            return True
+        return False
+
 
 class LearningSessionPage(Page):
     body = RichTextField()

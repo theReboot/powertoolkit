@@ -813,6 +813,17 @@ LEARNING MODULE STYLES
   display: block; }
 
 /*******************************
+SVG Styles
+*******************************/
+.svg--white path,
+.svg--white g {
+  fill: #fff; }
+
+.svg--black path,
+.svg--black g {
+  fill: #111111; }
+
+/*******************************
 OTHER
 *******************************/
 .questionModule {
@@ -1126,6 +1137,9 @@ a.btn {
       order: 1;
       text-align: left;
       flex: auto; } }
+  @media (max-width: 500px) {
+    .lessonList__row__placement svg {
+      width: 80px; } }
 
 .lessonList__row__content {
   justify-content: center;

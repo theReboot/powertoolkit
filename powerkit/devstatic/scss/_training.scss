@@ -83,6 +83,12 @@
     text-align: left;
     flex: auto;
   }
+
+  svg {
+    @include mobile {
+      width: 80px;
+    }
+  }
 }
 .lessonList__row__content {
   justify-content: center;

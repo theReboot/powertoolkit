@@ -168,6 +168,8 @@ ITEMS_PER_PAGE = 10
 
 LOGIN_REDIRECT_URL = '/learning/'
 
+WAGTAIL_FRONTEND_LOGIN_URL = '/accounts/login/'
+
 try:
     from .local_settings import DATABASES
 except ImportError:

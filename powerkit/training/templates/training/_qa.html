@@ -1,34 +1,47 @@
 {% load wagtailcore_tags %}
 {% load staticfiles %}
 
-{% for question in question_sessions %}
-<div class="exam__questionWrap" id="app">
+<div id="app">
+<div class="exam__questionWrap">
     <vue-snotify></vue-snotify>
   <div class="notification notification-success" v-if="isCorrect">
     [message]
   </div>
   <div class="notification notification-failure" v-if="!isCorrect && isCorrect !== null" v-text="message"></div>
-  <div class="h1__preHeading">
-    [qtn.title]
+  <div v-if="qtn" class="h1__preHeading" v-text="qtn.title">
   </div>
   <div class="exam__questionWrap__question">
-    <div v-html="qtn.text"></div>
+    <div v-if="qtn" v-html="qtn.text"></div>
   </div>
   <fieldset class="exam__questionWrap__options">
     <label v-for="answer in answers" class="exam__questionWrap__options__option">
       <input type="radio" :value="answer.id" name="qtn.id" v-model="selected">
       <span v-text="answer.text"></span>
     </label>
-    <div v-if="!completed">
-      <button v-if="selected === null" class="button" disabled>Pick an Answer</button>
-      <button v-if="selected && !isChecking" class="button" @click.preventDefault="pickAnswer()">Final Answer</button>
-      <button v-if="selected && isChecking" class="button" disabled>Hang on...</button>
-    </div>
-    <button v-if="completed" class="button" @click="getQuestion()">Next</button>
+   
   </fieldset>
 </div>
-{% endfor %}
 
+
+  <nav class="sessionNav">
+    <div class="sessionNav__controls">
+        <div v-if="!completed" class="sessionNav__controls__button sessionNav__controls__button--next">
+          <button v-if="selected === null" class="button" disabled>Pick an Answer</button>
+          <a v-if="selected && !isChecking" @click.preventDefault="pickAnswer()">Final Answer</a>
+          <button v-if="selected && isChecking" class="button" disabled>Hang on...</button>
+        </div>
+        <div v-else class="sessionNav__controls__button sessionNav__controls__button--next">
+          <a class="button" @click.preventDefault="getQuestion()">Next</a>
+        </div>
+
+        <div class="pieWrap">
+          <div class="pieWrap__pie pieWrap__pie--spinner"></div>
+          <div class="pieWrap__pie pieWrap__pie--filler"></div>
+          <div class="pieWrap__mask"></div>
+        </div>
+    </div>
+</nav>
+</div>
 
 {% block css %}
     <link href="{% static 'vendor/snotify/css/material.css' %}" rel="stylesheet" />
@@ -51,6 +64,7 @@
         isChecking: false,
         isCorrect: null,
         completed: false,
+        isLoading: false,
       },
       mounted() {
         console.log('vue ready');

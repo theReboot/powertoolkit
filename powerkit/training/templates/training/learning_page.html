@@ -22,7 +22,7 @@
 
     {% if question_sessions %}
        {% include "training/_qa.html" %}
-       {% show_pagination question_sessions page.id %}
+       {% comment %} {% show_pagination question_sessions page.id %} {% endcomment %}
     {% endif %}
 </section>
 

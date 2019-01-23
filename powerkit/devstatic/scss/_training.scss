@@ -5,15 +5,24 @@
 
 .lessonList__featured {
   background: $yellow;
+  width: 100%;
+  width: calc(100% + #{$sitePad});
+  margin-left: calc(-#{$sitePad} / 2);
+  padding: calc(#{$sitePad} / 2);
 
   .lessonList__row {
     padding-top: 0;
     padding-bottom: 0;
+    border: 0;
   }
 
   .lessonList__row__content {
     color: $black;
     flex: 5; // this is +1 from the non-featured to accommodate for the missing status
+
+    @include mobile {
+      flex: auto;
+    }
 
     .title a {
       color: $black;
@@ -41,7 +50,8 @@
   border-bottom: 1px solid $white;
 
   @include mobile {
-    flex-direction: column;
+    // flex-direction: column;
+    flex-wrap: wrap;
   }
 }
 
@@ -50,12 +60,12 @@
   cursor: not-allowed;
 }
 
+.lessonList__row--locked .title a {
+  cursor: not-allowed;
+}
+
 .lessonList__row--completed {
-  // opacity: 0.1;
-  //
-  // height: 20px;
-  // background: red;
-  // overflow: hidden;
+
 }
 
 .lessonList__row__placement {
@@ -65,6 +75,14 @@
   letter-spacing: -0.1rem;
   padding: 1rem;
   flex: 1;
+
+  @include mobile {
+    font-size: 100px;
+    padding: 0;
+    order: 1;
+    text-align: left;
+    flex: auto;
+  }
 }
 .lessonList__row__content {
   justify-content: center;
@@ -79,7 +97,9 @@
   }
 
   @include mobile {
-    flex: 1;
+    flex: auto;
+    order: 3;
+    width: 100%;
   }
 
   .title {
@@ -89,6 +109,9 @@
     a {
       color: $white;
       text-decoration: none;
+      line-height: 1;
+      display: block;
+      margin-bottom: 10px;
     }
   }
   .body {
@@ -103,6 +126,13 @@
   justify-content: center;
   align-items: center;
   flex: 1;
+
+  @include mobile {
+    padding: 0;
+    order: 2;
+    flex: 0;
+  }
+
   .fa {
     color: $yellow;
   }

@@ -17,7 +17,7 @@
 
     {% if module_sessions %}
       {% include "training/_session.html" %}
-      {% show_pagination module_sessions page.id %}
+      {% comment %} {% show_pagination module_sessions page.id %} {% endcomment %}
     {% endif %}
 
     {% if question_sessions %}

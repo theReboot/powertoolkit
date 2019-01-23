@@ -5,7 +5,7 @@ from django.utils.html import escape
 from django.contrib.auth.decorators import login_required
 
 from training.models import Training, TrainingSchedule, LearningPage,\
-    MCQAnswer, UserAnswer, QuestionPage
+    MCQAnswer, UserAnswer, QuestionPage, LearningSessionPage
 
 
 @login_required
@@ -32,6 +32,7 @@ def start_training(request):
     return redirect(current_page.url)
 
 
+@login_required
 def complete(request, id):
     # import pdb;pdb.set_trace()
     _training = Training.objects.get(user=request.user)
@@ -51,7 +52,9 @@ def complete(request, id):
     if not pending:
         _training.completed = timezone.now()
         _training.save()
-        return redirect('/learning/')
+        #return redirect('/learning/')
+        _url = '/learning/'
+        return JsonResponse({'redirect_url': _url})
     else:
         if schedules.filter(current=True):
             current = schedules[0]
@@ -61,7 +64,8 @@ def complete(request, id):
             current.current = True
             current.save()
             current_page = current.learning_page
-        return redirect(current_page.url)
+        #return redirect(current_page.url)
+        return JsonResponse({'redirect_url': current_page.url})
 
 
 def continue_training(request):
@@ -115,3 +119,15 @@ def get_question(request):
             'answers': answers,
             'completed': False
         })
+
+
+def get_sessions(request, id):
+    learning_page = get_object_or_404(LearningPage, pk=id)
+    _sessions = LearningSessionPage.objects.child_of(learning_page).live()
+    out = [
+        {
+            'id': session.id,
+            'title': session.title,
+            'text': session.body
+        } for session in _sessions]
+    return JsonResponse({'sessions': out})

@@ -9,4 +9,5 @@ urlpatterns = [
     path('complete/<int:id>/', views.complete, name='complete_training'),
     path('select_answer/<int:id>/', views.select_answer, name='select_answer'),
     path('question/', views.get_question),
+    path('sessions/<int:id>/', views.get_sessions),
 ]

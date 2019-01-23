@@ -1,6 +1,115 @@
 {% load wagtailcore_tags %}
+{% load staticfiles %}
 
-{% for session in module_sessions %}
+{% comment %} {% for session in module_sessions %}
     <h3>{{session.title}}</h3>
     {{session.body|richtext}}
-{% endfor %}
+{% endfor %} {% endcomment %}
+
+<div id="app">
+<h3>[currentSession.title]</h3>
+<div v-html="currentSession.text"></div>
+
+<nav class="sessionNav">
+    <div class="sessionNav__controls">
+        <div v-if="hasPrev" class="sessionNav__controls__button sessionNav__controls__button--previous">
+            <a @click.preventDefault="movePrev()">Previous</a>
+        </div>
+        <div v-else class="sessionNav__controls__button sessionNav__controls__button--previous">
+        <!-- <a href="#">Start</a> -->
+        </div>
+
+        <div class="sessionNav__controls__status">
+            <span v-text="sessionIndex + 1"></span>/[sessions.length]
+        </div>
+
+        <div v-if="hasNext" class="sessionNav__controls__button sessionNav__controls__button--next">
+            <a @click.preventDefault="moveNext()">Next</a>
+        </div>
+        <div v-else class="sessionNav__controls__button sessionNav__controls__button--next">
+            <a v-if="!isLoading" @click="nextLesson()">Next Lesson</a>
+            <a v-else="isLoading">Hang on...</a>
+        </div>
+        <div class="pieWrap">
+          <div class="pieWrap__pie pieWrap__pie--spinner"></div>
+          <div class="pieWrap__pie pieWrap__pie--filler"></div>
+          <div class="pieWrap__mask"></div>
+        </div>
+    </div>
+</nav>
+</div>
+
+{% block js %}
+<script src="{% static 'js/vue.js' %}"></script>
+<script src="{% static 'js/vue-snotify.js' %}"></script>
+<script src="https://unpkg.com/vue-resource@1.3.1/dist/vue-resource.min.js"></script>
+<script>
+var vm = new Vue({
+  el: "#app",
+  delimiters: ["[", "]"],
+  data: {
+    //currentSession: {title: '', text: ''},
+    pageId: {{page.id}},
+    sessions: [],
+    sessionIndex: -1,
+    isLoading: false
+  },
+  mounted() {
+    console.log("vue mounted");
+    console.log(this.pageId);
+    this.getSessions();
+  },
+  methods: {
+      getSessions(){
+          console.log('get sessions')
+          const url = `/training/sessions/${this.pageId}/`;
+          console.log(url);
+          this.$http.get(url).then(response => {
+              console.log(response);
+              this.sessions = response.body.sessions;
+              this.sessionIndex = 0
+              this.currentSession = this.sessions[0];
+              console.log('got sessions')
+          })
+      },
+      moveNext() {
+          if(this.sessionIndex < this.sessions.length - 1){
+              this.sessionIndex += 1;
+          }
+      },
+      movePrev() {
+          console.log('back');
+          console.log(this.sessionIndex)
+          if (this.sessionIndex > 0) {
+              this.sessionIndex -= 1;
+          }
+      },
+      nextLesson() {
+          console.log('next lesson');
+          this.isLoading = true;
+          const url = `/training/complete/${this.pageId}/?async=1`;
+          console.log(url);
+          this.$http.get(url).then(response => {
+              console.log(response.body);
+              window.location = response.body.redirect_url;
+          })
+      }
+  },
+  computed: {
+      currentSession: function() {
+          if (this.sessionIndex === -1) {
+              return {title: '', text: ''};
+          }else {
+              return this.sessions[this.sessionIndex];
+          }
+      },
+      hasPrev: function() {
+          return this.sessionIndex > 0;
+      },
+      hasNext: function() {
+          return this.sessionIndex < this.sessions.length - 1;
+      },
+  }
+});
+</script>
+{% endblock js %}

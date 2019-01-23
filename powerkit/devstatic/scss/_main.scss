@@ -82,7 +82,8 @@ MAIN STYLES
   box-sizing: border-box;
 }
 
-img {
+img,
+video {
   display: block;
   max-width: 100%;
   height: auto;
@@ -794,10 +795,11 @@ OTHER
   }
 }
 
-.featuredImage--yellow {
+.featuredImage--yellow.featuredImage--yellow {
   background: $yellow;
 
-  & img {
+  img,
+  video {
     mix-blend-mode: multiply;
   }
 }

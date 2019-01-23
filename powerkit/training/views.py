@@ -100,7 +100,16 @@ def get_question(request):
     ]
     questions = QuestionPage.objects.exclude(id__in=answered)
     if not questions:
-        return JsonResponse({'completed': True})
+        answers = UserAnswer.objects.filter(user=request.user)
+        correct = len([_ans for _ans in answers if _ans.correct])
+        total = answers.count()
+        return JsonResponse(
+            {
+                'lessonCompleted': True,
+                'correct': correct,
+                'total': total
+            }
+        )
     qtn = questions[0]
     question = {
         'id': qtn.id,
@@ -117,7 +126,7 @@ def get_question(request):
         {
             'question': question,
             'answers': answers,
-            'completed': False
+            'lessonCompleted': False
         })
 
 

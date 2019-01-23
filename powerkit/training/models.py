@@ -215,3 +215,7 @@ class UserAnswer(models.Model):
 
     def __str__(self):
         return self.answer.answer
+
+    @property
+    def correct(self):
+        return self.answer.correct

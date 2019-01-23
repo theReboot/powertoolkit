@@ -35,6 +35,10 @@
   overflow: hidden;
   transform: scaleY(1);
   transform-origin: top;
+
+  .lessonList__row:last-of-type {
+    border: 0;
+  }
 }
 
 .lessonList__completed--hidden {

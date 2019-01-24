@@ -11,9 +11,10 @@
     {{ page.intro }}
   </h1>
   <div class="photoGrid__row">
-    {% image page.top_image width-1600 as tmp_photo %}
-    <div class="photoGrid__content photoGrid__content--feature" style="background-image: url('{{ tmp_photo.url }}')">
-      <a href="/metering/">
+    <!-- {% image page.top_image width-1600 as tmp_photo %} -->
+    <div class="photoGrid__content photoGrid__content--feature featuredImage--yellow">
+      <video src="{% static 'img/video.mp4' %}" autoplay loop muted playsinline></video>
+      <a href="/issues/metering/">
         <div class="photoGrid__content__textWrap">
           <div class="preHeading">
             Featured Issue:

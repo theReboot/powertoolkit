@@ -341,7 +341,8 @@ MAIN STYLES
 *::after {
   box-sizing: border-box; }
 
-img {
+img,
+video {
   display: block;
   max-width: 100%;
   height: auto; }
@@ -887,9 +888,10 @@ OTHER
       width: 100%;
       margin-bottom: 2rem; } }
 
-.featuredImage--yellow {
+.featuredImage--yellow.featuredImage--yellow {
   background: #cdcf60; }
-  .featuredImage--yellow img {
+  .featuredImage--yellow.featuredImage--yellow img,
+  .featuredImage--yellow.featuredImage--yellow video {
     mix-blend-mode: multiply; }
 
 .imagePlaceholder--yellow {
@@ -918,7 +920,7 @@ OTHER
   flex: 1;
   position: relative;
   height: 0;
-  padding-bottom: 40%;
+  padding-bottom: 50%;
   margin-bottom: 1.5rem;
   overflow: hidden;
   margin-right: 1.5rem;

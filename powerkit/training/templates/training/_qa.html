@@ -2,6 +2,7 @@
 {% load staticfiles %}
 
 <div id="app">
+  <vue-snotify></vue-snotify>
   <div v-if="!lessonCompleted">
     <div class="exam__questionWrap">
       <div class="notification notification-success" v-if="isCorrect" v-text="message"></div>
@@ -18,13 +19,12 @@
       </fieldset>
     </div>
 
-
     <nav class="sessionNav" v-bind:class="loadingClass">
       <div class="sessionNav__controls">
           <div v-if="!completed" class="sessionNav__controls__button sessionNav__controls__button--next">
-            <button v-if="selected === null" class="button" disabled>Pick an Answer</button>
+            <a v-if="selected === null" disabled>Pick an Answer</a>
             <a v-if="selected && !isChecking" @click.preventDefault="pickAnswer()">Final Answer</a>
-            <button v-if="selected && isChecking" class="button" disabled>Hang on...</button>
+            <a v-if="selected && isChecking" disabled>Hang on...</a>
           </div>
           <div v-else class="sessionNav__controls__button sessionNav__controls__button--next">
             <a class="button" @click.preventDefault="getQuestion()">Next</a>
@@ -77,24 +77,29 @@
       },
       methods: {
         getQuestion: function() {
+          this.isLoading = true;
           const url = "/training/question/";
           this.$http.get(url).then(response => {
             console.log(response);
-            const isCompleted = response.body.lessonCompleted;
+            setTimeout(() => this.setNewQuestion(response.body), 1500);
             
-            if (isCompleted) {
-              this.lessonCompleted = true;
-              this.resultTotal = response.body.total;
-              this.resultCorrect = response.body.correct;
-            } else {
-              this.qtn = response.body.question;
-              this.answers = response.body.answers;
-              this.completed = false;
-              this.isCorrect = null;
-              this.isChecking = false;
-              this.selected = null;
-            }
           })
+        },
+        setNewQuestion: function(data) {
+          const isCompleted = data.lessonCompleted;
+          if (isCompleted) {
+            this.lessonCompleted = true;
+            this.resultTotal = data.total;
+            this.resultCorrect = data.correct;
+          } else {
+            this.qtn = data.question;
+            this.answers = data.answers;
+            this.completed = false;
+            this.isCorrect = null;
+            this.isChecking = false;
+            this.selected = null;
+          }
+          this.isLoading = false;
         },
         pickAnswer: function() {
           console.log(this.selected);
@@ -107,12 +112,13 @@
             this.isCorrect = response.body.correct;
             this.completed = true;
             if (this.isCorrect === true) {
-              setTimeout(function() {this.getQuestion()}.bind(this), 1500);
+              this.getQuestion();
+              //setTimeout(function() {this.getQuestion()}.bind(this), 1500);
             }
           })
         },
         nextLesson: function() {
-          this.isLoading = true;
+          //this.isLoading = true;
           const url = `/training/complete/${this.pageId}/?async=1`;
           this.$http.get(url).then(response => {
               console.log(response.body);

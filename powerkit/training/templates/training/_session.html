@@ -10,7 +10,7 @@
 <h3>[currentSession.title]</h3>
 <div v-html="currentSession.text"></div>
 
-<nav class="sessionNav">
+<nav class="sessionNav" v-bind:class="loadingClass">
     <div class="sessionNav__controls">
         <div v-if="hasPrev" class="sessionNav__controls__button sessionNav__controls__button--previous">
             <a @click.preventDefault="movePrev()">Previous</a>
@@ -30,11 +30,6 @@
             <a v-if="!isLoading" @click="nextLesson()">Next Lesson</a>
             <a v-else="isLoading">Hang on...</a>
         </div>
-        <div class="pieWrap">
-          <div class="pieWrap__pie pieWrap__pie--spinner"></div>
-          <div class="pieWrap__pie pieWrap__pie--filler"></div>
-          <div class="pieWrap__mask"></div>
-        </div>
     </div>
 </nav>
 </div>
@@ -52,7 +47,7 @@ var vm = new Vue({
     pageId: {{page.id}},
     sessions: [],
     sessionIndex: -1,
-    isLoading: false
+    isLoading: false,
   },
   mounted() {
     console.log("vue mounted");
@@ -62,6 +57,7 @@ var vm = new Vue({
   methods: {
       getSessions(){
           console.log('get sessions')
+          this.isLoading = true
           const url = `/training/sessions/${this.pageId}/`;
           console.log(url);
           this.$http.get(url).then(response => {
@@ -70,12 +66,18 @@ var vm = new Vue({
               this.sessionIndex = 0
               this.currentSession = this.sessions[0];
               console.log('got sessions')
+              this.isLoading = false
           })
       },
       moveNext() {
           if(this.sessionIndex < this.sessions.length - 1){
-              this.sessionIndex += 1;
-              window.scrollTo(0, 0);
+              this.isLoading = true;
+              console.log(this.loadingClass)
+              //this.sessionIndex += 1;
+              //this.isLoading = false;
+              setTimeout(() => {this.isLoading = false, this.sessionIndex+=1; window.scrollTo(0, 0)}, 1500)
+              //window.scrollTo(0, 0);
+              console.log(this.loadingClass)
           }
       },
       movePrev() {
@@ -87,7 +89,6 @@ var vm = new Vue({
       },
       nextLesson() {
           console.log('next lesson');
-          this.isLoading = true;
           const url = `/training/complete/${this.pageId}/?async=1`;
           console.log(url);
           this.$http.get(url).then(response => {
@@ -110,6 +111,9 @@ var vm = new Vue({
       hasNext: function() {
           return this.sessionIndex < this.sessions.length - 1;
       },
+      loadingClass: function() {
+        return {'sessionNav--loading': this.isLoading};
+      }
   }
 });
 </script>

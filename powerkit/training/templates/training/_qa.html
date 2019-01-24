@@ -19,7 +19,7 @@
     </div>
 
 
-    <nav class="sessionNav">
+    <nav class="sessionNav" v-bind:class="loadingClass">
       <div class="sessionNav__controls">
           <div v-if="!completed" class="sessionNav__controls__button sessionNav__controls__button--next">
             <button v-if="selected === null" class="button" disabled>Pick an Answer</button>
@@ -128,6 +128,11 @@
             return "Your answer is Wrong";
           } else {
             return "";
+          }
+        },
+        loadingClass: function() {
+          return {
+            'sessionNav--loading': this.isLoading
           }
         }
       }

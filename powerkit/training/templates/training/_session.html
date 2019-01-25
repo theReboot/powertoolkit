@@ -18,24 +18,23 @@
 {% endblock css %}
 
 <div id="app">
-<div>
-<div v-for="(session, index) in sessions">
+<!--div v-for="(session, index) in sessions">
     <transition name="fade" mode="out-in">
-        <h3 v-show="sessionIndex === index" v-text="session.title"></h3>
+        <h3 v-if="sessionIndex === index" v-text="session.title" key="1"></h3>
+        <span v-else key="2"></span>
     </transition>
     <transition name="fade" mode="out-in">
         <div v-show="sessionIndex === index" v-html="currentSession.text"></div>
+        <span v-else key="2"></span>
     </transition>
-</div>
-</div>
+</div-->
 
-<!--transition name="fade" mode="out-in">
-<h3 v-show="show" v-text="currentSession.title"></h3>
+<transition name="fade" mode="out-in">
+    <h3 v-show="show" v-text="currentSession.title"></h3>
 </transition>
 <transition name="fade" mode="out-in">
 <div v-show="show" v-html="currentSession.text"></div>
 </transition>
-<button @click="show = !show">show</button-->
 
 <nav class="sessionNav" v-bind:class="loadingClass">
     <div class="sessionNav__controls">
@@ -47,7 +46,7 @@
         </div>
 
         <div class="sessionNav__controls__status">
-            <span v-text="sessionIndex + 1"></span>/[sessions.length]
+            <span v-text="sessionIndex + 1"></span>/<span v-text="sessions.length"></span>
         </div>
 
         <div v-if="hasNext" class="sessionNav__controls__button sessionNav__controls__button--next">
@@ -101,22 +100,20 @@ var vm = new Vue({
       },
       moveNext() {
           if(this.sessionIndex < this.sessions.length - 1){
-              //this.show = false;
+              this.show = false;
               //console.log(this.loadingClass)
-              this.sessionIndex += 1;
+              //this.sessionIndex += 1;
               //this.isLoading = false;
               //this.show = true;
-              //setTimeout(() => {this.isLoading = false, this.sessionIndex+=1; window.scrollTo(0, 0)}, 1500)
+              setTimeout(() => {this.show = true, this.sessionIndex+=1; window.scrollTo(0, 0)}, 500)
               window.scrollTo(0, 0);
               //console.log(this.loadingClass)
           }
       },
       movePrev() {
-          console.log('back');
-          console.log(this.sessionIndex)
+          this.show = false;
           if (this.sessionIndex > 0) {
-              this.sessionIndex -= 1;
-              window.scrollTo(0, 0);
+              setTimeout(() => {this.show = true, this.sessionIndex-=1; window.scrollTo(0, 0)}, 500)
           }
       },
       nextLesson() {

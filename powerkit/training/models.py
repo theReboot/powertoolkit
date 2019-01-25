@@ -70,7 +70,7 @@ class LearningPage(Page):
 
     def get_context(self, request):
         context = super().get_context(request)
-        # import pdb;pdb.set_trace()
+        #import pdb;pdb.set_trace()
 
         # For LearningSession children
         learning_sessions = LearningSessionPage.objects.child_of(self).live()

@@ -641,6 +641,10 @@ LEARNING MODULE STYLES
 .sessionNav__controls__button {
   flex: 1;
   padding: 1rem;
+
+  a {
+    cursor: pointer;
+  }
 }
 
 .sessionNav__controls__button--previous a {
@@ -691,6 +695,7 @@ LEARNING MODULE STYLES
   font-size: 24px;
   margin-bottom: 1rem;
   display: block;
+  cursor: pointer;
 }
 
 /*******************************

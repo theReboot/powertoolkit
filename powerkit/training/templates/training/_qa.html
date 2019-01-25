@@ -7,16 +7,28 @@
     <div class="exam__questionWrap">
       <!--div class="notification notification-success" v-if="isCorrect" v-text="message"></div-->
       <!--div class="notification notification-failure" v-if="!isCorrect && isCorrect !== null" v-text="message"></div-->
-      <div v-if="qtn" class="h1__preHeading" v-text="qtn.title"></div>
+      
+      <transition name="fade" mode="out-in">
+        <div v-if="!qtn" class="h1__preHeading" key="1">Hang on...</div>
+        <div v-else class="h1__preHeading" v-text="qtn.title" key="2"></div>
+      </transition>
       <div class="exam__questionWrap__question">
-        <div v-if="qtn" v-html="qtn.text"></div>
+        <transition name="fade" mode="out-in">
+          <div v-if="!qtn" key="1"><p>Let me see...</p></div>
+          <div v-else v-html="qtn.text" key="2"></div>
+        </transition>
       </div>
-      <fieldset class="exam__questionWrap__options">
+
+     
+          <transition name="fade" mode="out-in">
+          <div v-if="!qtn" key="1">Hmmmm</div>
+      <fieldset v-else key="2" class="exam__questionWrap__options">
         <label v-for="answer in answers" class="exam__questionWrap__options__option">
-          <input type="radio" :value="answer.id" name="qtn.id" v-model="selected">
-          <span v-text="answer.text"></span>
+            <input type="radio" :value="answer.id" name="qtn.id" v-model="selected">
+            <span v-text="answer.text"></span>
         </label>
       </fieldset>
+          </transition>
     </div>
 
     <nav class="sessionNav" v-bind:class="loadingClass">
@@ -43,8 +55,21 @@
   </div>
 </div>
 
+
 {% block css %}
     <link href="{% static 'vendor/snotify/css/material.css' %}" rel="stylesheet" />
+    <style>
+      .fade-enter-active, .fade-leave-active {
+        transition: opacity .5s;
+      }
+      .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+        opacity: 0;
+        /*transform: translateX(10px);*/
+      }
+      .exam__questionWrap {
+        min-height: 400px;
+      }
+    </style>
 {% endblock css %}
 
 {% block js %}
@@ -68,7 +93,8 @@
         isLoading: false,
         resultCorrect: null,
         resultTotal: null,
-        lessonCompleted: false
+        lessonCompleted: false,
+        show: false
       },
       mounted() {
         //console.log('vue ready');
@@ -78,9 +104,12 @@
       methods: {
         getQuestion: function() {
           this.isLoading = true;
+          this.qtn = null;
+          this.answers = [];
           const url = "/training/question/";
           this.$http.get(url).then(response => {
             console.log(response);
+            //this.setNewQuestion(response.body);
             setTimeout(() => this.setNewQuestion(response.body), 1500);
             
           })
@@ -133,6 +162,13 @@
               console.log(response.body);
               window.location = response.body.redirect_url;
           })
+        },
+        animate: function() {
+          console.log('animating')
+          let old_qtn = this.qtn;
+          this.qtn = null
+
+          this.qtn = old_qtn;
         }
       },
       computed: {

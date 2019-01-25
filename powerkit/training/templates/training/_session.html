@@ -6,9 +6,36 @@
     {{session.body|richtext}}
 {% endfor %} {% endcomment %}
 
+{% block css %}
+<style>
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s ease;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+}
+</style>
+{% endblock css %}
+
 <div id="app">
-<h3>[currentSession.title]</h3>
-<div v-html="currentSession.text"></div>
+<div>
+<div v-for="(session, index) in sessions">
+    <transition name="fade" mode="out-in">
+        <h3 v-show="sessionIndex === index" v-text="session.title"></h3>
+    </transition>
+    <transition name="fade" mode="out-in">
+        <div v-show="sessionIndex === index" v-html="currentSession.text"></div>
+    </transition>
+</div>
+</div>
+
+<!--transition name="fade" mode="out-in">
+<h3 v-show="show" v-text="currentSession.title"></h3>
+</transition>
+<transition name="fade" mode="out-in">
+<div v-show="show" v-html="currentSession.text"></div>
+</transition>
+<button @click="show = !show">show</button-->
 
 <nav class="sessionNav" v-bind:class="loadingClass">
     <div class="sessionNav__controls">
@@ -48,6 +75,7 @@ var vm = new Vue({
     sessions: [],
     sessionIndex: -1,
     isLoading: false,
+    show: false
   },
   mounted() {
     console.log("vue mounted");
@@ -56,6 +84,7 @@ var vm = new Vue({
   },
   methods: {
       getSessions(){
+          this.show = false;
           console.log('get sessions')
           this.isLoading = true
           const url = `/training/sessions/${this.pageId}/`;
@@ -66,18 +95,20 @@ var vm = new Vue({
               this.sessionIndex = 0
               this.currentSession = this.sessions[0];
               console.log('got sessions')
-              this.isLoading = false
+              this.isLoading = false;
+              this.show = true;
           })
       },
       moveNext() {
           if(this.sessionIndex < this.sessions.length - 1){
-              this.isLoading = true;
-              console.log(this.loadingClass)
-              //this.sessionIndex += 1;
+              //this.show = false;
+              //console.log(this.loadingClass)
+              this.sessionIndex += 1;
               //this.isLoading = false;
-              setTimeout(() => {this.isLoading = false, this.sessionIndex+=1; window.scrollTo(0, 0)}, 1500)
-              //window.scrollTo(0, 0);
-              console.log(this.loadingClass)
+              //this.show = true;
+              //setTimeout(() => {this.isLoading = false, this.sessionIndex+=1; window.scrollTo(0, 0)}, 1500)
+              window.scrollTo(0, 0);
+              //console.log(this.loadingClass)
           }
       },
       movePrev() {
@@ -85,6 +116,7 @@ var vm = new Vue({
           console.log(this.sessionIndex)
           if (this.sessionIndex > 0) {
               this.sessionIndex -= 1;
+              window.scrollTo(0, 0);
           }
       },
       nextLesson() {
@@ -100,7 +132,7 @@ var vm = new Vue({
   computed: {
       currentSession: function() {
           if (this.sessionIndex === -1) {
-              return {title: '', text: ''};
+              return {title: 'Session Title', text: 'There does not seem to be any session content'};
           }else {
               return this.sessions[this.sessionIndex];
           }

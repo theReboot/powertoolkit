@@ -774,6 +774,8 @@ LEARNING MODULE STYLES
 .sessionNav__controls__button {
   flex: 1;
   padding: 1rem; }
+  .sessionNav__controls__button a {
+    cursor: pointer; }
 
 .sessionNav__controls__button--previous a {
   background: none;
@@ -811,7 +813,8 @@ LEARNING MODULE STYLES
 .exam__questionWrap__options__option {
   font-size: 24px;
   margin-bottom: 1rem;
-  display: block; }
+  display: block;
+  cursor: pointer; }
 
 /*******************************
 SVG Styles

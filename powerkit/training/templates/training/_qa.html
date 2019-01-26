@@ -28,6 +28,8 @@
           </label>
         </fieldset>
       </transition>
+
+      <div v-show="isCorrect === false && qtn" v-html="qtn.explanation" class="button"></div>
     </div>
 
     <nav class="sessionNav" v-bind:class="loadingClass">
@@ -107,7 +109,7 @@
         lessonCompleted: false,
         show: false,
         questionCount: 0,
-        progressCount: 0
+        progressCount: 0,
       },
       mounted() {
         //console.log('vue ready');
@@ -146,10 +148,10 @@
           this.isLoading = false;
         },
         pickAnswer: function() {
-          console.log(this.selected);
+          //console.log(this.selected);
           this.isChecking = true;
           const url = `/training/select_answer/${this.selected}/`;
-          console.log(url);
+          // console.log(url);
           this.$http.get(url).then(response => {
             console.log(response);
             this.isChecking = false;

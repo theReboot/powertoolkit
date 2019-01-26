@@ -117,7 +117,8 @@ def get_question(request, id):
     question = {
         'id': qtn.id,
         'text': qtn.question,
-        'title': qtn.title
+        'title': qtn.title,
+        'explanation': qtn.explanation
     }
     answers = [
         {

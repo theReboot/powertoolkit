@@ -191,6 +191,7 @@ class MCQPage(Page):
 
 class QuestionPage(Page):
     question = RichTextField(null=True, blank=True)
+    explanation = RichTextField(null=True, blank=True)
 
     def get_context(self, request):
         context = super().get_context(request)
@@ -201,6 +202,7 @@ class QuestionPage(Page):
 
     content_panels = Page.content_panels + [
         FieldPanel('question', classname='full'),
+        FieldPanel('explanation', classname='full'),
         InlinePanel('mcq_answers', label='Answers'),
     ]
 

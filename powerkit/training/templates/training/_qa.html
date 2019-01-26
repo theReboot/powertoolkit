@@ -18,17 +18,16 @@
           <div v-else v-html="qtn.text" key="2"></div>
         </transition>
       </div>
-
      
-          <transition name="fade" mode="out-in">
-          <div v-if="!qtn" key="1">Hmmmm</div>
-      <fieldset v-else key="2" class="exam__questionWrap__options">
-        <label v-for="answer in answers" class="exam__questionWrap__options__option">
-            <input type="radio" :value="answer.id" name="qtn.id" v-model="selected">
-            <span v-text="answer.text"></span>
-        </label>
-      </fieldset>
-          </transition>
+      <transition name="fade" mode="out-in">
+        <div v-if="!qtn" key="1">Hmmmm</div>
+        <fieldset v-else key="2" class="exam__questionWrap__options">
+          <label v-for="answer in answers" class="exam__questionWrap__options__option">
+              <input type="radio" :value="answer.id" name="qtn.id" v-model="selected">
+              <span v-text="answer.text"></span>
+          </label>
+        </fieldset>
+      </transition>
     </div>
 
     <nav class="sessionNav" v-bind:class="loadingClass">
@@ -45,14 +44,22 @@
     </nav>
   </div>
   <!-- Show results when module is completed -->
-  <div v-else class="exam__questionWrap">
-    <div class="exam__questionWrap__question">
-      <h3>Completed!</h3>
-      <h3>Your results are: <span v-text="resultCorrect"></span>/<span v-text="resultTotal"></span></h3>
-      <a v-if="!isLoading" @click="nextLesson()">Next Lesson</a>
-      <a v-else="isLoading">Hang on...</a>
+  <div v-if="lessonCompleted">
+    <div class="exam__questionWrap">
+      <div class="exam__questionWrap__question">
+        <h3>Completed!</h3>
+        <h3>Your results are: <span v-text="resultCorrect"></span>/<span v-text="resultTotal"></span></h3>
+      </div>
     </div>
-  </div>
+    <nav class="sessionNav" v-bind:class="loadingClass">
+        <div class="sessionNav__controls">
+            <div class="sessionNav__controls__button sessionNav__controls__button--next">
+              <a v-if="!isLoading" @click="nextLesson()">Next Lesson</a>
+              <a v-else>Hang on...</a>
+            </div>
+        </div>
+      </nav>
+    </div>
 </div>
 
 

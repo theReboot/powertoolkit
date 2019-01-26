@@ -116,8 +116,12 @@
                       <div class="body">{{schedule_completed.learning_page.outline}}</div>
                   </div>
                   <div class="status">
+                    {% if schedule_completed.has_questions %}
+                      {{ schedule_completed.score }} %
+                    {% else %}
                       <i class="fa fa-check fa-3x text-danger"></i>
                       Completed
+                    {% endif %}
                   </div>
               </div>
             {% endfor %}

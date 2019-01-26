@@ -93,12 +93,15 @@ def select_answer(request, id):
 
 
 @login_required
-def get_question(request):
+def get_question(request, id):
+    learning_page = get_object_or_404(LearningPage, pk=id)
+    all_questions = QuestionPage.objects.child_of(learning_page)
+
     answered = [
         ans.answer.page.id for ans in UserAnswer.objects.filter(
             user=request.user)
     ]
-    questions = QuestionPage.objects.exclude(id__in=answered)
+    questions = all_questions.exclude(id__in=answered)
     if not questions:
         answers = UserAnswer.objects.filter(user=request.user)
         correct = len([_ans for _ans in answers if _ans.correct])
@@ -122,11 +125,15 @@ def get_question(request):
             'text': ans.answer,
             'correct': ans.correct
         } for ans in qtn.mcq_answers.all()]
+    question_count = all_questions.count()
+    progress_count = question_count - questions.count() + 1
     return JsonResponse(
         {
             'question': question,
             'answers': answers,
-            'lessonCompleted': False
+            'lessonCompleted': False,
+            'questionCount': question_count,
+            'progressCount': progress_count
         })
 
 

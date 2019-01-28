@@ -108,6 +108,14 @@ class LearningPage(Page):
             return True
         return False
 
+    @property
+    def position(self):
+        if self.has_questions:
+            return ''
+        prev = len([i for i in self.get_prev_siblings().live()
+                   if not i.specific.has_questions])
+        return prev + 1
+
 
 class LearningSessionPage(Page):
     body = RichTextField()

@@ -109,7 +109,7 @@
                     {% include "training/_test_row.html" %}
                   </div>
                 {% else %}
-                  <div class="lessonList__row__placement">{{schedule_completed.learning_page.placement}}</div>
+                  <div class="lessonList__row__placement">{{schedule_completed.learning_page.position}}</div>
                 {% endif %}
                   <div class="lessonList__row__content">
                       <div class="title"><a href="{% pageurl schedule_completed.learning_page %}">{{schedule_completed.learning_page.title}}</a></div>
@@ -134,7 +134,7 @@
                   {% if schedule.has_questions %}
                     {% include "training/_test_row.html" %}
                   {% else %}
-                    <div class="lessonList__row__placement">{{schedule.learning_page.placement}}</div>
+                    <div class="lessonList__row__placement">{{schedule.learning_page.position}}</div>
                   {% endif %}
                     <div class="lessonList__row__content">
                       <div class="preHeading">Next lesson:</div>
@@ -153,7 +153,7 @@
               {% if schedule.has_questions %}
                 {% include "training/_test_row.html" %}
               {% else %}
-                  <div class="lessonList__row__placement">{{schedule.learning_page.placement}}</div>
+                  <div class="lessonList__row__placement">{{schedule.learning_page.position}}</div>
                 {% endif %}
                   <div class="lessonList__row__content">
                       <div class="title">
@@ -190,7 +190,7 @@
           {% for module in modules %}
               {% if module.pk == first_module.pk and user.is_authenticated %}
                   <div class="lessonList__row">
-                      <div class="lessonList__row__placement">{{module.specific.placement}}</div>
+                      <div class="lessonList__row__placement">{{module.specific.position}}</div>
                       <div class="lessonList__row__content">
                           <div class="title">
                               <a href="{% url 'start_training' %}">{{module.title}}</a>
@@ -222,7 +222,7 @@
                         </svg>
                       </div>
                     {% else %}
-                      <div class="lessonList__row__placement">{{module.specific.placement}}</div>
+                      <div class="lessonList__row__placement">{{module.specific.position}}</div>
                     {% endif %}
                       <div class="lessonList__row__content">
                           <div class="title">

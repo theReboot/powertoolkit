@@ -2,5 +2,5 @@ from issue.models import IssuePage
 
 
 def issues(request):
-    issues = IssuePage.objects.all()
+    issues = IssuePage.objects.live()
     return {'issues': issues}

@@ -53,7 +53,7 @@
         </fieldset>
       </transition>
 
-      <div v-show="isCorrect === false && qtn" v-html="qtn.explanation" class="explanationWrap"></div>
+      <div v-if="isCorrect === false && qtn !== null" v-html="qtn.explanation" class="explanationWrap"></div>
     </div>
 
     <nav class="sessionNav" v-bind:class="loadingClass">

@@ -707,6 +707,7 @@ LEARNING MODULE STYLES
   cursor: pointer;
   background: rgba(255,255,255,.2);
   transition: .2s all ease;
+  position: relative;
 
   &:hover {
     background: rgba(255,255,255,.4);
@@ -718,11 +719,36 @@ LEARNING MODULE STYLES
 }
 
 .answer--incorrect {
-  background: red;
+  background: rgba(255,255,255,.4);
+
+  &::after {
+    content: '';
+    background-image: url('../img/quiz-x.svg');
+    background-repeat: no-repeat;
+    position: absolute;
+    right: 1rem;
+    width: 1rem;
+    height: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+  }
 }
 
 .answer--correct {
-  background: blue;
+  background: $yellow;
+  color: $black;
+
+  &::after {
+    content: '';
+    background-image: url('../img/quiz-check.svg');
+    background-repeat: no-repeat;
+    position: absolute;
+    right: 1rem;
+    width: 1rem;
+    height: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+  }
 }
 
 .explanationWrap {

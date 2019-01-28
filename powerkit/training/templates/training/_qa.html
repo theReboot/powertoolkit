@@ -22,7 +22,7 @@
       <transition name="fade" mode="out-in">
         <div v-if="!qtn" key="1">Hmmmm</div>
         <fieldset v-else key="2" class="exam__questionWrap__options">
-          <label v-for="answer in answers" class="answer" @click.preventDefault="pickAnswer()">
+          <label v-for="answer in answers" class="answer" v-bind:class="{ 'answer--correct': isCorrect }" @click.preventDefault="pickAnswer()">
               <input type="radio" :value="answer.id" name="qtn.id" v-model="selected">
               <span v-text="answer.text"></span>
           </label>

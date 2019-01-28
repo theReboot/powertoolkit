@@ -1,13 +1,13 @@
 {% load wagtailcore_tags %}
 {% load staticfiles %}
 
-<div id="app">
+<div id="app" class="exam">
   <vue-snotify></vue-snotify>
   <div v-if="!lessonCompleted">
     <div class="exam__questionWrap">
       <!--div class="notification notification-success" v-if="isCorrect" v-text="message"></div-->
       <!--div class="notification notification-failure" v-if="!isCorrect && isCorrect !== null" v-text="message"></div-->
-      
+
       <transition name="fade" mode="out-in">
         <div v-if="!qtn" class="h1__preHeading" key="1">Hang on...</div>
         <div v-else class="h1__preHeading" v-text="qtn.title" key="2"></div>
@@ -18,18 +18,18 @@
           <div v-else v-html="qtn.text" key="2"></div>
         </transition>
       </div>
-     
+
       <transition name="fade" mode="out-in">
         <div v-if="!qtn" key="1">Hmmmm</div>
         <fieldset v-else key="2" class="exam__questionWrap__options">
-          <label v-for="answer in answers" class="exam__questionWrap__options__option">
+          <label v-for="answer in answers" class="answer" @click.preventDefault="pickAnswer()">
               <input type="radio" :value="answer.id" name="qtn.id" v-model="selected">
               <span v-text="answer.text"></span>
           </label>
         </fieldset>
       </transition>
 
-      <div v-show="isCorrect === false && qtn" v-html="qtn.explanation" class="button"></div>
+      <div v-show="isCorrect === false && qtn" v-html="qtn.explanation" class="explanationWrap"></div>
     </div>
 
     <nav class="sessionNav" v-bind:class="loadingClass">
@@ -39,9 +39,9 @@
           </div>
 
           <div v-if="!completed" class="sessionNav__controls__button sessionNav__controls__button--next">
-            <a v-if="selected === null" disabled>Pick an Answer</a>
+            <!-- <a v-if="selected === null" disabled>Pick an Answer</a>
             <a v-if="selected && !isChecking" @click.preventDefault="pickAnswer()">Final Answer</a>
-            <a v-if="selected && isChecking" disabled>Hang on...</a>
+            <a v-if="selected && isChecking" disabled>Hang on...</a> -->
           </div>
           <div v-else class="sessionNav__controls__button sessionNav__controls__button--next">
             <a @click.preventDefault="getQuestion()">Next</a>
@@ -126,7 +126,7 @@
             console.log(response);
             //this.setNewQuestion(response.body);
             setTimeout(() => this.setNewQuestion(response.body), 1500);
-            
+
           })
         },
         setNewQuestion: function(data) {
@@ -206,6 +206,6 @@
       }
     })
 
-  
+
 </script>
 {% endblock js %}

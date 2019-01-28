@@ -31,7 +31,7 @@
 }
 
 .lessonList__completed {
-  transition: .3s all ease;
+  transition: 0.3s all ease;
   overflow: hidden;
   transform: scaleY(1);
   transform-origin: top;
@@ -69,7 +69,6 @@
 }
 
 .lessonList__row--completed {
-
 }
 
 .lessonList__row__placement {
@@ -229,4 +228,9 @@
   &.notification-success {
     background-color: $yellow;
   }
+}
+
+/* show the right answer if you get it wrong */
+.correct {
+  background-color: $yellow;
 }

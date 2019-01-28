@@ -91,22 +91,23 @@
       </nav>
     </div>
 </div>
-{% include "components/checkbox.html" %}
+{% comment %} {% include "components/checkbox.html" %} {% endcomment %}
 
 {% block css %}
     <link href="{% static 'vendor/snotify/css/material.css' %}" rel="stylesheet" />
     <style>
-      .fade-enter-active, .fade-leave-active {
-        transition: opacity .5s;
-      }
-      .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
-        opacity: 0;
-        /*transform: translateX(10px);*/
-      }
-      .exam__questionWrap {
-        min-height: 400px;
-      }
-    </style>
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+  /*transform: translateX(10px);*/
+}
+.exam__questionWrap {
+  min-height: 400px;
+}
+</style>
 {% endblock css %}
 
 {% block js %}
@@ -115,21 +116,21 @@
 <script src="https://unpkg.com/vue-resource@1.3.1/dist/vue-resource.min.js"></script>
 <script>
 
-  Vue.component("my-checkbox", {
-  template: "#checkbox-template",
-  delimiters: ["[", "]"],
-  data() {
-    return {
-      checked: false,
-      title: "Check me"
-    };
-  },
-  methods: {
-    check() {
-      this.checked = !this.checked;
-    }
-  }
-});
+//   Vue.component("my-checkbox", {
+//   template: "#checkbox-template",
+//   delimiters: ["[", "]"],
+//   data() {
+//     return {
+//       checked: false,
+//       title: "Check me"
+//     };
+//   },
+//   methods: {
+//     check() {
+//       this.checked = !this.checked;
+//     }
+//   }
+// });
 
   var vm = new Vue({
       el: '#app',

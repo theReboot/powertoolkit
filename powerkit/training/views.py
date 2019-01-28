@@ -1,7 +1,6 @@
 from django.shortcuts import redirect, get_object_or_404
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponseBadRequest
 from django.utils import timezone
-from django.utils.html import escape
 from django.contrib.auth.decorators import login_required
 
 from training.models import Training, TrainingSchedule, LearningPage,\
@@ -93,13 +92,34 @@ def select_answer(request, id):
 
 
 @login_required
+def get_intro(request, id):
+    #import pdb;pdb.set_trace()
+    learning_page = get_object_or_404(LearningPage, pk=id)
+    # any answers completed ?
+    questions = QuestionPage.objects.child_of(learning_page)
+    user_answers = UserAnswer.objects.filter(
+        answer__page__in=questions, user=request.user)
+    if user_answers:
+        return HttpResponseBadRequest('Started already')
+        #return redirect('get_question', id=id)
+    else:
+        return JsonResponse(
+            {
+                'id': learning_page.id,
+                'title': learning_page.title,
+                'body': learning_page.body
+            }
+        )
+
+
+@login_required
 def get_question(request, id):
     learning_page = get_object_or_404(LearningPage, pk=id)
     all_questions = QuestionPage.objects.child_of(learning_page)
 
     answered = [
         ans.answer.page.id for ans in UserAnswer.objects.filter(
-            user=request.user)
+            user=request.user, answer__page__in=all_questions)
     ]
     questions = all_questions.exclude(id__in=answered)
     if not questions:

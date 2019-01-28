@@ -160,7 +160,8 @@ class TrainingSchedule(models.Model):
     def score(self):
         if self.has_questions and self.completed:
             questions = QuestionPage.objects.child_of(self.learning_page)
-            answers = UserAnswer.objects.filter(answer__page__in=questions)
+            answers = UserAnswer.objects.filter(
+                answer__page__in=questions, user=self.user_training.user)
             correct = len([i for i in answers if i.correct])
             total = answers.count()
             if total == 0:

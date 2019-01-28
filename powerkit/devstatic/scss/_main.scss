@@ -95,6 +95,7 @@ figure {
 
 fieldset {
   border: 0;
+  padding: 0;
 }
 
 body {
@@ -675,11 +676,17 @@ LEARNING MODULE STYLES
 
 .sessionNav__controls__status {
   flex: 1;
+  padding: 1.5rem 0;
+}
+
+.exam {
+
 }
 
 .exam__questionWrap {
   margin: 0 auto;
-  max-width: 800px;
+  max-width: 650px;
+  padding-bottom: 5rem;
 
   .h1__preHeading {
     font-size: 20px;
@@ -691,11 +698,35 @@ LEARNING MODULE STYLES
   font-size: 24px;
 }
 
-.exam__questionWrap__options__option {
+.answer {
   font-size: 24px;
+  padding: 1rem;
+  border-radius: .5rem;
   margin-bottom: 1rem;
   display: block;
   cursor: pointer;
+  background: rgba(255,255,255,.2);
+  transition: .2s all ease;
+
+  &:hover {
+    background: rgba(255,255,255,.4);
+  }
+
+  input {
+    display: none;
+  }
+}
+
+.answer--incorrect {
+  background: red;
+}
+
+.answer--correct {
+  background: blue;
+}
+
+.explanationWrap {
+  font-style: italic;
 }
 
 /*******************************

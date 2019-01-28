@@ -351,7 +351,8 @@ figure {
   margin: 0 auto; }
 
 fieldset {
-  border: 0; }
+  border: 0;
+  padding: 0; }
 
 body {
   background: #111111;
@@ -798,11 +799,13 @@ LEARNING MODULE STYLES
     text-decoration: none; }
 
 .sessionNav__controls__status {
-  flex: 1; }
+  flex: 1;
+  padding: 1.5rem 0; }
 
 .exam__questionWrap {
   margin: 0 auto;
-  max-width: 800px; }
+  max-width: 650px;
+  padding-bottom: 5rem; }
   .exam__questionWrap .h1__preHeading {
     font-size: 20px;
     margin-bottom: 1rem; }
@@ -810,11 +813,28 @@ LEARNING MODULE STYLES
 .exam__questionWrap__question p {
   font-size: 24px; }
 
-.exam__questionWrap__options__option {
+.answer {
   font-size: 24px;
+  padding: 1rem;
+  border-radius: .5rem;
   margin-bottom: 1rem;
   display: block;
-  cursor: pointer; }
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.2);
+  transition: .2s all ease; }
+  .answer:hover {
+    background: rgba(255, 255, 255, 0.4); }
+  .answer input {
+    display: none; }
+
+.answer--incorrect {
+  background: red; }
+
+.answer--correct {
+  background: blue; }
+
+.explanationWrap {
+  font-style: italic; }
 
 /*******************************
 SVG Styles

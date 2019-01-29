@@ -728,6 +728,10 @@ LEARNING MODULE STYLES
   }
 
   &::after {
+
+  }
+
+  &::before {
     content: '';
     background-image: url('../img/quiz-x.svg');
     background-repeat: no-repeat;
@@ -740,15 +744,38 @@ LEARNING MODULE STYLES
   }
 }
 
+.answer--selected {
+
+  &.answer--correct {
+    &::after {
+      content: 'Correct';
+    }
+  }
+
+  &.answer--incorrect {
+    &::after {
+      content: 'Incorrect';
+    }
+  }
+
+  &::after {
+    position: absolute;
+    right: 2.8rem;
+    font-size: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    // transition: .2s all ease;
+  }
+}
+
 .answer--correct {
   background: $green;
-  color: $black;
 
   &:hover {
     background: $green;
   }
 
-  &::after {
+  &::before {
     content: '';
     background-image: url('../img/quiz-check.svg');
     background-repeat: no-repeat;

@@ -50,7 +50,8 @@
               v-bind:class="
                 {
                   'answer--correct': answer.id == correctAnswer.id && isCorrect !== null,
-                  'answer--incorrect': answer.id != correctAnswer.id && isCorrect === false && answer.id === selected
+                  'answer--incorrect': answer.id != correctAnswer.id && isCorrect === false && answer.id === selected,
+                  'answer--selected': selected
                 }">
               <input type="radio" :value="answer.id" name="qtn.id" v-model="selected" @click="pickAnswer(answer)">
               <span v-text="answer.text"></span>

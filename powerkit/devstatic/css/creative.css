@@ -829,7 +829,9 @@ LEARNING MODULE STYLES
     display: none; }
 
 .answer--incorrect {
-  background: rgba(255, 255, 255, 0.4); }
+  background: #9c3030; }
+  .answer--incorrect:hover {
+    background: #9c3030; }
   .answer--incorrect::after {
     content: '';
     background-image: url("../img/quiz-x.svg");

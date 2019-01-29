@@ -10,6 +10,7 @@ $white: #fff;
 $yellow: #cdcf60;
 $grey: #5b5b5b;
 $lightGrey: #d6d6d6;
+$red: #9c3030;
 
 $sitePad: 2rem;
 $colGutter: 1.5rem;
@@ -719,7 +720,11 @@ LEARNING MODULE STYLES
 }
 
 .answer--incorrect {
-  background: rgba(255,255,255,.4);
+  background: $red;
+
+  &:hover {
+    background: $red;
+  }
 
   &::after {
     content: '';

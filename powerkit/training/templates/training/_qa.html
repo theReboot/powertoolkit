@@ -49,7 +49,7 @@
               class="answer" 
               v-bind:class="
                 { 
-                  'answer--correct': answer.id == correctAnswer.id && isCorrect === true && answer.id === selected,
+                  'answer--correct': answer.id == correctAnswer.id && isCorrect !== null,
                   'answer--incorrect': answer.id != correctAnswer.id && isCorrect === false && answer.id === selected
                 }">
               <input type="radio" :value="answer.id" name="qtn.id" v-model="selected" @click="pickAnswer(answer)">
@@ -145,7 +145,7 @@
         answers: [],
         selected: null,
         isChecking: false,
-        isCorrect: null,
+        isCorrect: null, // null if question is not answered, true or false if answered
         completed: false,
         isLoading: false,
         resultCorrect: null,

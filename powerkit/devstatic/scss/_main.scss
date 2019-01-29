@@ -10,6 +10,8 @@ $white: #fff;
 $yellow: #cdcf60;
 $grey: #5b5b5b;
 $lightGrey: #d6d6d6;
+$red: #ca4545;
+$green: #39c351;
 
 $sitePad: 2rem;
 $colGutter: 1.5rem;
@@ -719,7 +721,11 @@ LEARNING MODULE STYLES
 }
 
 .answer--incorrect {
-  background: rgba(255,255,255,.4);
+  background: $red;
+
+  &:hover {
+    background: $red;
+  }
 
   &::after {
     content: '';
@@ -735,8 +741,12 @@ LEARNING MODULE STYLES
 }
 
 .answer--correct {
-  background: $yellow;
+  background: $green;
   color: $black;
+
+  &:hover {
+    background: $green;
+  }
 
   &::after {
     content: '';

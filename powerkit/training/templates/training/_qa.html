@@ -138,6 +138,7 @@
       data: {
         pageId: {{page.id}},
         questionId: {{question_id}},
+        answeredQuestions: [], // Keep all answered questions here to prevent duplicate requests
         started: false,
         intro: null,
         qtn: null,
@@ -205,24 +206,32 @@
           this.isLoading = false;
         },
         pickAnswer: function(answer) {
-          // console.log(answer.correct);
-          // console.log('selected')
-          // console.log(this.selected)
-          //return
-          //console.log(this.selected);
+          if (this.answeredQuestions.indexOf(this.qtn.id) !== -1) {
+            return;
+          } else {
+            this.answeredQuestions.push(this.qtn.id);
+          }
           this.isChecking = true;
           const url = `/training/select_answer/${this.selected}/`;
           // console.log(url);
           this.$http.get(url).then(response => {
             console.log(response);
-            this.isChecking = false;
-            this.isCorrect = response.body.correct;
-            this.completed = true;
-            if (this.isCorrect === true) {
-              setTimeout(() => {
-                this.getQuestion()
-              }, 1500);
+            if (response.body.success === true) {
+              this.isChecking = false;
+              this.isCorrect = response.body.correct;
+              this.completed = true;
+              if (this.isCorrect === true) {
+                setTimeout(() => {
+                  this.getQuestion()
+                }, 1500);
+              }
+            } else {
+              vm.$snotify.error(response.body.message, 'Error', {
+                position: 'centerCenter',
+                timeout: 1500
+              });
             }
+            
             // if (this.isCorrect === true) {
             //   vm.$snotify.success('Your answer is Correct!', 'Success', {
             //     position: 'centerCenter',

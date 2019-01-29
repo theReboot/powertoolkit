@@ -82,6 +82,11 @@ def continue_training(request):
 def select_answer(request, id):
     #import pdb;pdb.set_trace()
     mcq_answer = get_object_or_404(MCQAnswer, pk=id)
+
+    # check if any user answer exists
+    if UserAnswer.objects.filter(answer__page=mcq_answer.page):
+        return JsonResponse({'success': False, 'message': 'Duplicate answer'})
+
     UserAnswer.objects.create(answer=mcq_answer, user=request.user)
     return JsonResponse(
         {

@@ -829,9 +829,9 @@ LEARNING MODULE STYLES
     display: none; }
 
 .answer--incorrect {
-  background: #9c3030; }
+  background: #ca4545; }
   .answer--incorrect:hover {
-    background: #9c3030; }
+    background: #ca4545; }
   .answer--incorrect::after {
     content: '';
     background-image: url("../img/quiz-x.svg");
@@ -845,10 +845,10 @@ LEARNING MODULE STYLES
             transform: translateY(-50%); }
 
 .answer--correct {
-  background: #cdcf60;
+  background: #39c351;
   color: #111111; }
   .answer--correct:hover {
-    background: #cdcf60; }
+    background: #39c351; }
   .answer--correct::after {
     content: '';
     background-image: url("../img/quiz-check.svg");

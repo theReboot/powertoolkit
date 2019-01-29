@@ -10,7 +10,8 @@ $white: #fff;
 $yellow: #cdcf60;
 $grey: #5b5b5b;
 $lightGrey: #d6d6d6;
-$red: #9c3030;
+$red: #ca4545;
+$green: #39c351;
 
 $sitePad: 2rem;
 $colGutter: 1.5rem;
@@ -740,11 +741,11 @@ LEARNING MODULE STYLES
 }
 
 .answer--correct {
-  background: $yellow;
+  background: $green;
   color: $black;
 
   &:hover {
-    background: $yellow;
+    background: $green;
   }
 
   &::after {

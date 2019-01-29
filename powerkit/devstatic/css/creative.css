@@ -845,6 +845,8 @@ LEARNING MODULE STYLES
 .answer--correct {
   background: #cdcf60;
   color: #111111; }
+  .answer--correct:hover {
+    background: #cdcf60; }
   .answer--correct::after {
     content: '';
     background-image: url("../img/quiz-check.svg");

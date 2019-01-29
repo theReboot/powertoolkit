@@ -738,6 +738,10 @@ LEARNING MODULE STYLES
   background: $yellow;
   color: $black;
 
+  &:hover {
+    background: $yellow;
+  }
+
   &::after {
     content: '';
     background-image: url('../img/quiz-check.svg');

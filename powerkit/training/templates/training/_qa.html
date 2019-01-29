@@ -31,12 +31,12 @@
   <div v-if="started && !lessonCompleted">
     <div class="exam__questionWrap">
       <transition name="fade" mode="out-in">
-        <div v-if="!qtn" class="h1__preHeading" key="1">Hang on...</div>
+        <div v-if="!qtn" class="h1__preHeading" key="1"></div>
         <div v-else class="h1__preHeading" v-text="qtn.title" key="2"></div>
       </transition>
       <div class="exam__questionWrap__question">
         <transition name="fade" mode="out-in">
-          <div v-if="!qtn" key="1"><p>Let me see...</p></div>
+          <div v-if="!qtn" key="1"></div>
           <div v-else v-html="qtn.text" key="2"></div>
         </transition>
       </div>
@@ -44,11 +44,11 @@
       <transition name="fade" mode="out-in">
         <div v-if="answers.length === 0" key="1"> </div>
         <fieldset v-else key="2" class="exam__questionWrap__options">
-          <label 
-              v-for="answer in answers" 
-              class="answer" 
+          <label
+              v-for="answer in answers"
+              class="answer"
               v-bind:class="
-                { 
+                {
                   'answer--correct': answer.id == correctAnswer.id && isCorrect !== null,
                   'answer--incorrect': answer.id != correctAnswer.id && isCorrect === false && answer.id === selected
                 }">
@@ -183,7 +183,7 @@
           this.$http.get(url).then(response => {
             // console.log(response);
             //this.setNewQuestion(response.body);
-            setTimeout(() => this.setNewQuestion(response.body), 1500);
+            setTimeout(() => this.setNewQuestion(response.body), 1100);
 
           })
         },
@@ -223,15 +223,15 @@
               if (this.isCorrect === true) {
                 setTimeout(() => {
                   this.getQuestion()
-                }, 1500);
+                }, 1100);
               }
             } else {
               vm.$snotify.error(response.body.message, 'Error', {
                 position: 'centerCenter',
-                timeout: 1500
+                timeout: 1100
               });
             }
-            
+
             // if (this.isCorrect === true) {
             //   vm.$snotify.success('Your answer is Correct!', 'Success', {
             //     position: 'centerCenter',

@@ -754,7 +754,7 @@ LEARNING MODULE STYLES
   background: #cdcf60;
   position: absolute;
   left: 0;
-  transition: width 1.2s linear 0s, opacity .25s ease 1.2s; }
+  transition: width 1.0s linear 0s, opacity .09s ease 1.0s; }
 
 .sessionNav--loading::before {
   width: 100%;

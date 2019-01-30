@@ -745,16 +745,19 @@ LEARNING MODULE STYLES
 }
 
 .answer--selected {
+  padding-right: 125px;
 
   &.answer--correct {
     &::after {
       content: 'Correct';
+      // width: 70px;
     }
   }
 
   &.answer--incorrect {
     &::after {
       content: 'Incorrect';
+      // width: 70px;
     }
   }
 

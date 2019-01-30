@@ -844,19 +844,19 @@ LEARNING MODULE STYLES
     -webkit-transform: translateY(-50%);
             transform: translateY(-50%); }
 
-.answer--selected.answer--correct::after {
-  content: 'Correct'; }
-
-.answer--selected.answer--incorrect::after {
-  content: 'Incorrect'; }
-
-.answer--selected::after {
-  position: absolute;
-  right: 2.8rem;
-  font-size: 18px;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-          transform: translateY(-50%); }
+.answer--selected {
+  padding-right: 125px; }
+  .answer--selected.answer--correct::after {
+    content: 'Correct'; }
+  .answer--selected.answer--incorrect::after {
+    content: 'Incorrect'; }
+  .answer--selected::after {
+    position: absolute;
+    right: 2.8rem;
+    font-size: 18px;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+            transform: translateY(-50%); }
 
 .answer--correct {
   background: #39c351; }

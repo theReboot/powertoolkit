@@ -117,7 +117,8 @@
                   </div>
                   <div class="status">
                     {% if schedule_completed.has_questions %}
-                      {{ schedule_completed.score }} %
+                      <i class="fa fa-check fa-3x text-danger"></i>
+                      <div class="status__score">{{ schedule_completed.score }}%</div>
                     {% else %}
                       <i class="fa fa-check fa-3x text-danger"></i>
                       Completed

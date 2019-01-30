@@ -1253,6 +1253,10 @@ a.btn {
   .status .fa {
     color: #cdcf60; }
 
+.status__score {
+  font-size: 30px;
+  font-weight: bold; }
+
 .button {
   background-color: #cdcf60;
   display: inline-block;

@@ -18,6 +18,7 @@
 {% endblock css %}
 
 <div id="app">
+<div id="top"></div><!-- So we scroll up to -->
 <!--div v-for="(session, index) in sessions">
     <transition name="fade" mode="out-in">
         <h3 v-if="sessionIndex === index" v-text="session.title" key="1"></h3>
@@ -62,7 +63,7 @@
 
 {% block js %}
 <script src="{% static 'js/vue.js' %}"></script>
-<script src="{% static 'js/vue-snotify.js' %}"></script>
+<script src="{% static 'js/vue-scrollto.js' %}"></script>
 <script src="https://unpkg.com/vue-resource@1.3.1/dist/vue-resource.min.js"></script>
 <script>
 var vm = new Vue({
@@ -105,15 +106,16 @@ var vm = new Vue({
               //this.sessionIndex += 1;
               //this.isLoading = false;
               //this.show = true;
-              setTimeout(() => {this.show = true, this.sessionIndex+=1; window.scrollTo(0, 0)}, 500)
-              window.scrollTo(0, 0);
+              setTimeout(() => {this.show = true, this.sessionIndex+=1; this.scrollTop()}, 500)
+              //window.scrollTo(0, 0);
+              //this.scrollTop();
               //console.log(this.loadingClass)
           }
       },
       movePrev() {
           this.show = false;
           if (this.sessionIndex > 0) {
-              setTimeout(() => {this.show = true, this.sessionIndex-=1; window.scrollTo(0, 0)}, 500)
+              setTimeout(() => {this.show = true, this.sessionIndex-=1; this.scrollTop()}, 500)
           }
       },
       nextLesson() {
@@ -124,6 +126,9 @@ var vm = new Vue({
               console.log(response.body);
               window.location = response.body.redirect_url;
           })
+      },
+      scrollTop() {
+          this.$scrollTo('#app');
       }
   },
   computed: {

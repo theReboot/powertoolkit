@@ -85,7 +85,7 @@
         <div class="h1__preHeading">
           Score
         </div>
-        <h1><span v-text="resultCorrect"></span>/<span v-text="resultTotal"></span>%</h1>
+        <h1><span v-text="resultPercent"></span>%</h1>
         <p>You correctly answered <span v-text="resultCorrect"></span> questions out of <span v-text="resultTotal"></span> total.
       </div>
     </div>
@@ -285,6 +285,9 @@
 
           }
         },
+        resultPercent: function() {
+          return Math.ceil(100 * this.resultCorrect / this.resultTotal);
+        }
       }
     })
 

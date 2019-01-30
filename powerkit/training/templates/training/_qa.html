@@ -76,21 +76,28 @@
   </div>
   <!-- Show results when module is completed -->
   <div v-if="started && lessonCompleted">
-    <div class="exam__questionWrap">
-      <div class="exam__questionWrap__question">
-        <h3>Completed!</h3>
-        <h3>Your results are: <span v-text="resultCorrect"></span>/<span v-text="resultTotal"></span></h3>
+    <div class="flexGrid flexGrid--sparse">
+      <div class="col">
+        <div class="h1__preHeading">Results</div>
+        <h1>{{page.title}}</h1>
+      </div>
+      <div class="col">
+        <div class="h1__preHeading">
+          Score
+        </div>
+        <h1><span v-text="resultCorrect"></span>/<span v-text="resultTotal"></span>%</h1>
+        <p>You correctly answered <span v-text="resultCorrect"></span> questions out of <span v-text="resultTotal"></span> total.
       </div>
     </div>
     <nav class="sessionNav" v-bind:class="loadingClass">
-        <div class="sessionNav__controls">
-            <div class="sessionNav__controls__button sessionNav__controls__button--next">
-              <a v-if="!isLoading" @click="nextLesson()">Next Lesson</a>
-              <a v-else>Hang on...</a>
-            </div>
+      <div class="sessionNav__controls">
+        <div class="sessionNav__controls__button sessionNav__controls__button--next">
+          <a v-if="!isLoading" @click="nextLesson()">Next Lesson</a>
+          <a v-else>Hang on...</a>
         </div>
-      </nav>
-    </div>
+      </div>
+    </nav>
+  </div>
 </div>
 {% comment %} {% include "components/checkbox.html" %} {% endcomment %}
 
@@ -275,7 +282,7 @@
         loadingClass: function() {
           return {
             //'sessionNav--loading': this.isLoading
-            
+
           }
         },
       }

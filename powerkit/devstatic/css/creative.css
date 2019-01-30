@@ -321,9 +321,12 @@ GRID
     .flexGrid {
       flex-direction: column; } }
 
+.flexGrid--sparse {
+  padding: 4rem 0 13rem; }
+
 .col {
   flex: 1;
-  margin-right: 1.5rem; }
+  padding-right: 1.5rem; }
   .col:last-of-type {
     margin-right: 0; }
 

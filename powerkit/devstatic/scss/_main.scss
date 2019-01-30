@@ -57,9 +57,14 @@ GRID
   }
 }
 
+.flexGrid--sparse {
+  padding: 4rem 0 13rem;
+}
+
 .col {
   flex: 1;
-  margin-right: $colGutter;
+  // margin-right: $colGutter;
+  padding-right: $colGutter;
 
   &:last-of-type {
     margin-right: 0;

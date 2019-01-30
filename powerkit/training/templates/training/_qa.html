@@ -213,6 +213,7 @@
             this.answeredQuestions.push(this.qtn.id);
           }
           this.isChecking = true;
+          this.isLoading = true;
           const url = `/training/select_answer/${this.selected}/`;
           // console.log(url);
           this.$http.get(url).then(response => {

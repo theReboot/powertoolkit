@@ -30,5 +30,5 @@ def footer():
     #     footer_text = _footers[0].text
     return {
         'contact': _contact,
-        'issues': IssuePage.objects.all()
+        'issues': IssuePage.objects.live()
     }

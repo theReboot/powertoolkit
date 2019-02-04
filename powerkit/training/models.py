@@ -89,6 +89,11 @@ class LearningPage(Page):
             context['question_sessions'] = questions
             context['question_id'] = questions[0].pk
 
+        # For assignment children
+        assignment_sessions = AssignmentPage.objects.child_of(self).live()
+        if assignment_sessions:
+            context['assignment'] = assignment_sessions[0]
+
         return context
 
     content_panels = Page.content_panels + [
@@ -100,7 +105,11 @@ class LearningPage(Page):
     ]
 
     parent_page_types = ['training.LearningIndex']
-    subpage_types = ['training.LearningSessionPage', 'training.QuestionPage']
+    subpage_types = [
+        'training.LearningSessionPage',
+        'training.QuestionPage',
+        'training.AssignmentPage'
+    ]
 
     @property
     def has_questions(self):
@@ -109,8 +118,14 @@ class LearningPage(Page):
         return False
 
     @property
+    def has_assignments(self):
+        if AssignmentPage.objects.child_of(self):
+            return True
+        return False
+
+    @property
     def position(self):
-        if self.has_questions:
+        if self.has_questions or self.has_assignments:
             return ''
         prev = len([i for i in self.get_prev_siblings().live()
                    if not i.specific.has_questions])
@@ -245,7 +260,7 @@ class UserAnswer(models.Model):
         return self.answer.correct
 
 
-class AssignmentPage(models.Model):
+class AssignmentPage(Page):
     question = RichTextField(null=True, blank=True)
     examiner = models.ForeignKey(User, null=True, on_delete=models.SET_NULL)
 

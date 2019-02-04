@@ -27,6 +27,8 @@ class IssueIndex(Page):
         context['issues'] = paginator.get_page(page)
         return context
 
+    subpage_types = ['issue.IssuePage']
+
 
 class IssuePage(Page):
     intro = models.TextField(blank=True, null=True)
@@ -65,6 +67,8 @@ class IssuePage(Page):
         ImageChooserPanel('policy_image'),
         InlinePanel('issue_points', label='Key Questions'),
     ]
+
+    parent_page_types = ['issue.IssueIndex']
 
 
 @register_snippet

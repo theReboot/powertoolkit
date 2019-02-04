@@ -215,6 +215,8 @@ class QuestionPage(Page):
         InlinePanel('mcq_answers', label='Answers'),
     ]
 
+    parent_page_types = ['training.LearningPage']
+
 
 class MCQAnswer(Orderable):
     page = ParentalKey(
@@ -241,3 +243,15 @@ class UserAnswer(models.Model):
     @property
     def correct(self):
         return self.answer.correct
+
+
+class AssignmentPage(models.Model):
+    question = RichTextField(null=True, blank=True)
+    examiner = models.ForeignKey(User, null=True, on_delete=models.SET_NULL)
+
+    content_panels = Page.content_panels + [
+        FieldPanel('question', classname='full'),
+        FieldPanel('examiner')
+    ]
+
+    parent_page_types = ['training.LearningPage']

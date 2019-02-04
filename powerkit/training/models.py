@@ -177,25 +177,25 @@ class TrainingSchedule(models.Model):
             return int((correct * 100.) / total)
 
 
-class MCQPage(Page):
-    outline = models.TextField(null=True, blank=True)
-    duration = models.PositiveIntegerField(default=0)
-    placement = models.PositiveIntegerField(default=1)
-    body = RichTextField(null=True, blank=True)
-
-    def get_context(self, request):
-        context = super().get_context(request)
-
-        return context
-
-    content_panels = Page.content_panels + [
-        FieldPanel('outline', classname='full'),
-        FieldPanel('body', classname='full'),
-        FieldPanel('duration'),
-        FieldPanel('placement'),
-    ]
-
-    parent_page_types = ['training.LearningIndex']
+#class MCQPage(Page):
+#    outline = models.TextField(null=True, blank=True)
+#    duration = models.PositiveIntegerField(default=0)
+#    placement = models.PositiveIntegerField(default=1)
+#    body = RichTextField(null=True, blank=True)
+#
+#    def get_context(self, request):
+#        context = super().get_context(request)
+#
+#        return context
+#
+#    content_panels = Page.content_panels + [
+#        FieldPanel('outline', classname='full'),
+#        FieldPanel('body', classname='full'),
+#        FieldPanel('duration'),
+#        FieldPanel('placement'),
+#    ]
+#
+#    parent_page_types = ['training.LearningIndex']
 
 
 class QuestionPage(Page):

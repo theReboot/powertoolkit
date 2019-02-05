@@ -12,6 +12,7 @@ wagtail = "==2.3"
 fabric = "*"
 ipython = "*"
 xlsxwriter = "*"
+django-tinymce = "*"
 
 
 [dev-packages]

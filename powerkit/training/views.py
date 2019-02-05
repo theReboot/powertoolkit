@@ -1,4 +1,4 @@
-from django.shortcuts import redirect, get_object_or_404
+from django.shortcuts import redirect, get_object_or_404, render
 from django.http import JsonResponse, HttpResponseBadRequest
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required
@@ -6,6 +6,7 @@ from django.contrib.auth.decorators import login_required
 from training.models import Training, TrainingSchedule, LearningPage,\
     MCQAnswer, UserAnswer, QuestionPage, LearningSessionPage, AssignmentPage,\
     AssignmentAnswer
+from training.forms import AssignmentForm
 
 
 @login_required
@@ -204,3 +205,23 @@ def get_assignment(request, id):
         },
         'answer': answer_json
     })
+
+
+@login_required
+def assignment(request, id):
+    learning_page = get_object_or_404(LearningPage, pk=id)
+    assignment = AssignmentPage.objects.child_of(learning_page).live()[0]
+    if request.method == 'POST':
+        form = AssignmentForm(request.POST)
+        if form.is_valid():
+            assignment.answer = form.cleaned_data['text']
+            assignment.save()
+    else:
+        form = AssignmentForm()
+    return render(
+        request,
+        'training/assignment.html',
+        {
+            'assignment': assignment,
+            'form': form
+        })

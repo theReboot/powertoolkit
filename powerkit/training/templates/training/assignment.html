@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load static %}
+{% load wagtailcore_tags %}
+{% load staticfiles %}
+
+{% block extrahead %}
+    {{ form.media }}
+{% endblock extrahead %}
+
+{% block content %}
+<section>
+    <div class="col-2-3">
+    <h1>Assignment</h1>
+    <h3>{{assignment.title}}</h3>
+    <p class="introSentence introSentence--border">
+        {{ assignment.question|richtext }}
+    </p>
+    </div>
+</section>
+<section>
+    <div class="col">
+        <h1>Answer</h1>
+        <form action="." method="post">{% csrf_token %}
+            <label>Please Enter your answer below</label>
+            {{ form.text }}
+            <input type="submit" value="Save and Submit" />
+        </form>
+    </div>
+</section>
+{% endblock content %}

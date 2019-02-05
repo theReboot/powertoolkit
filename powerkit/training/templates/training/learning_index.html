@@ -139,7 +139,13 @@
                   {% endif %}
                     <div class="lessonList__row__content">
                       <div class="preHeading">Next lesson:</div>
-                      <div class="title"><a href="{% pageurl schedule.learning_page %}">{{schedule.learning_page.title}}</a></div>
+                      <div class="title">
+                        {% if schedule.has_assignments %}
+                          <a href="{% url 'assignment' id=schedule.learning_page.id %}">{{schedule.learning_page.title}}</a>
+                        {% else %}
+                          <a href="{% pageurl schedule.learning_page %}">{{schedule.learning_page.title}}</a>
+                        {% endif %}
+                      </div>
                       <div class="body">{{schedule.learning_page.outline}}</div>
                     </div>
                 </div>
@@ -155,7 +161,7 @@
                 {% include "training/_test_row.html" %}
               {% else %}
                   <div class="lessonList__row__placement">{{schedule.learning_page.position}}</div>
-                {% endif %}
+              {% endif %}
                   <div class="lessonList__row__content">
                       <div class="title">
                         {% if schedule.pending %}

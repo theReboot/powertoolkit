@@ -37,6 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    # Other 3rd party apps
+    'tinymce',
+
     # CMS
     'wagtail.contrib.forms',
     'wagtail.contrib.redirects',

@@ -279,7 +279,8 @@ class AssignmentPage(Page):
 class AssignmentAnswer(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     assignment = models.ForeignKey(AssignmentPage, on_delete=models.CASCADE)
-    answer = models.TextField(blank=True)
+    #answer = models.TextField(blank=True)
+    answer = RichTextField(blank=True)
     completed = models.DateTimeField(default=timezone.now)
     assessed = models.DateTimeField(default=timezone.now)
     comment = models.TextField(blank=True)

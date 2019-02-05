@@ -6,13 +6,13 @@
 
 {% block content %}
  <section>
-        <div class="col-2-3">
-        <h1>{{page.title}}</h1>
-        <p class="introSentence introSentence--border">
-            {{ page.intro }}
-        </p>
-        </div>
-    </section>
+    <div class="col-2-3">
+    <h1>{{page.title}}</h1>
+    <p class="introSentence introSentence--border">
+        {{ page.intro }}
+    </p>
+    </div>
+</section>
 <section>
   <div class="flexGrid">
     {% for issue in issues %}

@@ -11,4 +11,5 @@ urlpatterns = [
     path('intro/<int:id>/', views.get_intro, name='get_intro'),
     path('question/<int:id>/', views.get_question, name='get_question'),
     path('sessions/<int:id>/', views.get_sessions),
+    path('assignment/<int:id>/', views.get_assignment),
 ]

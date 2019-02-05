@@ -121,7 +121,7 @@ def get_intro(request, id):
 @login_required
 def get_question(request, id):
     learning_page = get_object_or_404(LearningPage, pk=id)
-    all_questions = QuestionPage.objects.child_of(learning_page)
+    all_questions = QuestionPage.objects.child_of(learning_page).live()
 
     answered = [
         ans.answer.page.id for ans in UserAnswer.objects.filter(
@@ -178,5 +178,29 @@ def get_sessions(request, id):
 
 @login_required
 def get_assignment(request, id):
+    #import pdb;pdb.set_trace()
     learning_page = get_object_or_404(LearningPage, pk=id)
-    assignment = AssignmentPage.objects.child_of(learning_page)
+    assignment = AssignmentPage.objects.child_of(learning_page).live()[0]
+
+    answer = AssignmentAnswer.objects.filter(
+        user=request.user, assignment=assignment)
+    if not answer:
+        answer_json = None
+    else:
+        _answer = answer[0]
+        answer_json = {
+            'id': _answer.id,
+            'text': _answer.answer,
+            'completed': _answer.completed,
+            'assessed': _answer.assessed,
+            'comment': _answer.comment
+        }
+
+    return JsonResponse({
+        'question': {
+            'id': assignment.id,
+            'title': assignment.title,
+            'text': assignment.question
+        },
+        'answer': answer_json
+    })

@@ -2,12 +2,49 @@
 {% load staticfiles %}
 
 <div id="app">
-<div v-html="assignment"></div>
+    <h2>Assignment</h2>
+    <transition name="fade" mode="out-in">
+        <h3 v-if="question" v-text="question.title"></h3>
+    </transition>
+    <transition name="fade" mode="out-in">
+        <div v-if="question" v-html="question.text"></div>
+    </transition>
 
+    <div>
+        <h2>Answer</h2>
+        <div v-if="answer === null">
+            <h3>Enter your answer</h3>
+        </div>
+        <div v-else v-text="answer.text"></div>
+    </div>
+
+    <div>
+        <h2>Comment</h2>
+        <div v-if="answer !== null && answer.comment" v-text="answer.comment"></div>
+        <span v-else>There are no comments</span>
+    </div>
 </div>
 
 
 {% block js %}
+
+{% block css %}
+    <link href="{% static 'vendor/snotify/css/material.css' %}" rel="stylesheet" />
+    <style>
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+  /*transform: translateX(10px);*/
+}
+.exam__questionWrap {
+  min-height: 400px;
+}
+</style>
+{% endblock css %}
+
 <script src="{% static 'js/vue.js' %}"></script>
 <script src="https://unpkg.com/vue-resource@1.3.1/dist/vue-resource.min.js"></script>
 <script>
@@ -16,11 +53,25 @@ var vm = new Vue({
     delimiters: ["[", "]"],
     data: {
         pageId: {{page.id}},
-        assignment: null
+        question: null,
+        answer: null
     },
     mounted() {
         console.log("vue mounted");
         console.log(this.pageId);
+        this.getAssignment();
+    },
+    methods: {
+        getAssignment: function() {
+            console.log("getting assignments");
+            const url = `/training/assignment/${this.pageId}/`;
+            console.log(url);
+            this.$http.get(url).then(response => {
+                console.log(response);
+                this.question = response.body.question;
+                this.answer = response.body.answer;
+            })
+        }
     }
 })
 </script>

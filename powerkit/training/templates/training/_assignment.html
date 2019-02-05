@@ -1,0 +1,27 @@
+{% load wagtailcore_tags %}
+{% load staticfiles %}
+
+<div id="app">
+<div v-html="assignment"></div>
+
+</div>
+
+
+{% block js %}
+<script src="{% static 'js/vue.js' %}"></script>
+<script src="https://unpkg.com/vue-resource@1.3.1/dist/vue-resource.min.js"></script>
+<script>
+var vm = new Vue({
+    el: '#app',
+    delimiters: ["[", "]"],
+    data: {
+        pageId: {{page.id}},
+        assignment: null
+    },
+    mounted() {
+        console.log("vue mounted");
+        console.log(this.pageId);
+    }
+})
+</script>
+{% endblock js %}

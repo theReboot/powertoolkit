@@ -4,7 +4,8 @@ from django.utils import timezone
 from django.contrib.auth.decorators import login_required
 
 from training.models import Training, TrainingSchedule, LearningPage,\
-    MCQAnswer, UserAnswer, QuestionPage, LearningSessionPage
+    MCQAnswer, UserAnswer, QuestionPage, LearningSessionPage, AssignmentPage,\
+    AssignmentAnswer
 
 
 @login_required
@@ -173,3 +174,9 @@ def get_sessions(request, id):
             'text': session.body
         } for session in _sessions]
     return JsonResponse({'sessions': out})
+
+
+@login_required
+def get_assignment(request, id):
+    learning_page = get_object_or_404(LearningPage, pk=id)
+    assignment = AssignmentPage.objects.child_of(learning_page)

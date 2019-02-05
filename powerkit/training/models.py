@@ -180,6 +180,10 @@ class TrainingSchedule(models.Model):
         return self.learning_page.has_questions
 
     @property
+    def has_assignments(self):
+        return self.learning_page.has_assignments
+
+    @property
     def score(self):
         if self.has_questions and self.completed:
             questions = QuestionPage.objects.child_of(self.learning_page)
@@ -270,3 +274,15 @@ class AssignmentPage(Page):
     ]
 
     parent_page_types = ['training.LearningPage']
+
+
+class AssignmentAnswer(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    assignment = models.ForeignKey(AssignmentPage, on_delete=models.CASCADE)
+    answer = models.TextField(blank=True)
+    completed = models.DateTimeField(default=timezone.now)
+    assessed = models.DateTimeField(default=timezone.now)
+    comment = models.TextField(blank=True)
+
+    def __str__(self):
+        return self.answer

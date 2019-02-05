@@ -104,7 +104,7 @@
             <div class="lessonList__completed lessonList__completed--hidden">
             {% for schedule_completed in completed %}
               <div class="lessonList__row lessonList__row--completed">
-                {% if schedule_completed.has_questions %}
+                {% if schedule_completed.has_questions or schedule_completed.has_assignments%}
                   <div class="lessonList__row__placement">
                     {% include "training/_test_row.html" %}
                   </div>
@@ -116,7 +116,7 @@
                       <div class="body">{{schedule_completed.learning_page.outline}}</div>
                   </div>
                   <div class="status">
-                    {% if schedule_completed.has_questions %}
+                    {% if schedule_completed.has_questions or schedule_completed.has_assignments %}
                       <i class="fa fa-check fa-3x text-danger"></i>
                       <div class="status__score">{{ schedule_completed.score }}%</div>
                     {% else %}
@@ -132,7 +132,7 @@
             {% if schedule.current %}
               <div class="lessonList__featured">
                 <div class="lessonList__row">
-                  {% if schedule.has_questions %}
+                  {% if schedule.has_questions or schedule.has_assignments %}
                     {% include "training/_test_row.html" %}
                   {% else %}
                     <div class="lessonList__row__placement">{{schedule.learning_page.position}}</div>
@@ -151,7 +151,7 @@
                   {% if schedule.completed %}lessonList__row--completed{% endif %}
                   {% if schedule.pending %}lessonList__row--locked{% endif %}
               ">
-              {% if schedule.has_questions %}
+              {% if schedule.has_questions or schedule.has_assignments %}
                 {% include "training/_test_row.html" %}
               {% else %}
                   <div class="lessonList__row__placement">{{schedule.learning_page.position}}</div>
@@ -205,7 +205,7 @@
                   </div>
               {% else %}
                   <div class="lessonList__row lessonList__row--locked">
-                    {% if module.has_questions %}
+                    {% if module.has_questions or module.has_assignments %}
                       <div class="lessonList__row__placement">
                         <svg viewBox="0 0 114.43 91.39" class="svg--white">
                           <title>Exam icon</title>

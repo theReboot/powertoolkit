@@ -18,6 +18,10 @@
        {% include "training/_qa.html" %}
        {% comment %} {% show_pagination question_sessions page.id %} {% endcomment %}
     {% endif %}
+
+    {% if assignment %}
+      {% include "training/_assignment.html" %}
+    {% endif %}
 </section>
 
 {% endblock content %}

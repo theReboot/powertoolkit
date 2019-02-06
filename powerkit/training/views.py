@@ -34,8 +34,8 @@ def start_training(request):
 
 
 @login_required
-def complete(request, id):
-    # import pdb;pdb.set_trace()
+def complete(request, id, async=True):
+    import pdb;pdb.set_trace()
     _training = Training.objects.get(user=request.user)
     schedules = _training.schedules.all()
 
@@ -55,7 +55,10 @@ def complete(request, id):
         _training.save()
         #return redirect('/learning/')
         _url = '/learning/'
-        return JsonResponse({'redirect_url': _url})
+        if async:
+            return JsonResponse({'redirect_url': _url})
+        else:
+            return redirect(_url)
     else:
         if schedules.filter(current=True):
             current = schedules[0]
@@ -66,7 +69,10 @@ def complete(request, id):
             current.save()
             current_page = current.learning_page
         #return redirect(current_page.url)
-        return JsonResponse({'redirect_url': current_page.url})
+        if async:
+            return JsonResponse({'redirect_url': current_page.url})
+        else:
+            return redirect(current_page.url)
 
 
 def continue_training(request):
@@ -213,9 +219,12 @@ def assignment(request, id):
     assignment = AssignmentPage.objects.child_of(learning_page).live()[0]
     if request.method == 'POST':
         form = AssignmentForm(request.POST)
+        #import pdb;pdb.set_trace()
         if form.is_valid():
             assignment.answer = form.cleaned_data['text']
             assignment.save()
+            if form.data.get('submit'):
+                return redirect('complete_training_sync', id=id)
     else:
         form = AssignmentForm()
     return render(

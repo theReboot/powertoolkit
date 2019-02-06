@@ -18,12 +18,21 @@
     </div>
 </section>
 <section>
-    <div class="col">
+    <div class="exam">
         <h1>Answer</h1>
-        <form action="." method="post">{% csrf_token %}
+        <form class="form" action="." method="post">{% csrf_token %}
             <label>Please Enter your answer below</label>
             {{ form.text }}
+            <div class="col-2-3">
+            <div class="flexGrid">
+            <div class="col">
+            <input type="submit" value="Save and Continue" />
+            </div>
+            <div class="col">
             <input type="submit" value="Save and Submit" />
+            </div>
+            </div>
+            </div>
         </form>
     </div>
 </section>

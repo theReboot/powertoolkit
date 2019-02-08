@@ -28,7 +28,19 @@ DEBUG = True
 ALLOWED_HOSTS = ['powersmart.ng', '104.248.132.201', 'localhost']
 
 # EMAIL SETTINGS
-EMAIL_BACKEND = 'post_office.EmailBackend'
+DEFAULT_FROM_EMAIL = 'info@powersmart.ng'
+
+#EMAIL_BACKEND = 'post_office.EmailBackend'
+EMAIL_BACKEND = 'django_mailgun.MailgunBackend'
+
+POST_OFFICE = {
+    'BACKENDS': {
+        'default': 'django_mailgun.MailgunBackend',
+    }
+}
+
+MAILGUN_ACCESS_KEY = 'f329940591d3b6c6859940d7f35ab847-9b463597-98999e89'
+MAILGUN_SERVER_NAME = 'mg.powersmart.ng'
 
 # Application definition
 

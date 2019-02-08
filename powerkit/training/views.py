@@ -2,6 +2,7 @@ from django.shortcuts import redirect, get_object_or_404, render
 from django.http import JsonResponse, HttpResponseBadRequest
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required
+from django.urls import reverse
 
 from training.models import Training, TrainingSchedule, LearningPage,\
     MCQAnswer, UserAnswer, QuestionPage, LearningSessionPage, AssignmentPage,\
@@ -60,8 +61,8 @@ def complete(request, id, async=True):
         else:
             return redirect(_url)
     else:
-        if schedules.filter(current=True):
-            current = schedules[0]
+        if pending.filter(current=True):
+            current = pending[0]
             current_page = current.learning_page
         else:
             current = pending[0]
@@ -69,10 +70,15 @@ def complete(request, id, async=True):
             current.save()
             current_page = current.learning_page
         #return redirect(current_page.url)
-        if async:
-            return JsonResponse({'redirect_url': current_page.url})
+        if current_page.has_assignments:
+            page_url = reverse('assignment', args=[current_page.id])
         else:
-            return redirect(current_page.url)
+            page_url = current_page.url
+
+        if async:
+            return JsonResponse({'redirect_url': page_url})
+        else:
+            return redirect(page_url)
 
 
 def continue_training(request):

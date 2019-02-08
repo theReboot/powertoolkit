@@ -38,6 +38,13 @@ class HomePage(Page):
         on_delete=models.SET_NULL,
         related_name='+'
     )
+    top_link = models.ForeignKey(
+        'wagtailcore.Page',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
     left_link = models.ForeignKey(
         'wagtailcore.Page',
         null=True,
@@ -66,6 +73,7 @@ class HomePage(Page):
         ImageChooserPanel('left_image'),
         ImageChooserPanel('center_image'),
         ImageChooserPanel('right_image'),
+        PageChooserPanel('top_link'),
         PageChooserPanel('left_link'),
         PageChooserPanel('center_link'),
         PageChooserPanel('right_link'),

@@ -3,6 +3,7 @@ from django.http import JsonResponse, HttpResponseBadRequest
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse
+from post_office import mail
 
 from training.models import Training, TrainingSchedule, LearningPage,\
     MCQAnswer, UserAnswer, QuestionPage, LearningSessionPage, AssignmentPage,\
@@ -236,6 +237,15 @@ def assignment(request, id):
             if form.data.get('submit'):
                 answer.completed = timezone.now()
                 answer.save()
+
+                #send mail to examiner
+                email = _asst.examiner.email
+                mail.send(
+                    email,
+                    'learning@powersmart.ng',
+                    template='examiner_template',
+                    context={'assignment_link': _link}
+                )
                 return redirect('complete_training_sync', id=id)
     else:
         form = AnswerForm(instance=answer)
@@ -248,3 +258,8 @@ def assignment(request, id):
             'form': form,
             'answer': answer
         })
+
+
+@login_required
+def examine(request, id):
+    pass

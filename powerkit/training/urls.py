@@ -25,5 +25,6 @@ urlpatterns = [
     path('question/<int:id>/', views.get_question, name='get_question'),
     path('sessions/<int:id>/', views.get_sessions),
     path('assignment/<int:id>/', views.assignment, name='assignment'),
+    path('examine/<int:id>/', views.examine, name='examine_assignment'),
     #path('assignment/<int:id>/', views.get_assignment),
 ]

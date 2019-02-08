@@ -10,3 +10,11 @@ class AnswerForm(forms.ModelForm):
     class Meta:
         model = AssignmentAnswer
         fields = ['answer']
+
+
+class ExamineForm(forms.ModelForm):
+    comment = forms.CharField(widget=TinyMCE(attrs={'cols': 80, 'rows': 30}))
+
+    class Meta:
+        model = AssignmentAnswer
+        fields = ['comment']

@@ -27,6 +27,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['powersmart.ng', '104.248.132.201', 'localhost']
 
+# EMAIL SETTINGS
+EMAIL_BACKEND = 'post_office.EmailBackend'
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -39,6 +42,7 @@ INSTALLED_APPS = [
 
     # Other 3rd party apps
     'tinymce',
+    'post_office',
 
     # CMS
     'wagtail.contrib.forms',

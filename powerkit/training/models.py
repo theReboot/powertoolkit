@@ -268,6 +268,9 @@ class AssignmentPage(Page):
     question = RichTextField(null=True, blank=True)
     examiner = models.ForeignKey(User, null=True, on_delete=models.SET_NULL)
 
+    def __str__(self):
+        return self.title
+
     content_panels = Page.content_panels + [
         FieldPanel('question', classname='full'),
         FieldPanel('examiner')
@@ -281,9 +284,13 @@ class AssignmentAnswer(models.Model):
     assignment = models.ForeignKey(AssignmentPage, on_delete=models.CASCADE)
     #answer = models.TextField(blank=True)
     answer = RichTextField(blank=True)
-    completed = models.DateTimeField(default=timezone.now)
-    assessed = models.DateTimeField(default=timezone.now)
+    completed = models.DateTimeField(null=True)
+    assessed = models.DateTimeField(null=True)
     comment = models.TextField(blank=True)
 
     def __str__(self):
         return self.answer
+
+    @property
+    def submitted(self):
+        return self.completed

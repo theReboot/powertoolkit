@@ -112,7 +112,17 @@
                   <div class="lessonList__row__placement">{{schedule_completed.learning_page.position}}</div>
                 {% endif %}
                   <div class="lessonList__row__content">
-                      <div class="title"><a href="{% pageurl schedule_completed.learning_page %}">{{schedule_completed.learning_page.title}}</a></div>
+                      <div class="title">
+                      {% if schedule_completed.learning_page.has_assignments %}
+                        <a href="{% url 'assignment' id=schedule_completed.learning_page.id %}">
+                          {{schedule_completed.learning_page.title}}
+                        </a>
+                      {% else %}
+                        <a href="{% pageurl schedule_completed.learning_page %}">
+                          {{schedule_completed.learning_page.title}}
+                        </a>
+                      {% endif %}
+                      </div>
                       <div class="body">{{schedule_completed.learning_page.outline}}</div>
                   </div>
                   <div class="status">

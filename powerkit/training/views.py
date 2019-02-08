@@ -7,7 +7,7 @@ from django.urls import reverse
 from training.models import Training, TrainingSchedule, LearningPage,\
     MCQAnswer, UserAnswer, QuestionPage, LearningSessionPage, AssignmentPage,\
     AssignmentAnswer
-from training.forms import AssignmentForm
+from training.forms import AnswerForm
 
 
 @login_required
@@ -222,21 +222,29 @@ def get_assignment(request, id):
 @login_required
 def assignment(request, id):
     learning_page = get_object_or_404(LearningPage, pk=id)
-    assignment = AssignmentPage.objects.child_of(learning_page).live()[0]
+    _asst = AssignmentPage.objects.child_of(learning_page).live()[0]
+    answer, _ = AssignmentAnswer.objects.get_or_create(
+        assignment=_asst, user=request.user)
+
     if request.method == 'POST':
-        form = AssignmentForm(request.POST)
+        form = AnswerForm(request.POST, instance=answer)
         #import pdb;pdb.set_trace()
         if form.is_valid():
-            assignment.answer = form.cleaned_data['text']
-            assignment.save()
+            #answer.answer = form.cleaned_data['text']
+            #answer.save()
+            form.save()
             if form.data.get('submit'):
+                answer.completed = timezone.now()
+                answer.save()
                 return redirect('complete_training_sync', id=id)
     else:
-        form = AssignmentForm()
+        form = AnswerForm(instance=answer)
+        #answer = AssignmentAnswer.objects.get(assignment=assignment)
     return render(
         request,
         'training/assignment.html',
         {
-            'assignment': assignment,
-            'form': form
+            'assignment': _asst,
+            'form': form,
+            'answer': answer
         })

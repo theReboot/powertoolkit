@@ -27,20 +27,20 @@
   <div class="photoGrid__row photoGrid__row--shared">
     {% image page.left_image width-500 as tmp_photo %}
     <div class="photoGrid__content" style="background-image: url('{{ tmp_photo.url }}')">
-      <a href="#">
-        <h3>Content 1</h3>
+      <a href="{% pageurl page.left_link %}">
+        <h3>{{page.left_link.title}}</h3>
       </a>
     </div>
     {% image page.center_image width-500 as tmp_photo %}
     <div class="photoGrid__content" style="background-image: url('{{ tmp_photo.url }}')">
-      <a href="#">
-        <h3>Content 2</h3>
+      <a href="{% pageurl page.center_link %}">
+        <h3>{{page.center_link.title}}</h3>
       </a>
     </div>
     {% image page.right_image width-500 as tmp_photo %}
     <div class="photoGrid__content" style="background-image: url('{{ tmp_photo.url }}')">
-      <a href="#">
-        <h3>Content 3</h3>
+      <a href="{% pageurl page.right_link %}">
+        <h3>{{page.right_link.title}}</h3>
       </a>
     </div>
   </div>

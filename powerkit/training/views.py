@@ -35,7 +35,7 @@ def start_training(request):
 
 @login_required
 def complete(request, id, async=True):
-    import pdb;pdb.set_trace()
+    #import pdb;pdb.set_trace()
     _training = Training.objects.get(user=request.user)
     schedules = _training.schedules.all()
 

@@ -12,7 +12,7 @@ class AnswerForm(forms.ModelForm):
         fields = ['answer']
 
 
-class ExamineForm(forms.ModelForm):
+class AssessmentForm(forms.ModelForm):
     comment = forms.CharField(widget=TinyMCE(attrs={'cols': 80, 'rows': 30}))
 
     class Meta:

@@ -8,7 +8,7 @@ from post_office import mail
 from training.models import Training, TrainingSchedule, LearningPage,\
     MCQAnswer, UserAnswer, QuestionPage, LearningSessionPage, AssignmentPage,\
     AssignmentAnswer
-from training.forms import AnswerForm
+from training.forms import AnswerForm, AssessmentForm
 
 
 @login_required
@@ -244,7 +244,7 @@ def assignment(request, id):
                     email,
                     'learning@powersmart.ng',
                     template='examiner_template',
-                    context={'assignment_link': _link}
+                    #context={'assignment_link': _link}
                 )
                 return redirect('complete_training_sync', id=id)
     else:
@@ -261,5 +261,28 @@ def assignment(request, id):
 
 
 @login_required
-def examine(request, id):
-    pass
+def assessment(request, id):
+    answer = get_object_or_404(AssignmentAnswer, pk=id)
+    _asst = answer.assignment
+    if request.method == 'POST':
+        form = AssessmentForm(request.POST, instance=answer)
+        if form.is_valid():
+            form.save()
+            return redirect('assessment_list')
+    else:
+        form = AssessmentForm(instance=answer)
+    return render(
+        request,
+        'training/assessment.html',
+        {
+            'assignment': _asst,
+            'form': form,
+            'answer': answer
+        }
+    )
+
+
+@login_required
+def assessments(request):
+    _asst = AssignmentAnswer.objects.filter(assignment__examiner=request.user)
+    return render(request, 'training/assessments.html', {'assessments': _asst})

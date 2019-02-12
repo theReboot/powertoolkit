@@ -25,6 +25,7 @@ urlpatterns = [
     path('question/<int:id>/', views.get_question, name='get_question'),
     path('sessions/<int:id>/', views.get_sessions),
     path('assignment/<int:id>/', views.assignment, name='assignment'),
-    path('examine/<int:id>/', views.examine, name='examine_assignment'),
+    path('assessment/<int:id>/', views.assessment, name='assessment'),
+    path('assessments/', views.assessments, name='assessment_list'),
     #path('assignment/<int:id>/', views.get_assignment),
 ]

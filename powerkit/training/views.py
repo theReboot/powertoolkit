@@ -256,7 +256,8 @@ def assignment(request, id):
         {
             'assignment': _asst,
             'form': form,
-            'answer': answer
+            'answer': answer,
+            'page_id': id
         })
 
 

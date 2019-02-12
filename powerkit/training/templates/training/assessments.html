@@ -8,32 +8,15 @@
 <section>
     <div class="col-2-3">
         <h1>Assignments</h1>
-    </div>
-</section>
-<section>
-    <div class="col-2-3">
-        <h3>Answer</h3>
-        <p class="introSentence introSentence--border">
-            {{ answer.answer|richtext }}
-        </p>
-    </div>
-</section>
-<section>
-    <div class="exam col-2-3">
-        <form class="form" action="." method="post">{% csrf_token %}
-            <label>Please Enter your comment below</label>
-            {{ form.comment }}
-            <div class="col-2-3">
-                <div class="flexGrid">
-                    <div class="col">
-                        <input type="submit" name="save" value="Save and Continue" />
-                    </div>
-                    <div class="col">
-                        <input type="submit" name="submit" value="Save and Submit" />
-                    </div>
-                </div>
-            </div>
-        </form>
+        <div class="table">
+            <table>
+            {% for assignment in assessments %}
+                <tr>
+                    <td>{{assignment.question}}</td>
+                </tr>
+            {% endfor %}
+            </table>
+        </div>
     </div>
 </section>
 {% endblock content %}

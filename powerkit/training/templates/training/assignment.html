@@ -24,6 +24,7 @@
         <p class="introSentence introSentence--border">
             {{ answer.answer|richtext }}
         </p>
+       
         {% else %}
         <form class="form" action="." method="post">{% csrf_token %}
             <label>Please Enter your answer below</label>
@@ -42,4 +43,13 @@
         {% endif %}
     </div>
 </section>
+{% if answer.submitted %}
+    <nav class="sessionNav">
+        <div class="sessionNav__controls">
+            <div class="sessionNav__controls__button sessionNav__controls__button--next">
+            <a a href="/training/complete_sync/{{ page_id }}/">Next Lesson</a>
+            </div>
+        </div>
+    </nav>
+{% endif %}
 {% endblock content %}

@@ -8,14 +8,31 @@
 <section>
     <div class="col-2-3">
         <h1>Assignments</h1>
-        <div class="table">
-            <table>
-            {% for assignment in assessments %}
-                <tr>
-                    <td>{{assignment.question}}</td>
-                </tr>
+        <div class="table table--rows">
+            <div class="table__row table__row--headerRow">
+                <div class="table__cell">
+                    Completed
+                </div>
+                <div class="table__cell">
+                    Assessed?
+                </div>
+                <div class="table__cell">
+                    View Assignment
+                </div>
+            </div>
+            {% for answer in assessments %}
+                <div class="table__row">
+                    <div class="table__cell">
+                        {{answer.completed}}
+                    </div>
+                     <div class="table__cell">
+                        {% if answer.is_assessed %}Yes{% else %}No{% endif %}
+                    </div>
+                    <div class="table__cell">
+                        <a href="{% url 'assessment' id=answer.id %}" class="btn">view</a>
+                    </div>
+                </div>
             {% endfor %}
-            </table>
         </div>
     </div>
 </section>

@@ -294,3 +294,7 @@ class AssignmentAnswer(models.Model):
     @property
     def submitted(self):
         return self.completed
+
+    @property
+    def is_assessed(self):
+        return self.assessed

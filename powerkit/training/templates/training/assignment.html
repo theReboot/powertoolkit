@@ -24,7 +24,6 @@
         <p class="introSentence introSentence--border">
             {{ answer.answer|richtext }}
         </p>
-       
         {% else %}
         <form class="form" action="." method="post">{% csrf_token %}
             <label>Please Enter your answer below</label>
@@ -42,6 +41,16 @@
         </form>
         {% endif %}
     </div>
+</section>
+<section>
+    {% if answer.is_assessed %}
+        <div class="exam col-2-3">
+            <h3>Assessment</h3>
+            <p class="introSentence introSentence--border">
+                {{ answer.comment|richtext }}
+            </p>
+        </div>
+    {% endif %}
 </section>
 {% if answer.submitted %}
     <nav class="sessionNav">

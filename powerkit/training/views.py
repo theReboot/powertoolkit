@@ -268,7 +268,9 @@ def assessment(request, id):
     if request.method == 'POST':
         form = AssessmentForm(request.POST, instance=answer)
         if form.is_valid():
-            form.save()
+            obj = form.save(commit=False)
+            obj.assessed = timezone.now()
+            obj.save()
             return redirect('assessment_list')
     else:
         form = AssessmentForm(instance=answer)
@@ -285,5 +287,7 @@ def assessment(request, id):
 
 @login_required
 def assessments(request):
-    _asst = AssignmentAnswer.objects.filter(assignment__examiner=request.user)
+    _asst = AssignmentAnswer.objects.filter(
+        assignment__examiner=request.user,
+        completed__isnull=False)
     return render(request, 'training/assessments.html', {'assessments': _asst})

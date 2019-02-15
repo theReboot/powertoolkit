@@ -1,34 +1,33 @@
 from django.contrib import admin
-import csv
-import xlrd
 
-from stats.models import PerformanceSummary, PerformanceDetail
+from stats.models import PerformanceSummary, PerformanceDetail,\
+    RemittanceSummary, RemittanceDetail
 
 
 @admin.register(PerformanceSummary)
 class PerformanceAdmin(admin.ModelAdmin):
     list_display = ['month', 'year']
 
-    def save_model(self, request, obj, form, change):
-        obj.save()
+    #def save_model(self, request, obj, form, change):
+    #    obj.save()
 
-        #import pdb;pdb.set_trace()
-        #f = open(obj.csv_file.path)
-        book = xlrd.open_workbook(obj.csv_file.path)
-        sheet = book.sheet_by_index(0)
-        lines = []
-        for rowx in range(1, sheet.nrows):
-            cols = sheet.row_values(rowx)
-            lines.append(cols)
-            PerformanceDetail.objects.create(
-                summary=obj,
-                date=xlrd.xldate_as_datetime(cols[0], 0),
-                disco_consumption=cols[1],
-                evacuated_energy=cols[2],
-                system_loss=cols[3],
-                efficiency=cols[4],
-                inefficiency=cols[5]
-            )
+    #    #import pdb;pdb.set_trace()
+    #    #f = open(obj.csv_file.path)
+    #    book = xlrd.open_workbook(obj.csv_file.path)
+    #    sheet = book.sheet_by_index(0)
+    #    lines = []
+    #    for rowx in range(1, sheet.nrows):
+    #        cols = sheet.row_values(rowx)
+    #        lines.append(cols)
+    #        PerformanceDetail.objects.create(
+    #            summary=obj,
+    #            date=xlrd.xldate_as_datetime(cols[0], 0),
+    #            disco_consumption=cols[1],
+    #            evacuated_energy=cols[2],
+    #            system_loss=cols[3],
+    #            efficiency=cols[4],
+    #            inefficiency=cols[5]
+    #        )
 
 
         #field_names = ['date', 'consumption', 'evacuated', 'loss', 'efficiency', 'inefficiency']
@@ -53,3 +52,14 @@ class PerformanceAdmin(admin.ModelAdmin):
 class PerformanceDetailAdmin(admin.ModelAdmin):
     list_display = ['summary', 'date', 'disco_consumption',
                     'evacuated_energy', 'system_loss']
+
+
+@admin.register(RemittanceSummary)
+class RemittanceAdmin(admin.ModelAdmin):
+    list_display = ['month', 'year']
+
+
+@admin.register(RemittanceDetail)
+class RemittanceDetailAdmin(admin.ModelAdmin):
+    list_display = ['summary', 'disco', 'invoice_value', 'disco_payment',
+                    'performance_ratio', 'loss', 'inefficiency_ratio']

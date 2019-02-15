@@ -15,6 +15,7 @@ xlsxwriter = "*"
 django-tinymce = "*"
 django-post-office = "*"
 django-mailgun = "*"
+xlrd = "*"
 
 
 [dev-packages]

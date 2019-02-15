@@ -19,11 +19,17 @@ class StatsPage(Page):
         null=True,
         on_delete=models.SET_NULL,
         related_name='+')
+    generation = models.ForeignKey(
+        'GenerationSummary',
+        null=True,
+        on_delete=models.SET_NULL,
+        related_name='+')
 
     content_panels = Page.content_panels + [
         FieldPanel('intro', classname='full'),
         SnippetChooserPanel('performance', classname='full'),
         SnippetChooserPanel('remittance', classname='full'),
+        SnippetChooserPanel('generation', classname='full'),
     ]
 
 
@@ -299,3 +305,6 @@ class GenerationDetail(models.Model):
     daily_losses = models.PositiveIntegerField()
     constrained_value = models.DecimalField(max_digits=15, decimal_places=5)
     peak_energy = models.PositiveIntegerField()
+
+    def __str__(self):
+        return self.date.strftime('%d-%b-%Y')

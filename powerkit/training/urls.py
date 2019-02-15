@@ -10,14 +10,14 @@ urlpatterns = [
         'complete/<int:id>/',
         views.complete,
         {
-            'async': True
+            'asynchronous': True
         },
         name='complete_training'),
     path(
         'complete_sync/<int:id>/',
         views.complete,
         {
-            'async': False
+            'asynchronous': False
         },
         name='complete_training_sync'),
     path('select_answer/<int:id>/', views.select_answer, name='select_answer'),

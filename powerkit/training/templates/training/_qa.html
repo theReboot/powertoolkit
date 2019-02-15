@@ -258,7 +258,7 @@
         },
         nextLesson: function() {
           //this.isLoading = true;
-          const url = `/training/complete/${this.pageId}/?async=1`;
+          const url = `/training/complete/${this.pageId}/?asynchronous=1`;
           this.$http.get(url).then(response => {
               console.log(response.body);
               window.location = response.body.redirect_url;

@@ -36,7 +36,7 @@ def start_training(request):
 
 
 @login_required
-def complete(request, id, async=True):
+def complete(request, id, asynchronous=True):
     #import pdb;pdb.set_trace()
     _training = Training.objects.get(user=request.user)
     schedules = _training.schedules.all()
@@ -57,7 +57,7 @@ def complete(request, id, async=True):
         _training.save()
         #return redirect('/learning/')
         _url = '/learning/'
-        if async:
+        if asynchronous:
             return JsonResponse({'redirect_url': _url})
         else:
             return redirect(_url)
@@ -76,7 +76,7 @@ def complete(request, id, async=True):
         else:
             page_url = current_page.url
 
-        if async:
+        if asynchronous:
             return JsonResponse({'redirect_url': page_url})
         else:
             return redirect(page_url)

@@ -32,8 +32,9 @@ from core import views as core_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('stats/chart/<int:year>/', stat_views.get_data),
-    path('stats/download/<int:year>/', stat_views.download),
+    path('stats/', include('stats.urls')),
+    #path('stats/chart/<int:year>/', stat_views.get_data),
+    #path('stats/download/<int:year>/', stat_views.download),
     path('system/data/', system_views.get_data),
     path('accounts/login/',
          auth_views.LoginView.as_view(template_name='login.html'),

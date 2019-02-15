@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 from stats.models import PerformanceSummary, PerformanceDetail,\
-    RemittanceSummary, RemittanceDetail
+    RemittanceSummary, RemittanceDetail, GenerationSummary, GenerationDetail
 
 
 @admin.register(PerformanceSummary)
@@ -63,3 +63,15 @@ class RemittanceAdmin(admin.ModelAdmin):
 class RemittanceDetailAdmin(admin.ModelAdmin):
     list_display = ['summary', 'disco', 'invoice_value', 'disco_payment',
                     'performance_ratio', 'loss', 'inefficiency_ratio']
+
+
+@admin.register(GenerationSummary)
+class GenerationAdmin(admin.ModelAdmin):
+    list_display = ['month', 'year']
+
+
+@admin.register(GenerationDetail)
+class GenerationDetailAdmin(admin.ModelAdmin):
+    list_display = ['summary', 'date', 'hourly_generation', 'daily_generation',
+                    'hourly_losses', 'daily_losses', 'constrained_value',
+                    'peak_energy']

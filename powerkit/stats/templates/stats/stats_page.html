@@ -32,9 +32,12 @@
           </div>
             {% comment %} <div class="imagePlaceholder">[chart here]</div> {% endcomment %}
     </section>
-    <section>
-      <h2>Energy Generation and Energy Losses  </h2>
-      <p>Content to  come.</p>
+    <section id="genApp">
+      <h2 v-if="!loading">Energy Generation and Energy Losses  </h2>
+      <h2 v-if="loading">Loading.... Please wait</h2>
+        <div class="generation-chart-container" style="position: relative; height:60vh; width:80vw;">
+          <canvas id="generationChart"></canvas>
+        </div>
     </section>
     <section>
       <div class="flexGrid">
@@ -286,6 +289,93 @@
       },
       meteredCustomers: function() {
         return this.statuses.map(item => item.metered);
+      }
+    }
+  })
+
+  var vg = new Vue({
+    el: '#genApp',
+    delimiters: ["[","]"],
+    data: {
+      generation: [],
+      loading: false
+    },
+    mounted() {
+      console.log('generation ready');
+      this.setupChart();
+    },
+    methods: {
+      setupChart: function() {
+        console.log('generation chart data fetching...');
+        this.loading = true;
+        const url = '/stats/generation/';
+        this.$http.get(url).then(response => {
+          this.loading = false;
+          console.log(response.body);
+          this.generation = response.body.generation;
+
+          const labels = this.generation.map(item => item.date);
+          const hourly_gen = this.generation.map(item => item.hourly_generation);
+          const daily_gen = this.generation.map(item => item.daily_generation);
+          const hourly_losses = this.generation.map(item => item.hourly_losses);
+          const daily_losses = this.generation.map(item => item.daily_losses);
+          const peak_energy = this.generation.map(item => item.peak_energy);
+
+          let ctx = document.getElementById('generationChart').getContext('2d');
+          genChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+              labels: labels,
+              datasets: [
+                {
+                  label: 'Hourly Losses',
+                  data: hourly_losses,
+                  fill: false,
+                  borderColor: 'rgba(83, 71, 189, 1)',
+                  backgroundColor: 'rgba(83, 71, 189, 0.7)',
+                },
+                 {
+                  label: 'Hourly Generation',
+                  data: hourly_gen,
+                  fill: false,
+                  borderColor: 'rgba(205, 207, 96, 1)',
+                  backgroundColor: 'rgba(205, 207, 96, 0.7)',
+                },
+                 {
+                  label: 'Peak Energy',
+                  data: peak_energy,
+                  fill: false,
+                  borderColor: 'rgba(198, 235, 190, 1)',
+                  backgroundColor: 'rgba(198, 235, 190, 0.7)',
+                },
+              ]
+            },
+            options: {
+              maintainAspectRatio: false,
+              scales: {
+                yAxes: [{
+                  ticks: {
+                    beginAtZero: true,
+                    fontColor: '#fff',
+                    fontSize: 24,
+                    callback: function(value, index, values) {
+                      return value.toLocaleString();
+                    }
+                  },
+                  gridLines: {
+                    display: true,
+                    color: '#ccc',
+                  }
+                }],
+                xAxes: [{
+                  ticks: {
+                    beginAtZero: true,
+                  },
+                }]
+              }
+            }
+          }); //chart loaded
+        }); // http request end
       }
     }
   })

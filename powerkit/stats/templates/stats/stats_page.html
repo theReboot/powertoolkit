@@ -39,6 +39,13 @@
           <canvas id="generationChart"></canvas>
         </div>
     </section>
+     <section id="perfApp">
+      <h2 v-if="!loading">Transmission Performance </h2>
+      <h2 v-if="loading">Loading.... Please wait</h2>
+        <div class="generation-chart-container" style="position: relative; height:60vh; width:80vw;">
+          <canvas id="performanceChart"></canvas>
+        </div>
+    </section>
     <section>
       <div class="flexGrid">
         <div class="col-2-3">
@@ -311,7 +318,7 @@
         const url = '/stats/generation/';
         this.$http.get(url).then(response => {
           this.loading = false;
-          console.log(response.body);
+          //console.log(response.body);
           this.generation = response.body.generation;
 
           const labels = this.generation.map(item => item.date);
@@ -376,6 +383,91 @@
             }
           }); //chart loaded
         }); // http request end
+      }
+    }
+  })
+
+  var vp = new Vue({
+    el: '#perfApp',
+    delimiters: ["[","]"],
+    data: {
+      performance: [],
+      loading: false
+    },
+    mounted() {
+      console.log('performance ready');
+      this.setupChart();
+    },
+    methods: {
+      setupChart: function() {
+        console.log('performance chart data fetching...');
+        this.loading = true;
+        const url = '/stats/performance/';
+        this.$http.get(url).then(response => {
+          this.loading = false;
+          console.log(response.body);
+          this.performance = response.body.performance;
+
+          const labels = this.performance.map(item => item.date);
+          const disco_consumption = this.performance.map(item => item.disco_performance);
+          const evacuated_energy = this.performance.map(item => item.evacuated_energy);
+          const system_loss = this.performance.map(item => item.system_loss);
+
+          let ctx = document.getElementById('performanceChart').getContext('2d');
+          perfChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+              labels: labels,
+              datasets: [
+                 {
+                  label: 'Disco Consumption',
+                  data: disco_consumption,
+                  fill: false,
+                  borderColor: 'rgba(83, 71, 189, 1)',
+                  backgroundColor: 'rgba(83, 71, 189, 0.7)',
+                },
+                 {
+                  label: 'Evacuated Energy',
+                  data: evacuated_energy,
+                  fill: false,
+                  borderColor: 'rgba(205, 207, 96, 1)',
+                  backgroundColor: 'rgba(205, 207, 96, 0.7)',
+                },
+                 {
+                  label: 'System Loss',
+                  data: system_loss,
+                  fill: false,
+                  borderColor: 'rgba(198, 235, 190, 1)',
+                  backgroundColor: 'rgba(198, 235, 190, 0.7)',
+                },
+              ]
+            },
+              options: {
+              maintainAspectRatio: false,
+              scales: {
+                yAxes: [{
+                  ticks: {
+                    beginAtZero: true,
+                    fontColor: '#fff',
+                    fontSize: 24,
+                    callback: function(value, index, values) {
+                      return value.toLocaleString();
+                    }
+                  },
+                  gridLines: {
+                    display: true,
+                    color: '#ccc',
+                  }
+                }],
+                xAxes: [{
+                  ticks: {
+                    beginAtZero: true,
+                  },
+                }]
+              }
+            }
+          });
+        });
       }
     }
   })

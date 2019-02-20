@@ -30,9 +30,17 @@ ALLOWED_HOSTS = ['powersmart.ng', '104.248.132.201', 'localhost']
 # EMAIL SETTINGS
 DEFAULT_FROM_EMAIL = 'info@powersmart.ng'
 
-EMAIL_HOST = 'smtp.sendgrid.net'
+EMAIL_BACKEND = 'django_mailgun.MailgunBackend'
 
-EMAIL_PORT = 587
+POST_OFFICE = {
+    'BACKENDS': {
+        'default': 'django_mailgun.MailgunBackend',
+    }
+}
+
+#EMAIL_HOST = 'smtp.sendgrid.net'
+
+#EMAIL_PORT = 587
 
 # Application definition
 
@@ -182,6 +190,6 @@ LOGIN_REDIRECT_URL = '/learning/'
 WAGTAIL_FRONTEND_LOGIN_URL = '/accounts/login/'
 
 try:
-    from .local_settings import DATABASES, EMAIL_HOST_USER, EMAIL_HOST_PASSWORD
+    from .local_settings import DATABASES, MAILGUN_ACCESS_KEY, MAILGUN_SERVER_NAME
 except ImportError:
     pass

@@ -5,6 +5,7 @@ from wagtail.core.models import Page
 from wagtail.admin.edit_handlers import FieldPanel
 from wagtail.snippets.models import register_snippet
 from wagtail.snippets.edit_handlers import SnippetChooserPanel
+from wagtail.documents.edit_handlers import DocumentChooserPanel
 
 
 class StatsPage(Page):
@@ -24,12 +25,33 @@ class StatsPage(Page):
         null=True,
         on_delete=models.SET_NULL,
         related_name='+')
+    power_generation_file = models.ForeignKey(
+        'wagtaildocs.Document',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+')
+    transmission_performance_file = models.ForeignKey(
+        'wagtaildocs.Document',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+')
+    disco_remittance_file = models.ForeignKey(
+        'wagtaildocs.Document',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+')
 
     content_panels = Page.content_panels + [
         FieldPanel('intro', classname='full'),
         SnippetChooserPanel('performance', classname='full'),
         SnippetChooserPanel('remittance', classname='full'),
         SnippetChooserPanel('generation', classname='full'),
+        DocumentChooserPanel('power_generation_file'),
+        DocumentChooserPanel('transmission_performance_file'),
+        DocumentChooserPanel('disco_remittance_file'),
     ]
 
 

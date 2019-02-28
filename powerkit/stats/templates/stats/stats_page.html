@@ -35,15 +35,25 @@
     <section id="genApp">
       <h2 v-if="!loading">Energy Generation and Energy Losses  </h2>
       <h2 v-if="loading">Loading.... Please wait</h2>
+      <a href='{{page.power_generation_file.file.url}}' class="btn">Download Energy Generation Data</a>
         <div class="generation-chart-container" style="position: relative; height:60vh; width:80vw;">
           <canvas id="generationChart"></canvas>
         </div>
     </section>
-     <section id="perfApp">
+    <section id="perfApp">
       <h2 v-if="!loading">Transmission Performance </h2>
       <h2 v-if="loading">Loading.... Please wait</h2>
+      <a href='{{page.transmission_performance_file.file.url}}' class="btn">Download Transmission Performance Data</a>
         <div class="generation-chart-container" style="position: relative; height:60vh; width:80vw;">
           <canvas id="performanceChart"></canvas>
+        </div>
+    </section>
+    <section id="remApp">
+      <h2 v-if="!loading">Remittance of Discos </h2>
+      <h2 v-if="loading">Loading.... Please wait</h2>
+      <a href='{{page.disco_remittance_file.file.url}}' class="btn">Download Disco Remittance Data</a>
+        <div class="remittance-chart-container" style="position: relative; height:300px; width:400px;">
+          <canvas id="remittanceChart"></canvas>
         </div>
     </section>
     <section>
@@ -468,6 +478,54 @@
             }
           });
         });
+      }
+    }
+  })
+
+  var vr = new Vue({
+    el: '#remApp',
+    delimiters: ["[","]"],
+    data: {
+      remittance: [],
+      loading: false
+    },
+    mounted() {
+      console.log('remittance mounted');
+      this.setupChart();
+    },
+    methods: {
+      setupChart: function() {
+        console.log('remittance chart data fetching...');
+        this.loading = true;
+        const url = '/stats/remittance/';
+        this.$http.get(url).then(response => {
+          this.loading = false;
+          this.remittance = response.body.remittance;
+          console.log(this.remittance);
+
+          const labels = this.remittance.map(item => item.disco);
+          const payments = this.remittance.map(item => (item.disco_payment));
+          console.log('PAYMENTS');
+          console.log(payments);
+
+          let ctx = document.getElementById('remittanceChart');
+          remChart = new Chart(ctx, {
+            type: 'pie',
+            data: {
+              labels: labels,
+              datasets: [
+                {
+                  data: payments,
+                  backgroundColor: [
+                    'rgba(83, 71, 189, 0.7)',
+                    'rgba(205, 207, 96, 0.7)',
+                    'rgba(198, 235, 190, 1)',
+                  ]
+                }
+              ]
+            }
+          })
+        })
       }
     }
   })

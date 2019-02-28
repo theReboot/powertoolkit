@@ -14,6 +14,8 @@
   <div class="col-2-3">
     <div class="h1__preHeading">Blog Post:</div>
     <h1 class="h1__smaller"><a href="{% pageurl featured %}">{{featured.title}}</a></h1>
+    <p>Author: {{featured.author.get_full_name}}</p>
+    <p>{{featured.date|date}}</p>
     <p class="introSentence introSentence--border">
       {{featured.intro}}
     </p>
@@ -28,6 +30,7 @@
           {% image entry.feed_image original %}
         </a>
         <h3><a href="{% pageurl entry %}">{{entry.title}}</a></h3>
+        <p>Author: {{entry.author.get_full_name }}</p>
         <p>{{entry.date|date}}
         <p>
           {{entry.intro}}

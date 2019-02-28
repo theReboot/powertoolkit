@@ -12,9 +12,10 @@
     <h1 class="h1__smaller">{{page.title}}</h1>
     <figure>
       {% image page.feed_image max-700x467 %}
-      <figcaption>Caption goes here</figcaption>
+      <figcaption>Caption</figcaption>
     </figure>
-    <p><time>{{post.date}}</time></p>
+    <p><time>{{page.date|date}}</time></p>
+    <p><strong>Author: {{page.author.get_full_name}}</strong></p>
     {{ page.body|richtext }}
   </article>
 </section>

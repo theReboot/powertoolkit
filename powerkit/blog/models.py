@@ -1,6 +1,7 @@
 from django.db import models
 from django.core.paginator import Paginator
 from django.conf import settings
+from django.contrib.auth.models import User
 
 from modelcluster.fields import ParentalKey
 
@@ -38,6 +39,12 @@ class BlogIndex(Page):
 class BlogPage(Page):
     intro = models.TextField(blank=True, null=True)
     body = RichTextField()
+    author = models.ForeignKey(
+        User,
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL
+    )
     date = models.DateField("Post date")
     featured = models.BooleanField(default=False)
     feed_image = models.ForeignKey(
@@ -57,6 +64,7 @@ class BlogPage(Page):
         FieldPanel('date'),
         FieldPanel('intro', classname='full'),
         FieldPanel('body', classname='full'),
+        FieldPanel('author', classname='full'),
         ImageChooserPanel('feed_image'),
         InlinePanel('related_links', label='Related links'),
     ]

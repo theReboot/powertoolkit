@@ -18,7 +18,8 @@
   <h2>Partners</h2>
   <div class="flexGrid flexGrid--6col">
     {% for partner in partners %}
-      {% image partner.logo original %}
+      <img src="{{partner.logo.file.url}}" />
+      {% comment %} {% image partner.logo original %} {% endcomment %}
     {% endfor %}
   </div>
 </section>

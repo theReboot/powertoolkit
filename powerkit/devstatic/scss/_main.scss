@@ -65,6 +65,18 @@ GRID
   align-self: flex-end;
 }
 
+.flexGrid--6col {
+  flex-direction: row;
+
+  @include mobile {
+    flex-direction: column;
+  }
+
+  & > * {
+    width: 16.66%;
+  }
+}
+
 .col {
   flex: 1;
   // margin-right: $colGutter;

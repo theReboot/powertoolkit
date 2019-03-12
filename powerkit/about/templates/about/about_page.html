@@ -16,11 +16,9 @@
 </section>
 <section>
   <h2>Partners</h2>
-  <div class="flexGrid">
+  <div class="flexGrid flexGrid--6col">
     {% for partner in partners %}
-    <div class="col-2-3">
       {% image partner.logo max-700x467 %}
-    </div>
     {% endfor %}
   </div>
 </section>

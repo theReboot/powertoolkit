@@ -327,6 +327,14 @@ GRID
 .flexGrid--alignBottom {
   align-self: flex-end; }
 
+.flexGrid--6col {
+  flex-direction: row; }
+  @media (max-width: 500px) {
+    .flexGrid--6col {
+      flex-direction: column; } }
+  .flexGrid--6col > * {
+    width: 16.66%; }
+
 .col {
   flex: 1;
   padding-right: 1.5rem; }

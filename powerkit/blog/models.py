@@ -39,12 +39,13 @@ class BlogIndex(Page):
 class BlogPage(Page):
     intro = models.TextField(blank=True, null=True)
     body = RichTextField()
-    author = models.ForeignKey(
-        User,
-        null=True,
-        blank=True,
-        on_delete=models.SET_NULL
-    )
+    author = models.CharField(max_length=250, blank=True, null=True)
+    #author = models.ForeignKey(
+    #    User,
+    #    null=True,
+    #    blank=True,
+    #    on_delete=models.SET_NULL
+    #)
     date = models.DateField("Post date")
     featured = models.BooleanField(default=False)
     feed_image = models.ForeignKey(
